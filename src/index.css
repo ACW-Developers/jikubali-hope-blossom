@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Jikubali Africa Design System - Mental Health & Empowerment Theme
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand Colors - Sky Blue, Pink, Yellow */
+    --sky-blue: 198 93% 60%;
+    --sky-blue-light: 198 93% 80%;
+    --sky-blue-dark: 198 93% 40%;
+    
+    --brand-pink: 330 85% 70%;
+    --brand-pink-light: 330 85% 85%;
+    --brand-pink-dark: 330 85% 55%;
+    
+    --sunshine-yellow: 45 98% 65%;
+    --sunshine-yellow-light: 45 98% 80%;
+    --sunshine-yellow-dark: 45 98% 50%;
+
+    /* Core System Colors */
+    --background: 0 0% 99%;
+    --foreground: 222 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 198 93% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 330 85% 70%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 98% 65%;
+    --accent-foreground: 222 20% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 198 93% 60%;
 
-    --radius: 0.5rem;
+    /* Design System Tokens */
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-blue)) 0%, hsl(var(--brand-pink)) 100%);
+    --gradient-warm: linear-gradient(45deg, hsl(var(--brand-pink-light)) 0%, hsl(var(--sunshine-yellow-light)) 100%);
+    --gradient-cool: linear-gradient(135deg, hsl(var(--sky-blue-light)) 0%, hsl(var(--sky-blue)) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 10px 40px -10px hsl(var(--sky-blue) / 0.2);
+    --shadow-warm: 0 20px 60px -20px hsl(var(--brand-pink) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--sunshine-yellow) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +129,77 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Inter','system-ui',sans-serif] antialiased;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .warm-gradient {
+    background: var(--gradient-warm);
+  }
+  
+  .cool-gradient {
+    background: var(--gradient-cool);
+  }
+
+  /* Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  /* Interactive Elements */
+  .hover-lift {
+    transition: var(--transition-smooth);
+    @apply hover:scale-105 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    transition: var(--transition-smooth);
+    @apply hover:shadow-[var(--shadow-glow)];
+  }
+
+  /* Content Styling */
+  .section-spacing {
+    @apply py-16 lg:py-24;
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
