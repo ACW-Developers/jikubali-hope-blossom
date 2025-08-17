@@ -1,18 +1,59 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/enhanced-button";
 import { ArrowRight, Heart, Users } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage1 from "@/assets/hero-image.jpg";
+import heroImage2 from "@/assets/hero-2.jpg";
+import heroImage3 from "@/assets/hero-3.jpg";
 
 const Hero = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    { src: heroImage1, alt: "Community of support and empowerment" },
+    { src: heroImage2, alt: "Peaceful meditation and mental wellness" },
+    { src: heroImage3, alt: "Joyful community celebration" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Community of support and empowerment" 
-          className="w-full h-full object-cover"
-        />
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImage ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img 
+              src={image.src} 
+              alt={image.alt} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
         <div className="absolute inset-0 hero-gradient opacity-80"></div>
+      </div>
+
+      {/* Image Indicators */}
+      <div className="absolute bottom-8 left-8 z-20 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            className={`w-12 h-1 rounded-full transition-all duration-300 ${
+              index === currentImage 
+                ? "bg-sunshine-yellow shadow-glow" 
+                : "bg-white/30 hover:bg-white/50"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Floating Elements */}
