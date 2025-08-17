@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Users, MapPin, Heart, Calendar, Award } from "lucide-react";
 
@@ -21,31 +21,18 @@ const Impact = () => {
     programsOffered: 8
   };
 
+  const maxValues = {
+    livesTransformed: 600,
+    communitiesReached: 60,
+    countiesServed: 15,
+    yearsFounded: 5,
+    volunteersActive: 30,
+    programsOffered: 10
+  };
+
+  const sectionRef = useRef(null);
+
   useEffect(() => {
-    const animateCounters = () => {
-      const duration = 2000; // 2 seconds
-      const steps = 60;
-      const stepDuration = duration / steps;
-
-      Object.keys(targetValues).forEach((key) => {
-        const target = targetValues[key as keyof typeof targetValues];
-        const increment = target / steps;
-        let current = 0;
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          setCounters(prev => ({
-            ...prev,
-            [key]: Math.floor(current)
-          }));
-        }, stepDuration);
-      });
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -53,14 +40,39 @@ const Impact = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
-    const element = document.getElementById('impact-section');
-    if (element) observer.observe(element);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => observer.disconnect();
   }, []);
+
+  const animateCounters = () => {
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    Object.keys(targetValues).forEach((key) => {
+      const target = targetValues[key as keyof typeof targetValues];
+      const increment = target / steps;
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        setCounters(prev => ({
+          ...prev,
+          [key]: Math.floor(current)
+        }));
+      }, stepDuration);
+    });
+  };
 
   const impactStats = [
     {
@@ -69,7 +81,10 @@ const Impact = () => {
       suffix: "+",
       label: "Lives Transformed",
       description: "Individuals who have found healing and hope",
-      color: "brand-pink"
+      color: "text-pink-600",
+      bgColor: "bg-pink-100",
+      maxValue: maxValues.livesTransformed,
+      image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Users,
@@ -77,7 +92,10 @@ const Impact = () => {
       suffix: "+",
       label: "Communities Reached",
       description: "Neighborhoods actively engaged in our programs",
-      color: "sky-blue"
+      color: "text-blue-600",
+      bgColor: "bg-blue-100",
+      maxValue: maxValues.communitiesReached,
+      image: "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: MapPin,
@@ -85,7 +103,10 @@ const Impact = () => {
       suffix: "+",
       label: "Counties Served",
       description: "Across Kenya, expanding our reach",
-      color: "sunshine-yellow"
+      color: "text-amber-500",
+      bgColor: "bg-amber-100",
+      maxValue: maxValues.countiesServed,
+      image: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Calendar,
@@ -93,7 +114,10 @@ const Impact = () => {
       suffix: "",
       label: "Years of Impact",
       description: "Building trust and changing lives",
-      color: "brand-pink"
+      color: "text-pink-600",
+      bgColor: "bg-pink-100",
+      maxValue: maxValues.yearsFounded,
+      image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: TrendingUp,
@@ -101,7 +125,10 @@ const Impact = () => {
       suffix: "+",
       label: "Active Volunteers",
       description: "Dedicated individuals making a difference",
-      color: "sky-blue"
+      color: "text-blue-600",
+      bgColor: "bg-blue-100",
+      maxValue: maxValues.volunteersActive,
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Award,
@@ -109,19 +136,23 @@ const Impact = () => {
       suffix: "",
       label: "Programs Offered",
       description: "Comprehensive mental health services",
-      color: "sunshine-yellow"
+      color: "text-amber-500",
+      bgColor: "bg-amber-100",
+      maxValue: maxValues.programsOffered,
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     }
   ];
 
   return (
-    <section id="impact-section" className="section-spacing bg-muted/20">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section ref={sectionRef} className="py-2 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-            Our <span className="text-accent">Impact</span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-blue-600">Impact</span>
           </h2>
-          <div className="w-24 h-1 hero-gradient mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-blue-500 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Real change, real lives, real hope. See how Jikubali Africa is transforming 
             mental health across Kenya, one community at a time.
           </p>
@@ -130,65 +161,118 @@ const Impact = () => {
         {/* Impact Stats Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {impactStats.map((stat, index) => (
-            <Card key={index} className="group hover-lift border-none shadow-soft bg-card/90 backdrop-blur-sm text-center overflow-hidden">
-              <CardContent className="p-8">
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-${stat.color}/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className={`w-8 h-8 text-${stat.color}`} />
+            <Card key={index} className="group border-none shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
+                <img 
+                  src={stat.image} 
+                  alt={stat.label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className={`absolute top-4 right-4 w-12 h-12 rounded-lg ${stat.bgColor} flex items-center justify-center shadow-md`}>
+                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
                 </div>
-                
-                <div className={`text-4xl lg:text-5xl font-bold mb-2 text-${stat.color} font-heading`}>
+              </div>
+              <CardContent className="p-6">
+                <div className={`text-3xl lg:text-4xl font-bold mb-2 ${stat.color}`}>
                   {stat.value}{stat.suffix}
                 </div>
-                
-                <h3 className="font-heading text-lg font-semibold mb-2 text-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">
                   {stat.label}
                 </h3>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-gray-600 mb-4">
                   {stat.description}
                 </p>
+                
+                {/* Animated Progress Bar */}
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                  <div 
+                    className={`h-2.5 rounded-full ${stat.bgColor.replace('bg-', 'bg-gradient-to-r from-')} ${stat.color.replace('text-', 'to-')}`}
+                    style={{ 
+                      width: `${(stat.value / stat.maxValue) * 100}%`,
+                      transition: 'width 1s ease-out'
+                    }}
+                  ></div>
+                </div>
+                <div className="text-xs text-gray-500 text-right">
+                  {stat.value}{stat.suffix} of {stat.maxValue}{stat.suffix} target
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* Success Stories Highlight */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="cool-gradient rounded-2xl p-8 lg:p-12 text-white shadow-soft">
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-6">
-              Creating Lasting Change
-            </h3>
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="bg-gradient-to-br from-blue-600 to-pink-500 rounded-2xl p-8 lg:p-12 text-white shadow-xl">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                <Heart className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-bold">
+                Creating Lasting Change
+              </h3>
+            </div>
             <div className="space-y-4 text-white/90">
-              <p className="leading-relaxed">
+              <p className="leading-relaxed italic text-lg">
                 "Since joining Jikubali Africa's peer support groups, I've found my voice and 
                 my purpose. The shame I carried for years has transformed into strength."
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-4">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <Heart className="w-6 h-6" />
+                  <Users className="w-6 h-6" />
                 </div>
                 <div>
                   <div className="font-medium">Grace M.</div>
-                  <div className="text-sm opacity-75">Peer Support Participant</div>
+                  <div className="text-sm opacity-85">Peer Support Participant</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            <h3 className="font-heading text-2xl lg:text-3xl font-semibold text-foreground">
+            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
               Beyond Numbers
             </h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               Every statistic represents a life touched, a family healed, and a community 
               strengthened. Our impact extends far beyond what numbers can capture - it's 
               measured in renewed hope, restored relationships, and resilient futures.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               Through evidence-based programs, culturally sensitive approaches, and unwavering 
               community support, we're not just changing lives - we're transforming the 
               landscape of mental health in Kenya.
             </p>
+            <div className="pt-4">
+              <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium hover:shadow-lg transition-all">
+                Read More Success Stories
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Annual Growth Section */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h3 className="text-2xl lg:text-3xl font-bold mb-8 text-center text-gray-900">
+            Our Growth Over Time
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-pink-600 mb-2">+325%</div>
+              <div className="text-gray-600">Increase in lives impacted</div>
+              <div className="text-sm text-gray-500 mt-1">Since 2019</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-2">+180%</div>
+              <div className="text-gray-600">Growth in volunteers</div>
+              <div className="text-sm text-gray-500 mt-1">Last 2 years</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-amber-500 mb-2">3×</div>
+              <div className="text-gray-600">More communities served</div>
+              <div className="text-sm text-gray-500 mt-1">Year over year</div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,108 +1,217 @@
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
-import { BookOpen, Users, MessageCircle, Megaphone, Calendar, ArrowRight } from "lucide-react";
+import { 
+  BookOpen, Users, MessageCircle, Megaphone, 
+  Calendar, ArrowRight, Heart, Bike, Music, 
+  Microscope, CalendarDays, 
+} from "lucide-react";
 
 const Programs = () => {
+  // Program categories
   const programs = [
     {
       icon: MessageCircle,
       title: "Peer Support Groups",
-      description: "Safe spaces where individuals share experiences, find understanding, and build lasting connections.",
-      features: ["Weekly group sessions", "Trained peer facilitators", "Confidential environment", "Multi-language support"],
-      color: "sky-blue"
+      description: "Safe spaces where individuals share experiences and build connections.",
+      features: ["Weekly sessions", "Trained facilitators", "Confidential environment"],
+      color: "text-sky-500",
+      bgColor: "bg-sky-100",
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: BookOpen,
       title: "Mental Health Education",
-      description: "Comprehensive workshops and resources to increase awareness and reduce stigma in communities.",
-      features: ["Community workshops", "Educational materials", "School programs", "Digital resources"],
-      color: "brand-pink"
+      description: "Workshops and resources to increase awareness and reduce stigma.",
+      features: ["Community workshops", "School programs", "Digital resources"],
+      color: "text-pink-500",
+      bgColor: "bg-pink-100",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Users,
       title: "Counseling Services",
-      description: "Professional counseling and therapy services tailored to individual needs and cultural context.",
-      features: ["Individual therapy", "Group counseling", "Crisis intervention", "Culturally sensitive approach"],
-      color: "sunshine-yellow"
+      description: "Professional services tailored to individual needs.",
+      features: ["Individual therapy", "Group counseling", "Crisis intervention"],
+      color: "text-amber-500",
+      bgColor: "bg-amber-100",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Megaphone,
       title: "Advocacy & Awareness",
-      description: "Championing policy changes and raising awareness to create systemic improvements in mental health.",
-      features: ["Policy advocacy", "Media campaigns", "Community events", "Research initiatives"],
-      color: "sky-blue"
+      description: "Championing policy changes for better mental health systems.",
+      features: ["Policy advocacy", "Media campaigns", "Community events"],
+      color: "text-blue-500",
+      bgColor: "bg-blue-100",
+      image: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     }
   ];
 
+  // Special events data
+  const events = [
+    {
+      title: "Cycle for Self-Love",
+      description: "Annual cycling event promoting body positivity and mental wellness",
+      icon: Bike,
+      image: "https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      color: "text-purple-600"
+    },
+    {
+      title: "Jikubali Festival",
+      description: "Celebration of African mental health awareness with music and art",
+      icon: Music,
+      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      color: "text-red-500"
+    },
+    {
+      title: "Afri-Valentines Edition",
+      description: "Celebrating healthy relationships and self-love in African context",
+      icon: Heart,
+      image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      color: "text-pink-500"
+    },
+    {
+      title: "Substance Abuse Awareness",
+      description: "Community sensitization on drug abuse and mental health connections",
+      icon: Microscope,
+      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      color: "text-green-600"
+    }
+  ];
+
+  // State for event carousel
+  const [currentEvent, setCurrentEvent] = useState(0);
+  
+  // Auto-rotate events
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentEvent((prev) => (prev + 1) % events.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [events.length]);
+
   return (
-    <section className="section-spacing bg-background">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-            Our <span className="text-secondary">Programs</span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">Programs & Events</span>
           </h2>
-          <div className="w-24 h-1 warm-gradient mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Comprehensive mental health services designed to meet diverse community needs, 
-            from individual support to systemic change.
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-pink-500 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Comprehensive mental health services and special events designed to meet diverse community needs.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        {/* Featured Events Carousel */}
+        <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl mb-16">
+          {events.map((event, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentEvent ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <img 
+                src={event.image} 
+                alt={event.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div className="flex items-center mb-4">
+                  <event.icon className={`w-8 h-8 mr-3 ${event.color}`} />
+                  <h3 className="text-2xl lg:text-3xl font-bold">{event.title}</h3>
+                </div>
+                <p className="text-lg opacity-90 mb-6 max-w-2xl">{event.description}</p>
+                <Button className="bg-white text-gray-900 hover:bg-gray-100">
+                  View Event Details
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          ))}
+          
+          {/* Event Indicators */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {events.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentEvent(index)}
+                className={`w-3 h-3 rounded-full transition-all ${index === currentEvent ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/70'}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Core Programs Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {programs.map((program, index) => (
-            <Card key={index} className="group hover-lift border-none shadow-soft bg-card/90 backdrop-blur-sm overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-xl bg-${program.color}/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <program.icon className={`w-6 h-6 text-${program.color}`} />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="font-heading text-xl mb-2 text-foreground">
-                      {program.title}
-                    </CardTitle>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {program.description}
-                    </p>
+            <Card key={index} className="group border-none shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+              <div className="flex flex-col md:flex-row h-full">
+                <div className="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
+                  <img 
+                    src={program.image} 
+                    alt={program.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className={`absolute top-4 left-4 w-12 h-12 rounded-lg ${program.bgColor} flex items-center justify-center shadow-md`}>
+                    <program.icon className={`w-6 h-6 ${program.color}`} />
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="space-y-2 mb-6">
-                  {program.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-${program.color}`}></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="group w-full">
-                  Learn More
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </CardContent>
+                <div className="md:w-2/3 p-6">
+                  <CardHeader className="p-0 mb-4">
+                    <CardTitle className="text-xl lg:text-2xl font-bold text-gray-900">
+                      {program.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <p className="text-gray-600 mb-4">{program.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {program.features.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <div className={`w-1.5 h-1.5 rounded-full mt-2 mr-2 ${program.bgColor}`}></div>
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button variant="outline" className="group w-full">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </div>
+              </div>
             </Card>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="warm-gradient rounded-2xl p-8 lg:p-12 text-center shadow-warm">
-            <Calendar className="w-12 h-12 mx-auto mb-6 text-foreground" />
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4 text-foreground">
-              Ready to Get Started?
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Take the first step toward mental wellness. Join our community and discover 
-              the support, resources, and hope you deserve.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                Schedule Consultation
-              </Button>
-              <Button variant="outline" size="lg">
-                Download Resources
-              </Button>
-            </div>
+        {/* Upcoming Events List */}
+        <div className="mb-16">
+          <h3 className="text-2xl lg:text-3xl font-bold mb-8 text-gray-900 flex items-center">
+            <CalendarDays className="w-8 h-8 mr-3 text-blue-600" />
+            Events Chronology
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {events.map((event, index) => (
+              <Card key={index} className="border-none shadow-sm hover:shadow-md transition-shadow">
+                <img 
+                  src={event.image} 
+                  alt={event.title}
+                  className="w-full h-40 object-cover rounded-t-lg"
+                />
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-3">
+                    <event.icon className={`w-5 h-5 mr-2 ${event.color}`} />
+                    <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4">{event.description}</p>
+                  <Button variant="outline" size="sm" className="w-full">
+                    Register Interest
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
