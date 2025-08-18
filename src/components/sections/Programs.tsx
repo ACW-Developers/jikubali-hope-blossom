@@ -3,9 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import { 
   BookOpen, Users, MessageCircle, Megaphone, 
-  Calendar, ArrowRight, Heart, Bike, Music, 
+  ArrowRight, Heart, Bike, Music, 
   Microscope, CalendarDays, 
 } from "lucide-react";
+
+// ✅ Import local event images
+import cycleImage from "@/assets/events/F8.jpg";
+import jikubaliImage from "@/assets/events/F1.jpg";
+import valentinesImage from "@/assets/events/bg.jpg";
+import substanceImage from "@/assets/events/F7.jpg";
 
 const Programs = () => {
   // Program categories
@@ -17,7 +23,7 @@ const Programs = () => {
       features: ["Weekly sessions", "Trained facilitators", "Confidential environment"],
       color: "text-sky-500",
       bgColor: "bg-sky-100",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: BookOpen,
@@ -26,7 +32,7 @@ const Programs = () => {
       features: ["Community workshops", "School programs", "Digital resources"],
       color: "text-pink-500",
       bgColor: "bg-pink-100",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Users,
@@ -35,7 +41,7 @@ const Programs = () => {
       features: ["Individual therapy", "Group counseling", "Crisis intervention"],
       color: "text-amber-500",
       bgColor: "bg-amber-100",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Megaphone,
@@ -44,38 +50,38 @@ const Programs = () => {
       features: ["Policy advocacy", "Media campaigns", "Community events"],
       color: "text-blue-500",
       bgColor: "bg-blue-100",
-      image: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=1000&q=80"
     }
   ];
 
-  // Special events data
+  // ✅ Special events (now using local images)
   const events = [
     {
       title: "Cycle for Self-Love",
       description: "Annual cycling event promoting body positivity and mental wellness",
       icon: Bike,
-      image: "https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: cycleImage,
       color: "text-purple-600"
     },
     {
       title: "Jikubali Festival",
       description: "Celebration of African mental health awareness with music and art",
       icon: Music,
-      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: jikubaliImage,
       color: "text-red-500"
     },
     {
       title: "Afri-Valentines Edition",
       description: "Celebrating healthy relationships and self-love in African context",
       icon: Heart,
-      image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: valentinesImage,
       color: "text-pink-500"
     },
     {
       title: "Substance Abuse Awareness",
       description: "Community sensitization on drug abuse and mental health connections",
       icon: Microscope,
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: substanceImage,
       color: "text-green-600"
     }
   ];

@@ -59,7 +59,7 @@ const Hero = () => {
             {/* Tagline */}
             <div className="animate-fade-right">
               <span className="inline-block px-4 py-2 bg-brand-pink-light/20 text-brand-pink-light rounded-full text-sm font-medium mb-4 border border-brand-pink-light/30">
-                Championing Mental Wellness
+                Championing Self Acceptance
               </span>
             </div>
 
