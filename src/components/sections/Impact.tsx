@@ -2,6 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Users, MapPin, Heart, Calendar, Award } from "lucide-react";
 
+// Import local images
+import livesTransformedImg from "@/assets/v.jpg";
+import communitiesReachedImg from "@/assets/v2.jpg";
+import countiesServedImg from "@/assets/v3.jpg";
+import yearsFoundedImg from "@/assets/v4.jpg";
+import volunteersActiveImg from "@/assets/bg.jpg";
+import programsOfferedImg from "@/assets/bg1.jpg";
+
 const Impact = () => {
   const [counters, setCounters] = useState({
     livesTransformed: 0,
@@ -51,7 +59,7 @@ const Impact = () => {
   }, []);
 
   const animateCounters = () => {
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
 
@@ -84,7 +92,7 @@ const Impact = () => {
       color: "text-pink-600",
       bgColor: "bg-pink-100",
       maxValue: maxValues.livesTransformed,
-      image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: livesTransformedImg
     },
     {
       icon: Users,
@@ -95,7 +103,7 @@ const Impact = () => {
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       maxValue: maxValues.communitiesReached,
-      image: "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: communitiesReachedImg
     },
     {
       icon: MapPin,
@@ -106,7 +114,7 @@ const Impact = () => {
       color: "text-amber-500",
       bgColor: "bg-amber-100",
       maxValue: maxValues.countiesServed,
-      image: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: countiesServedImg
     },
     {
       icon: Calendar,
@@ -117,7 +125,7 @@ const Impact = () => {
       color: "text-pink-600",
       bgColor: "bg-pink-100",
       maxValue: maxValues.yearsFounded,
-      image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: yearsFoundedImg
     },
     {
       icon: TrendingUp,
@@ -128,7 +136,7 @@ const Impact = () => {
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       maxValue: maxValues.volunteersActive,
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: volunteersActiveImg
     },
     {
       icon: Award,
@@ -139,7 +147,7 @@ const Impact = () => {
       color: "text-amber-500",
       bgColor: "bg-amber-100",
       maxValue: maxValues.programsOffered,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: programsOfferedImg
     }
   ];
 
@@ -248,30 +256,6 @@ const Impact = () => {
               <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium hover:shadow-lg transition-all">
                 Read More Success Stories
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Annual Growth Section */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-          <h3 className="text-2xl lg:text-3xl font-bold mb-8 text-center text-gray-900">
-            Our Growth Over Time
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-pink-600 mb-2">+325%</div>
-              <div className="text-gray-600">Increase in lives impacted</div>
-              <div className="text-sm text-gray-500 mt-1">Since 2019</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">+180%</div>
-              <div className="text-gray-600">Growth in volunteers</div>
-              <div className="text-sm text-gray-500 mt-1">Last 2 years</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-amber-500 mb-2">3×</div>
-              <div className="text-gray-600">More communities served</div>
-              <div className="text-sm text-gray-500 mt-1">Year over year</div>
             </div>
           </div>
         </div>

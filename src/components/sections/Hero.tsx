@@ -51,7 +51,8 @@ const Hero = () => {
             <Heart className="w-12 h-12 text-sunshine-yellow" />
           </div>
           <div className="absolute top-1/3 right-1/4 animate-float" style={{ animationDelay: '1.5s' }}>
-            <Users className="w-14 h-14 text-brand-pink-light opacity-80" />
+                          <Heart className="w-8 h-8 text-brand-pink group-hover:scale-110 transition-transform duration-300" />
+                          <div className="absolute inset-0 bg-brand-pink/20 rounded-full animate-pulse"></div>     
           </div>
 
           {/* Main Content */}

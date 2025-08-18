@@ -75,38 +75,6 @@ const CallToAction = () => {
             <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
         </div>
-
-        {/* Contact CTA */}
-        <div className="animate-fade-up bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20" style={{ animationDelay: '0.6s' }}>
-          <h3 className="font-heading text-2xl font-bold mb-4">
-            Ready to Start Your Journey?
-          </h3>
-          <p className="mb-6 opacity-90">
-            Take the first step toward mental wellness today. Our team is here to guide you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="warm" 
-              size="lg" 
-              className="group"
-              onClick={() => setShowConsultationPopup(true)}
-            >
-              Schedule Free Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
-              Call Crisis Line: 988
-            </Button>
-          </div>
-        </div>
-
-        {/* Emergency Notice */}
-        <div className="mt-8 text-center">
-          <p className="text-sm opacity-75">
-            <strong>Crisis Support:</strong> If you're experiencing a mental health emergency, 
-            call 911 or visit your nearest emergency room immediately.
-          </p>
-        </div>
       </div>
 
       {/* Contact Popups */}

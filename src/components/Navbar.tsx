@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
+
+// Import your logo image
+import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +14,7 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,9 +36,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative">
-              <Heart className="w-8 h-8 text-brand-pink group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-brand-pink/20 rounded-full animate-pulse"></div>
+            <div className="relative w-10 h-10">
+              <img
+                src={LogoImage}
+                alt="Jikubali Africa Logo"
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
             <span className="font-heading font-bold text-xl lg:text-2xl text-sky-blue group-hover:text-brand-pink transition-colors duration-300">
               Jikubali Africa
@@ -79,11 +83,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200"
             >
-              {isOpen ? (
-                <X className="w-6 h-6 text-foreground" />
-              ) : (
-                <Menu className="w-6 h-6 text-foreground" />
-              )}
+              {isOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
             </button>
           </div>
         </div>

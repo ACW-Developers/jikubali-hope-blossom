@@ -3,9 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import { 
   BookOpen, Users, MessageCircle, Megaphone, 
-  ArrowRight, Heart, Bike, Music, 
-  Microscope, CalendarDays, 
+  ArrowRight, Heart, Bike, Music, Microscope, CalendarDays
 } from "lucide-react";
+
+// ✅ Import local program images
+import therapyImg from "@/assets/v5.jpg";
+import healingImg from "@/assets/v6.jpg";
+import gamingImg from "@/assets/v7.jpg";
+import mentorshipImg from "@/assets/v.jpg";
 
 // ✅ Import local event images
 import cycleImage from "@/assets/events/F8.jpg";
@@ -14,47 +19,47 @@ import valentinesImage from "@/assets/events/bg.jpg";
 import substanceImage from "@/assets/events/F7.jpg";
 
 const Programs = () => {
-  // Program categories
+  // Core Programs
   const programs = [
     {
       icon: MessageCircle,
-      title: "Peer Support Groups",
-      description: "Safe spaces where individuals share experiences and build connections.",
-      features: ["Weekly sessions", "Trained facilitators", "Confidential environment"],
+      title: "Therapy Sessions",
+      description: "Guided sessions to support mental health and emotional well-being.",
+      features: ["Individual therapy", "Group therapy", "Confidential environment"],
       color: "text-sky-500",
       bgColor: "bg-sky-100",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80"
+      image: therapyImg
     },
     {
       icon: BookOpen,
-      title: "Mental Health Education",
-      description: "Workshops and resources to increase awareness and reduce stigma.",
-      features: ["Community workshops", "School programs", "Digital resources"],
+      title: "Healing Childhood Traumas",
+      description: "Specialized programs to address and heal past emotional wounds.",
+      features: ["Trauma-informed care", "Safe space", "Guided exercises"],
       color: "text-pink-500",
       bgColor: "bg-pink-100",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
+      image: healingImg
     },
     {
       icon: Users,
-      title: "Counseling Services",
-      description: "Professional services tailored to individual needs.",
-      features: ["Individual therapy", "Group counseling", "Crisis intervention"],
+      title: "Gaming for Mental Wellness",
+      description: "Engaging activities and gamified experiences to promote mental health.",
+      features: ["Interactive sessions", "Stress relief games", "Community participation"],
       color: "text-amber-500",
       bgColor: "bg-amber-100",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=80"
+      image: gamingImg
     },
     {
       icon: Megaphone,
-      title: "Advocacy & Awareness",
-      description: "Championing policy changes for better mental health systems.",
-      features: ["Policy advocacy", "Media campaigns", "Community events"],
+      title: "Speakers & Mentorship",
+      description: "Connect with inspiring individuals for guidance and personal growth.",
+      features: ["Mentorship programs", "Guest speakers", "Workshops & Q&A sessions"],
       color: "text-blue-500",
       bgColor: "bg-blue-100",
-      image: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=1000&q=80"
+      image: mentorshipImg
     }
   ];
 
-  // ✅ Special events (now using local images)
+  // Special Events
   const events = [
     {
       title: "Cycle for Self-Love",
@@ -86,10 +91,10 @@ const Programs = () => {
     }
   ];
 
-  // State for event carousel
+  // Event carousel state
   const [currentEvent, setCurrentEvent] = useState(0);
-  
-  // Auto-rotate events
+
+  // Auto-rotate events every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentEvent((prev) => (prev + 1) % events.length);
@@ -137,7 +142,7 @@ const Programs = () => {
               </div>
             </div>
           ))}
-          
+
           {/* Event Indicators */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {events.map((_, index) => (
