@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/enhanced-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Footer from "@/components/sections/Footer";
 import contactImage from "@/assets/contact-image.jpg";
 
 const Contact = () => {
@@ -82,7 +83,15 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Geometric Background Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-5 z-0">
+        <div className="absolute top-28 left-12 w-40 h-40 bg-sky-blue rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-16 w-32 h-32 bg-brand-pink rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-4 w-24 h-24 bg-sunshine-yellow rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="relative z-10">
       {/* Hero Section */}
       <section className="section-spacing bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/20">
         <div className="container-padding max-w-7xl mx-auto">
@@ -312,6 +321,9 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
+      </div>
     </div>
   );
 };

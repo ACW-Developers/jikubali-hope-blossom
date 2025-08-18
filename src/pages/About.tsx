@@ -1,5 +1,6 @@
 import { Heart, Users, Target, Award } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
+import Footer from "@/components/sections/Footer";
 import aboutImage from "@/assets/about-image.jpg";
 
 const About = () => {
@@ -27,7 +28,15 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Geometric Background Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-5 z-0">
+        <div className="absolute top-24 right-12 w-44 h-44 bg-brand-pink rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-8 w-36 h-36 bg-sunshine-yellow rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-6 w-28 h-28 bg-sky-blue-light rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="relative z-10">
       {/* Hero Section */}
       <section className="section-spacing bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/20">
         <div className="container-padding max-w-7xl mx-auto">
@@ -168,6 +177,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
+      </div>
     </div>
   );
 };

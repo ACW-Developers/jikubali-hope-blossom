@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Quote, Heart, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
+import Footer from "@/components/sections/Footer";
 
 const Stories = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -84,7 +85,15 @@ const Stories = () => {
     : stories.filter(story => story.category === selectedCategory);
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Geometric Background Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-5 z-0">
+        <div className="absolute top-32 right-16 w-32 h-32 bg-brand-pink rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-8 w-24 h-24 bg-sunshine-yellow rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-4 w-20 h-20 bg-sky-blue-light rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="relative z-10">
       {/* Hero Section */}
       <section className="section-spacing bg-gradient-to-br from-brand-pink-light/20 to-sky-blue-light/20">
         <div className="container-padding max-w-7xl mx-auto text-center">
@@ -221,6 +230,9 @@ const Stories = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
+      </div>
     </div>
   );
 };
