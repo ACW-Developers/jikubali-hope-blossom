@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Heart } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
+import ContactPopup from "@/components/ui/contact-popup";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Programs", path: "/programs" },
     { name: "Stories", path: "/stories" },
+    { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -62,7 +65,12 @@ const Navbar = () => {
 
           {/* CTA Button & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            <Button variant="warm" size="sm" className="hidden lg:flex animate-fade-up">
+            <Button 
+              variant="warm" 
+              size="sm" 
+              className="hidden lg:flex animate-fade-up"
+              onClick={() => setShowContactPopup(true)}
+            >
               Get Involved
             </Button>
             
@@ -102,13 +110,29 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="px-4 pt-4">
-              <Button variant="warm" size="sm" className="w-full">
+              <Button 
+                variant="warm" 
+                size="sm" 
+                className="w-full"
+                onClick={() => {
+                  setShowContactPopup(true);
+                  setIsOpen(false);
+                }}
+              >
                 Get Involved
               </Button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Contact Popup */}
+      <ContactPopup
+        isOpen={showContactPopup}
+        onClose={() => setShowContactPopup(false)}
+        title="Get Involved"
+        subtitle="Join our mission to transform mental health in Kenya"
+      />
     </nav>
   );
 };

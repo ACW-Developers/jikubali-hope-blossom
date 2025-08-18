@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/enhanced-button";
 import { ArrowRight, Heart, Users, Phone } from "lucide-react";
+import ContactPopup from "@/components/ui/contact-popup";
 
 const CallToAction = () => {
+  const [showDonatePopup, setShowDonatePopup] = useState(false);
+  const [showVolunteerPopup, setShowVolunteerPopup] = useState(false);
+  const [showPartnerPopup, setShowPartnerPopup] = useState(false);
+  const [showHelpPopup, setShowHelpPopup] = useState(false);
+  const [showConsultationPopup, setShowConsultationPopup] = useState(false);
+
   return (
     <section className="section-spacing hero-gradient text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -31,18 +39,38 @@ const CallToAction = () => {
 
         {/* Action Buttons */}
         <div className="animate-fade-up grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12" style={{ animationDelay: '0.3s' }}>
-          <Button variant="warm" size="lg" className="w-full group">
+          <Button 
+            variant="warm" 
+            size="lg" 
+            className="w-full group"
+            onClick={() => setShowDonatePopup(true)}
+          >
             Donate Now
             <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
-          <Button variant="accent" size="lg" className="w-full group">
+          <Button 
+            variant="accent" 
+            size="lg" 
+            className="w-full group"
+            onClick={() => setShowVolunteerPopup(true)}
+          >
             Volunteer
             <Users className="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
-          <Button variant="outline" size="lg" className="w-full border-white/30 text-white hover:bg-white/10">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="w-full border-white/30 text-white hover:bg-white/10"
+            onClick={() => setShowPartnerPopup(true)}
+          >
             Partner With Us
           </Button>
-          <Button variant="outline" size="lg" className="w-full border-white/30 text-white hover:bg-white/10 group">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="w-full border-white/30 text-white hover:bg-white/10 group"
+            onClick={() => setShowHelpPopup(true)}
+          >
             Get Help
             <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
@@ -57,7 +85,12 @@ const CallToAction = () => {
             Take the first step toward mental wellness today. Our team is here to guide you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="warm" size="lg" className="group">
+            <Button 
+              variant="warm" 
+              size="lg" 
+              className="group"
+              onClick={() => setShowConsultationPopup(true)}
+            >
               Schedule Free Consultation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -75,6 +108,42 @@ const CallToAction = () => {
           </p>
         </div>
       </div>
+
+      {/* Contact Popups */}
+      <ContactPopup
+        isOpen={showDonatePopup}
+        onClose={() => setShowDonatePopup(false)}
+        title="Support Our Mission"
+        subtitle="Your donation helps us provide mental health services to those in need"
+      />
+      
+      <ContactPopup
+        isOpen={showVolunteerPopup}
+        onClose={() => setShowVolunteerPopup(false)}
+        title="Volunteer With Us"
+        subtitle="Join our team and make a direct impact in your community"
+      />
+      
+      <ContactPopup
+        isOpen={showPartnerPopup}
+        onClose={() => setShowPartnerPopup(false)}
+        title="Partnership Opportunities"
+        subtitle="Let's work together to expand mental health resources in Kenya"
+      />
+      
+      <ContactPopup
+        isOpen={showHelpPopup}
+        onClose={() => setShowHelpPopup(false)}
+        title="Get Mental Health Support"
+        subtitle="Take the first step towards wellness - we're here to help"
+      />
+      
+      <ContactPopup
+        isOpen={showConsultationPopup}
+        onClose={() => setShowConsultationPopup(false)}
+        title="Schedule Consultation"
+        subtitle="Book your free mental health consultation with our experts"
+      />
     </section>
   );
 };
