@@ -28,13 +28,19 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  // Determine text color based on background state
-  const textColorClass = scrolled ? "text-foreground" : "text-white";
-  const logoTextColorClass = scrolled ? "text-sky-blue" : "text-white";
+  // Check if current page is home
+  const isHomePage = location.pathname === "/";
+  
+  // Determine text color based on background state and page
+  const textColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
+  const logoTextColorClass = !isHomePage ? "text-sky-blue" : (scrolled ? "text-sky-blue" : "text-white");
+  const mobileMenuBgClass = !isHomePage ? "bg-white" : (scrolled ? "bg-white" : "bg-gray-900/95 backdrop-blur-md");
+  const mobileLinkColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
+  const menuButtonColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
+      scrolled || !isHomePage ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
     }`}>
       <div className="container-padding max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -85,9 +91,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${
-                scrolled ? "text-foreground" : "text-white"
-              }`}
+              className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${menuButtonColorClass}`}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -98,14 +102,14 @@ const Navbar = () => {
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}>
-          <div className={`py-4 space-y-2 ${scrolled ? "bg-white" : "bg-gray-900/95 backdrop-blur-md"}`}>
+          <div className={`py-4 space-y-2 ${mobileMenuBgClass}`}>
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:text-brand-pink transform ${
-                  location.pathname === link.path ? "text-brand-pink bg-brand-pink/10" : scrolled ? "text-foreground" : "text-white"
+                  location.pathname === link.path ? "text-brand-pink bg-brand-pink/10" : mobileLinkColorClass
                 } ${isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"}`}
                 style={{ 
                   animationDelay: `${index * 50}ms`,

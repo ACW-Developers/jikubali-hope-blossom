@@ -9,6 +9,7 @@ import countiesServedImg from "@/assets/v3.jpg";
 import yearsFoundedImg from "@/assets/v4.jpg";
 import volunteersActiveImg from "@/assets/bg.jpg";
 import programsOfferedImg from "@/assets/bg1.jpg";
+import lastingChangeImg from "@/assets/jk1.jpg";
 
 const Impact = () => {
   const [counters, setCounters] = useState({
@@ -212,27 +213,39 @@ const Impact = () => {
 
         {/* Success Stories Highlight */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="bg-gradient-to-br from-blue-600 to-pink-500 rounded-2xl p-8 lg:p-12 text-white shadow-xl">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-bold">
-                Creating Lasting Change
-              </h3>
-            </div>
-            <div className="space-y-4 text-white/90">
-              <p className="leading-relaxed italic text-lg">
-                "Since joining Jikubali Africa's peer support groups, I've found my voice and 
-                my purpose. The shame I carried for years has transformed into strength."
-              </p>
-              <div className="flex items-center gap-3 pt-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <Users className="w-6 h-6" />
+          <div 
+            className="rounded-2xl p-8 lg:p-12 text-white shadow-xl relative overflow-hidden"
+            style={{
+              backgroundImage: `url(${lastingChangeImg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
+          >
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-blue-700/50"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                  <Heart className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <div className="font-medium">Grace M.</div>
-                  <div className="text-sm opacity-85">Peer Support Participant</div>
+                <h3 className="text-2xl lg:text-3xl font-bold">
+                  Creating Lasting Change
+                </h3>
+              </div>
+              <div className="space-y-4 text-white/100">
+                <p className="leading-relaxed italic text-lg">
+                  "Since joining Jikubali Africa's peer support groups, I've found my voice and 
+                  my purpose. The shame I carried for years has transformed into strength."
+                </p>
+                <div className="flex items-center gap-3 pt-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="font-medium">Grace M.</div>
+                    <div className="text-sm opacity-85">Peer Support Participant</div>
+                  </div>
                 </div>
               </div>
             </div>

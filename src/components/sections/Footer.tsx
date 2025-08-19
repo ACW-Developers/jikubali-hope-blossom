@@ -1,5 +1,9 @@
 import { Button } from "@/components/ui/enhanced-button";
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { 
+  Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, 
+  Users, BookOpen, Heart, Megaphone, FileText, AlertCircle, 
+  GraduationCap, BarChart3, Users2, Briefcase
+} from "lucide-react";
 
 // Import your logo image
 import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
@@ -7,22 +11,22 @@ import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual
 const Footer = () => {
   const footerLinks = {
     programs: [
-      { label: "Peer Support Groups", href: "#programs" },
-      { label: "Mental Health Education", href: "#programs" },
-      { label: "Counseling Services", href: "#programs" },
-      { label: "Advocacy & Awareness", href: "#programs" }
+      { label: "Peer Support Groups", href: "#programs", icon: Users },
+      { label: "Mental Health Education", href: "#programs", icon: BookOpen },
+      { label: "Counseling Services", href: "#programs", icon: Heart },
+      { label: "Advocacy & Awareness", href: "#programs", icon: Megaphone }
     ],
     resources: [
-      { label: "Mental Health Resources", href: "#" },
-      { label: "Crisis Support", href: "#" },
-      { label: "Educational Materials", href: "#" },
-      { label: "Research & Reports", href: "#" }
+      { label: "Mental Health Resources", href: "#", icon: FileText },
+      { label: "Crisis Support", href: "#", icon: AlertCircle },
+      { label: "Educational Materials", href: "#", icon: GraduationCap },
+      { label: "Research & Reports", href: "#", icon: BarChart3 }
     ],
     about: [
-      { label: "Our Story", href: "#about" },
-      { label: "Team", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Annual Reports", href: "#" }
+      { label: "Our Story", href: "#about", icon: Users2 },
+      { label: "Team", href: "#", icon: Users },
+      { label: "Careers", href: "#", icon: Briefcase },
+      { label: "Annual Reports", href: "#", icon: FileText }
     ]
   };
 
@@ -34,11 +38,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Decorative wave top */}
-      <div className="w-full h-16 bg-white">
+    <footer className="bg-primary text-white">
+      {/* Decorative wave top with extra spacing */}
+      <div className="w-full h-14 bg-white mb-8">
         <svg 
-          viewBox="0 0 1200 120" 
+          viewBox="0 0 1200 80" 
           preserveAspectRatio="none" 
           className="w-full h-full text-primary"
         >
@@ -49,52 +53,52 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container-padding py-16">
+      <div className="container-padding py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-12 mb-12">
+          <div className="grid lg:grid-cols-5 gap-8 mb-8">
             {/* Brand Section */}
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full gradient flex items-center justify-center overflow-hidden">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full gradient flex items-center justify-center overflow-hidden">
                   <img 
                     src={LogoImage} 
                     alt="Jikubali Africa Logo" 
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="font-heading text-2xl font-bold">Jikubali Africa</h3>
+                <h3 className="font-heading text-xl font-bold">Jikubali Africa</h3>
               </div>
-              <p className="text-primary-foreground/80 leading-relaxed mb-6 max-w-md">
+              <p className="text-white/90 leading-relaxed mb-4 max-w-md text-sm">
                 Championing mental health, self-acceptance, and empowerment across Kenya. 
                 Building communities where everyone thrives.
               </p>
 
               {/* Contact Info */}
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-3 text-sm">
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center gap-2 text-sm">
                   <Mail className="w-4 h-4 text-sunshine-yellow" />
                   <span>info@jikubaliafrica.org</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2 text-sm">
                   <Phone className="w-4 h-4 text-sunshine-yellow" />
                   <span>+254 700 123 456</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2 text-sm">
                   <MapPin className="w-4 h-4 text-sunshine-yellow" />
                   <span>Nairobi, Kenya</span>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-sunshine-yellow/20 flex items-center justify-center transition-colors duration-300"
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-sunshine-yellow/30 flex items-center justify-center transition-colors duration-300"
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-4 h-4 text-white" />
                   </a>
                 ))}
               </div>
@@ -102,85 +106,77 @@ const Footer = () => {
 
             {/* Programs Links */}
             <div>
-              <h4 className="font-heading font-semibold mb-4 text-sunshine-yellow">Programs</h4>
+              <h4 className="font-heading font-semibold mb-3 text-sunshine-yellow text-base">Programs</h4>
               <ul className="space-y-2">
-                {footerLinks.programs.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href} 
-                      className="text-primary-foreground/80 hover:text-sunshine-yellow transition-colors duration-300 text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {footerLinks.programs.map((link, index) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <li key={index}>
+                      <a 
+                        href={link.href} 
+                        className="text-white hover:text-sunshine-yellow transition-colors duration-300 text-sm flex items-center gap-2"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
             {/* Resources Links */}
             <div>
-              <h4 className="font-heading font-semibold mb-4 text-brand-pink-light">Resources</h4>
+              <h4 className="font-heading font-semibold mb-3 text-sunshine-yellow text-base">Resources</h4>
               <ul className="space-y-2">
-                {footerLinks.resources.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href} 
-                      className="text-primary-foreground/80 hover:text-brand-pink-light transition-colors duration-300 text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {footerLinks.resources.map((link, index) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <li key={index}>
+                      <a 
+                        href={link.href} 
+                        className="text-white hover:text-brand-pink-light transition-colors duration-300 text-sm flex items-center gap-2"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
             {/* About Links */}
             <div>
-              <h4 className="font-heading font-semibold mb-4 text-sky-blue-light">About</h4>
+              <h4 className="font-heading mb-3 text-sunshine-yellow text-base">About</h4>
               <ul className="space-y-2">
-                {footerLinks.about.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href} 
-                      className="text-primary-foreground/80 hover:text-sky-blue-light transition-colors duration-300 text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {footerLinks.about.map((link, index) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <li key={index}>
+                      <a 
+                        href={link.href} 
+                        className="text-white hover:text-sky-blue-light transition-colors duration-300 text-sm flex items-center gap-2"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
 
-          {/* Newsletter Signup */}
-          <div className="border-t border-primary-foreground/20 pt-12 mb-12">
-            <div className="max-w-2xl mx-auto text-center">
-              <h4 className="font-heading text-xl font-semibold mb-4">Stay Connected</h4>
-              <p className="text-primary-foreground/80 mb-6">
-                Get updates on our programs, mental health resources, and community events.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-sunshine-yellow"
-                />
-                <Button variant="accent" className="whitespace-nowrap">
-                  Subscribe
-                </Button>
-              </div>
-            </div>
-          </div>
-
           {/* Bottom Bar */}
-          <div className="border-t border-primary-foreground/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/70">
+          <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-white/80">
             <div>
-              © 2024 Jikubali Africa. All rights reserved.
+              © 2025 Jikubali Africa. All rights reserved.
             </div>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary-foreground transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-primary-foreground transition-colors">Cookie Policy</a>
+            <div className="flex gap-4">
+              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Privacy</a>
+              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Terms</a>
+              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Cookies</a>
             </div>
           </div>
         </div>
