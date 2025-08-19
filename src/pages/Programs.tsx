@@ -74,10 +74,13 @@ const Programs = () => {
 
       <div className="relative z-10">
       {/* Hero Section */}
-      <section className="section-spacing bg-gradient-to-br from-sky-blue-light/20 to-sunshine-yellow-light/20">
+      <section className="section-spacing bg-gradient-to-br from-sky-blue-light/30 to-brand-pink-light/20">
         <div className="container-padding max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-up">
+              <div className="inline-flex items-center bg-sunshine-yellow/20 text-dark-navy px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🎯 Comprehensive Mental Health Support
+              </div>
               <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
                 Our <span className="text-brand-pink">Programs</span>
               </h1>
@@ -85,15 +88,21 @@ const Programs = () => {
                 Comprehensive mental health services designed to meet diverse community needs, 
                 from crisis intervention to long-term wellness support.
               </p>
-              <Button variant="warm" size="lg">
-                Find Your Program
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="warm" size="lg">
+                  Find Your Program
+                </Button>
+                <Button variant="outline" size="lg">
+                  Get Started Today
+                </Button>
+              </div>
             </div>
-            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-fade-up relative" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute -inset-4 bg-gradient-to-r from-sky-blue to-brand-pink rounded-3xl opacity-20 blur-2xl"></div>
               <img 
                 src={programsImage} 
                 alt="Children participating in mental health programs"
-                className="rounded-2xl shadow-warm hover-lift"
+                className="relative rounded-2xl shadow-warm hover-lift"
               />
             </div>
           </div>

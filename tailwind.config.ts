@@ -77,6 +77,9 @@ export default {
 					DEFAULT: 'hsl(var(--sunshine-yellow))',
 					light: 'hsl(var(--sunshine-yellow-light))',
 					dark: 'hsl(var(--sunshine-yellow-dark))'
+				},
+				'dark-navy': {
+					DEFAULT: 'hsl(var(--dark-navy))'
 				}
 			},
 			fontFamily: {

@@ -8,18 +8,20 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Brand Colors - Sky Blue, Pink, Yellow */
-    --sky-blue: 198 93% 60%;
-    --sky-blue-light: 198 93% 80%;
-    --sky-blue-dark: 198 93% 40%;
+    /* Brand Colors - Custom Palette */
+    --sky-blue: 189 60% 58%;
+    --sky-blue-light: 189 60% 78%;
+    --sky-blue-dark: 189 60% 38%;
     
-    --brand-pink: 330 85% 70%;
-    --brand-pink-light: 330 85% 85%;
-    --brand-pink-dark: 330 85% 55%;
+    --brand-pink: 325 84% 68%;
+    --brand-pink-light: 325 84% 83%;
+    --brand-pink-dark: 325 84% 53%;
     
-    --sunshine-yellow: 45 98% 65%;
-    --sunshine-yellow-light: 45 98% 80%;
-    --sunshine-yellow-dark: 45 98% 50%;
+    --sunshine-yellow: 57 95% 56%;
+    --sunshine-yellow-light: 57 95% 76%;
+    --sunshine-yellow-dark: 57 95% 36%;
+    
+    --dark-navy: 238 60% 19%;
 
     /* Core System Colors */
     --background: 0 0% 99%;
@@ -31,24 +33,24 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 20% 15%;
 
-    --primary: 198 93% 60%;
+    --primary: 189 60% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 330 85% 70%;
+    --secondary: 325 84% 68%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 15% 96%;
     --muted-foreground: 220 10% 45%;
 
-    --accent: 45 98% 65%;
-    --accent-foreground: 222 20% 15%;
+    --accent: 57 95% 56%;
+    --accent-foreground: 238 60% 19%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 90%;
     --input: 220 15% 90%;
-    --ring: 198 93% 60%;
+    --ring: 189 60% 58%;
 
     /* Design System Tokens */
     --radius: 1rem;

@@ -38,26 +38,35 @@ const About = () => {
 
       <div className="relative z-10">
       {/* Hero Section */}
-      <section className="section-spacing bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/20">
+      <section className="section-spacing bg-gradient-to-br from-sky-blue-light/30 to-brand-pink-light/20 relative overflow-hidden">
         <div className="container-padding max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-up">
-              <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-sky-blue">
+              <div className="inline-flex items-center bg-sunshine-yellow/20 text-dark-navy px-4 py-2 rounded-full text-sm font-medium mb-6">
+                ✨ Empowering Mental Wellness Since 2020
+              </div>
+              <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
                 About <span className="text-brand-pink">Jikubali</span> Africa
               </h1>
               <p className="text-lg lg:text-xl text-foreground/80 mb-8 leading-relaxed">
                 Founded with a vision to transform mental health care in Kenya, Jikubali Africa 
                 champions self-acceptance, empowerment, and community support for all.
               </p>
-              <Button variant="warm" size="lg">
-                Join Our Mission
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="warm" size="lg">
+                  Join Our Mission
+                </Button>
+                <Button variant="outline" size="lg">
+                  Our Impact
+                </Button>
+              </div>
             </div>
-            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-fade-up relative" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute -inset-4 bg-gradient-to-r from-sky-blue to-brand-pink rounded-3xl opacity-20 blur-2xl"></div>
               <img 
                 src={aboutImage} 
                 alt="Mental health support session"
-                className="rounded-2xl shadow-warm hover-lift"
+                className="relative rounded-2xl shadow-warm hover-lift"
               />
             </div>
           </div>
@@ -65,53 +74,63 @@ const About = () => {
       </section>
 
       {/* Our Story */}
-      <section className="section-spacing">
+      <section className="section-spacing bg-muted/30">
         <div className="container-padding max-w-6xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-sky-blue/10 text-sky-blue px-4 py-2 rounded-full text-sm font-medium mb-6">
+              📖 Our Journey
+            </div>
             <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
               Our <span className="text-brand-pink">Story</span>
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-sky-blue to-brand-pink mx-auto mb-8 rounded-full"></div>
             <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
               Jikubali Africa was born from a deep understanding that mental health is not a luxury, 
               but a fundamental human right that should be accessible to all Kenyans.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-slide-in">
-              <h3 className="font-heading text-2xl font-bold text-sky-blue">The Beginning</h3>
-              <p className="text-foreground/80 leading-relaxed">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div className="animate-fade-up">
+              <h3 className="font-heading text-2xl font-bold mb-6 text-brand-pink">
+                The Beginning
+              </h3>
+              <p className="text-foreground/80 leading-relaxed mb-6">
                 In 2020, our founders recognized a critical gap in mental health services across Kenya. 
                 Traditional barriers—stigma, cost, and accessibility—were preventing millions from 
                 receiving the support they needed.
               </p>
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-foreground/80 leading-relaxed mb-6">
                 What started as community conversations in Nairobi has grown into a nationwide movement, 
                 reaching over 50 communities and transforming hundreds of lives through innovative 
                 programs and genuine human connection.
               </p>
-            </div>
-            <div className="animate-fade-up" style={{ animationDelay: '0.3s' }}>
-              <div className="bg-gradient-to-br from-sunshine-yellow/20 to-brand-pink/20 p-8 rounded-2xl">
-                <h3 className="font-heading text-2xl font-bold text-brand-pink mb-4">Our Impact</h3>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-sky-blue mb-2">500+</div>
-                    <div className="text-sm text-foreground/70">Lives Transformed</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-brand-pink mb-2">50+</div>
-                    <div className="text-sm text-foreground/70">Communities</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-sunshine-yellow mb-2">10+</div>
-                    <div className="text-sm text-foreground/70">Counties</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-sky-blue mb-2">25+</div>
-                    <div className="text-sm text-foreground/70">Programs</div>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-sky-blue to-brand-pink rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold">JA</span>
                 </div>
+                <div>
+                  <div className="font-semibold text-foreground">Founded with Purpose</div>
+                  <div className="text-sm text-foreground/60">Driven by community need</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center hover-lift">
+                <div className="text-4xl font-bold text-sky-blue mb-2">5,000+</div>
+                <div className="text-sm text-foreground/60 font-medium">Lives Touched</div>
+              </div>
+              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center hover-lift">
+                <div className="text-4xl font-bold text-brand-pink mb-2">15</div>
+                <div className="text-sm text-foreground/60 font-medium">Counties Served</div>
+              </div>
+              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center hover-lift">
+                <div className="text-4xl font-bold text-sunshine-yellow-dark mb-2">50+</div>
+                <div className="text-sm text-foreground/60 font-medium">Community Partners</div>
+              </div>
+              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 text-center hover-lift">
+                <div className="text-4xl font-bold text-dark-navy mb-2">24/7</div>
+                <div className="text-sm text-foreground/60 font-medium">Crisis Support</div>
               </div>
             </div>
           </div>
@@ -119,31 +138,45 @@ const About = () => {
       </section>
 
       {/* Our Values */}
-      <section className="section-spacing bg-muted/50">
+      <section className="section-spacing">
         <div className="container-padding max-w-7xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-brand-pink/10 text-brand-pink px-4 py-2 rounded-full text-sm font-medium mb-6">
+              💎 Core Values
+            </div>
             <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
               Our <span className="text-sky-blue">Values</span>
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sunshine-yellow mx-auto mb-8 rounded-full"></div>
             <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
               These core principles guide everything we do, from community outreach to individual support sessions.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div 
-                key={value.title}
-                className="text-center animate-fade-up hover-lift"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-sky-blue to-brand-pink rounded-full flex items-center justify-center mx-auto mb-6 shadow-soft">
-                  <value.icon className="w-8 h-8 text-white" />
+            {values.map((value, index) => {
+              const colors = ['sky-blue', 'brand-pink', 'sunshine-yellow', 'dark-navy'];
+              const colorClass = colors[index];
+              
+              return (
+                <div 
+                  key={value.title}
+                  className="text-center animate-fade-up hover-lift bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-warm border-0"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className={`w-16 h-16 ${
+                    colorClass === 'sky-blue' ? 'bg-sky-blue' :
+                    colorClass === 'brand-pink' ? 'bg-brand-pink' :
+                    colorClass === 'sunshine-yellow' ? 'bg-sunshine-yellow' :
+                    'bg-dark-navy'
+                  } rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <value.icon className={`w-8 h-8 ${colorClass === 'sunshine-yellow' ? 'text-dark-navy' : 'text-white'}`} />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-4 text-foreground">{value.title}</h3>
+                  <p className="text-foreground/70 leading-relaxed">{value.description}</p>
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-4 text-sky-blue">{value.title}</h3>
-                <p className="text-foreground/80">{value.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
