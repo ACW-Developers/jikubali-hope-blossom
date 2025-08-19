@@ -28,6 +28,10 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  // Determine text color based on background state
+  const textColorClass = scrolled ? "text-foreground" : "text-white";
+  const logoTextColorClass = scrolled ? "text-sky-blue" : "text-white";
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
@@ -43,7 +47,7 @@ const Navbar = () => {
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <span className="font-heading font-bold text-xl lg:text-2xl text-sky-blue group-hover:text-brand-pink transition-colors duration-300">
+            <span className={`font-heading font-bold text-xl lg:text-2xl group-hover:text-brand-pink transition-colors duration-300 ${logoTextColorClass}`}>
               Jikubali Africa
             </span>
           </Link>
@@ -55,7 +59,7 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`relative group font-medium transition-all duration-300 hover:text-brand-pink ${
-                  location.pathname === link.path ? "text-brand-pink" : "text-foreground"
+                  location.pathname === link.path ? "text-brand-pink" : textColorClass
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
@@ -81,9 +85,11 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200"
+              className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${
+                scrolled ? "text-foreground" : "text-white"
+              }`}
             >
-              {isOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -92,14 +98,14 @@ const Navbar = () => {
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}>
-          <div className="py-4 space-y-2">
+          <div className={`py-4 space-y-2 ${scrolled ? "bg-white" : "bg-gray-900/95 backdrop-blur-md"}`}>
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:text-brand-pink transform ${
-                  location.pathname === link.path ? "text-brand-pink bg-brand-pink/10" : "text-foreground"
+                  location.pathname === link.path ? "text-brand-pink bg-brand-pink/10" : scrolled ? "text-foreground" : "text-white"
                 } ${isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"}`}
                 style={{ 
                   animationDelay: `${index * 50}ms`,
