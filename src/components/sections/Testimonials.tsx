@@ -164,7 +164,7 @@ const Testimonials = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-sky-blue to-brand-pink rounded-2xl p-8 lg:p-12 text-white shadow-warm max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-sky-blue to-sky-blue rounded-2xl p-8 lg:p-12 text-white shadow-warm max-w-4xl mx-auto">
             <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">
               Your Story Matters Too
             </h3>

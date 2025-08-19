@@ -27,7 +27,7 @@ const Partners = () => {
       <div className="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-sky-blue/10 blur-3xl"></div>
 
       <div className="container-padding max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-4">
             Our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-sky-blue">
@@ -40,8 +40,8 @@ const Partners = () => {
         </div>
 
         {/* Partners Scrolling */}
-        <div className="relative overflow-hidden py-8">
-          <div className="flex animate-scroll gap-12">
+        <div className="relative overflow-hidden py-6">
+          <div className="flex animate-scroll gap-10">
             {[...partners, ...partners].map((partner, index) => (
               <div
                 key={`${partner.name}-${index}`}
@@ -64,7 +64,7 @@ const Partners = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <p className="text-foreground/70 italic text-lg max-w-3xl mx-auto leading-relaxed">
             "Through strategic partnerships, we're transforming mental healthcare accessibility across Kenya, one community at a time."
           </p>

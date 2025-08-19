@@ -198,7 +198,7 @@ const Programs = () => {
         </div>
 
         {/* Upcoming Events List */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h3 className="text-2xl lg:text-3xl font-bold mb-8 text-gray-900 flex items-center">
             <CalendarDays className="w-8 h-8 mr-3 text-blue-600" />
             Events Chronology
