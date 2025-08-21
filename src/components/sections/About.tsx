@@ -8,6 +8,8 @@ import localImage1 from "@/assets/jk2.jpg";
 import localImage2 from "@/assets/bg3.jpg";
 import localImage3 from "@/assets/bg6.jpg";
 import localImage4 from "@/assets/jk3.jpg";
+import localImage5 from "@/assets/jk.jpg";
+import localImage6 from "@/assets/v9.jpg";
 
 const About = () => {
   // Core values data
@@ -58,6 +60,14 @@ const About = () => {
     },
     {
       src: localImage4,
+      alt: "Mental health awareness campaign",
+    },
+    {
+      src: localImage5,
+      alt: "Mental health awareness campaign",
+    },
+    {
+      src: localImage6,
       alt: "Mental health awareness campaign",
     },
   ];

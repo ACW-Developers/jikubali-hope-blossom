@@ -1,14 +1,47 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/enhanced-button";
 import { 
   Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, 
   Users, BookOpen, Heart, Megaphone, FileText, AlertCircle, 
-  GraduationCap, BarChart3, Users2, Briefcase
+  GraduationCap, BarChart3, Users2, Briefcase, ArrowRight,
+  Send, ChevronUp, Clock, Star, Shield, CheckCircle, Globe
 } from "lucide-react";
 
 // Import your logo image
 import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [currentYear] = useState(new Date().getFullYear());
+
+  // Handle scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Show scroll to top button when scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle newsletter subscription
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      console.log("Subscribed with email:", email);
+      setIsSubscribed(true);
+      setEmail("");
+      // Reset subscription message after 3 seconds
+      setTimeout(() => setIsSubscribed(false), 3000);
+    }
+  };
+
   const footerLinks = {
     programs: [
       { label: "Peer Support Groups", href: "#programs", icon: Users },
@@ -31,93 +64,180 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" }
+    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-500" },
+    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-400" },
+    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-500" },
+    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-600" }
+  ];
+
+  const trustBadges = [
+    { icon: Shield, text: "Secure & Confidential" },
+    { icon: CheckCircle, text: "Verified Non-Profit" },
+    { icon: Globe, text: "Nationwide Reach" }
   ];
 
   return (
-    <footer className="bg-primary text-white">
-      {/* Decorative wave top with extra spacing */}
-      <div className="w-full h-14 bg-white mb-8">
+    <footer className="bg-primary text-white relative overflow-hidden">
+      <style >{`
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+          100% { transform: translateY(0px); }
+        }
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-pulse-soft {
+          animation: pulse 3s ease-in-out infinite;
+        }
+        .gradient-border {
+          position: relative;
+          background: linear-gradient(45deg, #3b82f6, #ec4899, #f59e0b);
+          padding: 2px;
+          border-radius: 12px;
+        }
+        .gradient-border::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #3b82f6, #ec4899, #f59e0b);
+          border-radius: 14px;
+          z-index: -1;
+          animation: gradient 3s ease infinite;
+          background-size: 400% 400%;
+        }
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+
+      {/* Premium wave top with enhanced design */}
+      <div className="w-full h-20 bg-white mb-6 relative">
         <svg 
-          viewBox="0 0 1200 80" 
+          viewBox="0 0 1200 120" 
           preserveAspectRatio="none" 
           className="w-full h-full text-primary"
         >
-          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="currentColor" opacity=".25"></path>
-          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="currentColor" opacity=".5"></path>
-          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+                fill="currentColor" opacity="0.2"></path>
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
+                fill="currentColor" opacity="0.5"></path>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" 
+                fill="currentColor"></path>
         </svg>
+        
+        {/* Floating elements above wave */}
+        <div className="absolute -top-4 left-1/4 w-8 h-8 bg-sunshine-yellow/20 rounded-full animate-float"></div>
+        <div className="absolute -top-6 right-1/3 w-6 h-6 bg-brand-pink/20 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -top-2 left-2/3 w-4 h-4 bg-sky-blue/20 rounded-full animate-float" style={{animationDelay: '4s'}}></div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="container-padding py-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-8 mb-8">
-            {/* Brand Section */}
+      <div className="container-padding py-12 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute top-10 right-10 w-32 h-32 bg-sunshine-yellow rounded-full blur-2xl"></div>
+          <div className="absolute bottom-10 left-10 w-24 h-24 bg-brand-pink rounded-full blur-2xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-sky-blue rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+
+          <div className="grid lg:grid-cols-5 gap-8 mb-12">
+            {/* Brand Section - Enhanced */}
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full gradient flex items-center justify-center overflow-hidden">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full gradient flex items-center justify-center overflow-hidden shadow-lg">
                   <img 
                     src={LogoImage} 
                     alt="Jikubali Africa Logo" 
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain p-1"
                   />
                 </div>
-                <h3 className="font-heading text-xl font-bold">Jikubali Africa</h3>
+                <div>
+                  <h3 className="font-heading text-2xl font-bold">Jikubali Africa</h3>
+                  <p className="text-white/70 text-sm">Mental Wellness & Community Support</p>
+                </div>
               </div>
-              <p className="text-white/90 leading-relaxed mb-4 max-w-md text-sm">
+              <p className="text-white/90 leading-relaxed mb-6 max-w-md text-sm">
                 Championing mental health, self-acceptance, and empowerment across Kenya. 
-                Building communities where everyone thrives.
+                Building communities where everyone thrives through comprehensive support programs.
               </p>
 
-              {/* Contact Info */}
-              <div className="space-y-2 mb-4">
-                <div className="flex items-center gap-2 text-sm">
-                  <Mail className="w-4 h-4 text-sunshine-yellow" />
-                  <span>info@jikubaliafrica.org</span>
+              {/* Trust Badges */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                {trustBadges.map((badge, index) => {
+                  const IconComponent = badge.icon;
+                  return (
+                    <div key={index} className="text-center bg-white/5 p-3 rounded-xl">
+                      <IconComponent className="w-6 h-6 text-sunshine-yellow mx-auto mb-2" />
+                      <p className="text-xs text-white/80">{badge.text}</p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Contact Info - Enhanced */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                  <Mail className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                  <span className="text-sm">info@jikubaliafrica.org</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="w-4 h-4 text-sunshine-yellow" />
-                  <span>+254 700 123 456</span>
+                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                  <Phone className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                  <span className="text-sm">+254 700 123 456</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="w-4 h-4 text-sunshine-yellow" />
-                  <span>Nairobi, Kenya</span>
+                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                  <MapPin className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                  <span className="text-sm">Nairobi, Kenya</span>
                 </div>
               </div>
 
-              {/* Social Links */}
-              <div className="flex gap-2">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-sunshine-yellow/30 flex items-center justify-center transition-colors duration-300"
-                  >
-                    <social.icon className="w-4 h-4 text-white" />
-                  </a>
-                ))}
+              {/* Social Links - Enhanced */}
+              <div className="flex gap-3">
+                {socialLinks.map((social, index) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={social.href}
+                      aria-label={social.label}
+                      className={`w-10 h-10 rounded-xl bg-white/10 ${social.color} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm`}
+                    >
+                      <IconComponent className="w-5 h-5 text-white" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Programs Links */}
+            {/* Programs Links - Enhanced */}
             <div>
-              <h4 className="font-heading font-semibold mb-3 text-sunshine-yellow text-base">Programs</h4>
-              <ul className="space-y-2">
+              <h4 className="font-heading font-semibold mb-4 text-sunshine-yellow text-lg flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                Programs
+              </h4>
+              <ul className="space-y-3">
                 {footerLinks.programs.map((link, index) => {
                   const IconComponent = link.icon;
                   return (
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-sunshine-yellow transition-colors duration-300 text-sm flex items-center gap-2"
+                        className="text-white hover:text-sunshine-yellow transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
                       >
-                        <IconComponent className="w-4 h-4" />
-                        {link.label}
+                        <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
+                        <span>{link.label}</span>
                       </a>
                     </li>
                   );
@@ -125,20 +245,23 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Resources Links */}
+            {/* Resources Links - Enhanced */}
             <div>
-              <h4 className="font-heading font-semibold mb-3 text-sunshine-yellow text-base">Resources</h4>
-              <ul className="space-y-2">
+              <h4 className="font-heading font-semibold mb-4 text-brand-pink-light text-lg flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Resources
+              </h4>
+              <ul className="space-y-3">
                 {footerLinks.resources.map((link, index) => {
                   const IconComponent = link.icon;
                   return (
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-brand-pink-light transition-colors duration-300 text-sm flex items-center gap-2"
+                        className="text-white hover:text-brand-pink-light transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
                       >
-                        <IconComponent className="w-4 h-4" />
-                        {link.label}
+                        <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
+                        <span>{link.label}</span>
                       </a>
                     </li>
                   );
@@ -146,20 +269,23 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* About Links */}
+            {/* About Links - Enhanced */}
             <div>
-              <h4 className="font-heading mb-3 text-sunshine-yellow text-base">About</h4>
-              <ul className="space-y-2">
+              <h4 className="font-heading mb-4 text-sky-blue-light text-lg flex items-center gap-2">
+                <Users2 className="w-5 h-5" />
+                About
+              </h4>
+              <ul className="space-y-3">
                 {footerLinks.about.map((link, index) => {
                   const IconComponent = link.icon;
                   return (
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-sky-blue-light transition-colors duration-300 text-sm flex items-center gap-2"
+                        className="text-white hover:text-sky-blue-light transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
                       >
-                        <IconComponent className="w-4 h-4" />
-                        {link.label}
+                        <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
+                        <span>{link.label}</span>
                       </a>
                     </li>
                   );
@@ -168,19 +294,39 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-white/80">
-            <div>
-              © 2025 Jikubali Africa. All rights reserved.
+          {/* Bottom Bar - Enhanced */}
+          <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/80">
+            <div className="flex items-center gap-2">
+              <span>© {currentYear} Jikubali Africa. All rights reserved.</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Updated: {new Date().toLocaleDateString()}
+              </span>
             </div>
-            <div className="flex gap-4">
-              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Privacy</a>
+            <div className="flex gap-6">
+              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors flex items-center gap-1">
+                <Shield className="w-4 h-4" />
+                Privacy
+              </a>
               <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Terms</a>
               <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Cookies</a>
+              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Accessibility</a>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-sky-blue to-brand-pink rounded-full flex items-center justify-center text-white shadow-lg z-50 transition-all duration-300 hover:scale-110 animate-pulse-soft"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
+      )}
     </footer>
   );
 };
