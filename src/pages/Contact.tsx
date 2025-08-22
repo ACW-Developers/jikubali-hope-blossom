@@ -5,12 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Footer from "@/components/sections/Footer";
-import bgImage from "@/assets/v26.jpg";
+import bgImage from "@/assets/general/v26.jpg";
 
-import nairobiOffice from "@/assets/Nairobi.jpeg";
-import mombasaOffice from "@/assets/Nairobi.jpeg";
+import nairobiOffice from "@/assets/general/Nairobi.jpeg";
+import mombasaOffice from "@/assets/general/Nairobi.jpeg";
 
-import supportLeadImg from "@/assets/v21.png";
+import supportLeadImg from "@/assets/general/v21.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -315,7 +315,7 @@ const Contact = () => {
                   <span>Your Journey to Wellness Starts Here</span>
                 </div>
                 
-                <h1 className="font-heading text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                <h1 className="font-heading text-5xl lg:text-5xl font-bold mb-6 leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">Reach Out</span>
                   <br />
                   <span className="text-white">We're Listening</span>
@@ -323,27 +323,23 @@ const Contact = () => {
                 
                 {/* Typing animation subheading */}
                 <div className="h-12 mb-8">
-                  <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
+                  <span className="text-xl lg:text-xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
                     {typingText}
                     <span className="typing-cursor h-6 align-middle"></span>
                   </span>
                 </div>
                 
-                <div className="flex items-center space-x-4 mb-8 p-5 bg-red-500/30 backdrop-blur-lg rounded-xl border border-red-400/30 shadow-lg">
+                <div className="flex items-center space-x-4 mb-8 p-5 bg-gradient-to-r from-blue-500/30 to-purple-500/10 backdrop-blur-lg rounded-xl border border-red-400/30 shadow-lg">
                   <div className="flex items-center text-white">
                     <Phone className="w-6 h-6 mr-3" />
-                    <span className="font-bold text-lg">Crisis Hotline: +254 700 000 000</span>
+                    <span className="font-bold text-lg">Hotline: +254 700 000 000</span>
                   </div>
                   <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse-glow"></div>
                   <span className="text-sm text-white/80">24/7 Availability</span>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl">
-                    <MessageCircle className="mr-3 h-5 w-5" />
-                    Start Conversation
-                    <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+
                   
                   <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm">
                     <Users className="mr-3 h-5 w-5" />

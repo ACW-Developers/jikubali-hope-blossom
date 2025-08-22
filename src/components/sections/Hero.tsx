@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/enhanced-button";
 import { ArrowRight, Heart, Users, ChevronDown, Play, Star, Quote, Sparkles } from "lucide-react";
-import heroImage1 from "@/assets/bg2.jpg";
-import heroImage2 from "@/assets/bg1.jpg";
-import heroImage3 from "@/assets/bg4.jpg";
-import heroImage4 from "@/assets/bg.jpg";
+import heroImage1 from "@/assets/general/bg2.jpg";
+import heroImage2 from "@/assets/general/bg1.jpg";
+import heroImage3 from "@/assets/general/bg4.jpg";
+import heroImage4 from "@/assets/general/bg.jpg";
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);

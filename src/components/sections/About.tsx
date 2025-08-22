@@ -3,13 +3,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Target, Users2, Sparkles } from "lucide-react";
 
 // ✅ Import local images (place them inside src/assets/)
-import localImage0 from "@/assets/F11.jpg";
-import localImage1 from "@/assets/jk2.jpg";
-import localImage2 from "@/assets/bg3.jpg";
-import localImage3 from "@/assets/bg6.jpg";
-import localImage4 from "@/assets/jk3.jpg";
-import localImage5 from "@/assets/jk.jpg";
-import localImage6 from "@/assets/v9.jpg";
+import localImage0 from "@/assets/general/F11.jpg";
+import localImage1 from "@/assets/general/jk2.jpg";
+import localImage2 from "@/assets/general/bg3.jpg";
+import localImage3 from "@/assets/general/bg6.jpg";
+import localImage4 from "@/assets/general/jk3.jpg";
+import localImage5 from "@/assets/general/jk.jpg";
+import localImage6 from "@/assets/general/v9.jpg";
 
 const About = () => {
   // Core values data

@@ -22,25 +22,25 @@ import F9 from "@/assets/events/F9.jpg";
 import F10 from "@/assets/events/F10.jpg";
 
 // Import v series images
-import v from "@/assets/v.jpg";
-import v2 from "@/assets/v2.jpg";
-import v3 from "@/assets/v3.jpg";
-import v4 from "@/assets/v4.jpg";
-import v5 from "@/assets/v5.jpg";
-import v6 from "@/assets/v6.jpg";
-import v7 from "@/assets/v7.jpg";
-import v8 from "@/assets/v8.jpg";
-import v9 from "@/assets/v9.jpg";
-import v10 from "@/assets/v10.jpg";
-import v11 from "@/assets/v11.jpg";
-import v12 from "@/assets/v12.jpg";
-import v13 from "@/assets/v13.jpg";
-import v14 from "@/assets/v14.jpg";
-import v15 from "@/assets/v15.jpg";
-import v16 from "@/assets/v16.jpg";
-import v17 from "@/assets/v17.jpg";
-import v18 from "@/assets/v18.jpg";
-import v19 from "@/assets/v19.jpg";
+import v from "@/assets/general/v.jpg";
+import v2 from "@/assets/general/v2.jpg";
+import v3 from "@/assets/general/v3.jpg";
+import v4 from "@/assets/general/v4.jpg";
+import v5 from "@/assets/general/v5.jpg";
+import v6 from "@/assets/general/v6.jpg";
+import v7 from "@/assets/general/v7.jpg";
+import v8 from "@/assets/general/v8.jpg";
+import v9 from "@/assets/general/v9.jpg";
+import v10 from "@/assets/general/v10.jpg";
+import v11 from "@/assets/general/v11.jpg";
+import v12 from "@/assets/general/v12.jpg";
+import v13 from "@/assets/general/v13.jpg";
+import v14 from "@/assets/general/v14.jpg";
+import v15 from "@/assets/general/v15.jpg";
+import v16 from "@/assets/general/v16.jpg";
+import v17 from "@/assets/general/v17.jpg";
+import v18 from "@/assets/general/v18.jpg";
+import v19 from "@/assets/general/v19.jpg";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");

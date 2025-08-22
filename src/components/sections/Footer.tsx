@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 // Import your logo image
-import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
+import LogoImage from "@/assets/logos/jikubali.png"; 
 
 const Footer = () => {
   const [email, setEmail] = useState("");

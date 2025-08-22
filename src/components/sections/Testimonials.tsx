@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef } from "react";
-import testimonialsBackground from "@/assets/testimonials-bg.jpg";
+import testimonialsBackground from "@/assets/general/testimonials-bg.jpg";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
 
 // Import your local background image - update the path as needed
-import heroBackground from "@/assets/bg5.jpg";
+import heroBackground from "@/assets/general/bg5.jpg";
 
 const Stories = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");

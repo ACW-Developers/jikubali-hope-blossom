@@ -5,16 +5,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Footer from "@/components/sections/Footer";
 
 import cyclingImg from "@/assets/events/F8.jpg";
-import webinarImg from "@/assets/contact-image.jpg";
-import gamingImg from "@/assets/v9.jpg";
-import letterImg from "@/assets/v7.jpg";
+import webinarImg from "@/assets/general/contact-image.jpg";
+import gamingImg from "@/assets/general/v9.jpg";
+import letterImg from "@/assets/general/v7.jpg";
 import colorSplashImg from "@/assets/events/F.jpg";
-import talentImg from "@/assets/v12.jpg";
-import counselingImg from "@/assets/v15.jpg";
-import groupImg from "@/assets/v13.jpg";
-import crisisImg from "@/assets/20.jpg";
-import bgImage from "@/assets/v15.jpg";
-import communityImage from "@/assets/peris2.png"; 
+import talentImg from "@/assets/general/v12.jpg";
+import counselingImg from "@/assets/general/v15.jpg";
+import groupImg from "@/assets/general/v13.jpg";
+import crisisImg from "@/assets/general/20.jpg";
+import bgImage from "@/assets/general/v15.jpg";
+import communityImage from "@/assets/general/peris2.png"; 
 
 const Programs = () => {
   const [activeCategory, setActiveCategory] = useState("all");

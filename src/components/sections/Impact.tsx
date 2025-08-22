@@ -4,13 +4,13 @@ import { Link } from "react-router-dom"; // or "next/link" if using Next.js
 import { TrendingUp, Users, MapPin, Heart, Calendar, Award, ChevronRight, Quote } from "lucide-react";
 
 // Import local images
-import livesTransformedImg from "@/assets/v.jpg";
-import communitiesReachedImg from "@/assets/v2.jpg";
-import countiesServedImg from "@/assets/v3.jpg";
-import yearsFoundedImg from "@/assets/v4.jpg";
-import volunteersActiveImg from "@/assets/bg.jpg";
-import programsOfferedImg from "@/assets/bg1.jpg";
-import lastingChangeImg from "@/assets/v.jpg";
+import livesTransformedImg from "@/assets/general/v.jpg";
+import communitiesReachedImg from "@/assets/general/v2.jpg";
+import countiesServedImg from "@/assets/general/v3.jpg";
+import yearsFoundedImg from "@/assets/general/v4.jpg";
+import volunteersActiveImg from "@/assets/general/bg.jpg";
+import programsOfferedImg from "@/assets/general/bg1.jpg";
+import lastingChangeImg from "@/assets/general/v.jpg";
 
 const Impact = () => {
   const [counters, setCounters] = useState({
@@ -26,7 +26,7 @@ const Impact = () => {
 
   const targetValues = {
     livesTransformed: 500,
-    communitiesReached: 50,
+    communitiesReached: 20,
     countiesServed: 10,
     yearsFounded: 5,
     volunteersActive: 25,
@@ -35,7 +35,7 @@ const Impact = () => {
 
   const maxValues = {
     livesTransformed: 600,
-    communitiesReached: 60,
+    communitiesReached: 20,
     countiesServed: 15,
     yearsFounded: 5,
     volunteersActive: 30,

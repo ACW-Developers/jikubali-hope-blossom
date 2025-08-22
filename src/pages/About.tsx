@@ -2,10 +2,10 @@ import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote, Mail, Lin
 import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
 import { useEffect, useRef, useState } from "react";
-import localImage from "@/assets/v21.png"; 
-import bgImage from "@/assets/v4.jpg";
-import patternBg from "@/assets/v8.jpg";
-import bgImage1 from "@/assets/v4.jpg";
+import localImage from "@/assets/general/v21.png"; 
+import bgImage from "@/assets/general/v4.jpg";
+import patternBg from "@/assets/general/v8.jpg";
+import bgImage1 from "@/assets/general/v4.jpg";
 
 // Import leadership images (replace with actual paths)
 import leader1 from "@/assets/team/v21.png";

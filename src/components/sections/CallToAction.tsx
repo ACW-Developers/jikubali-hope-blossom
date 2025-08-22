@@ -4,7 +4,7 @@ import { ArrowRight, Heart, Users, Phone, Sparkles, Star, Circle } from "lucide-
 import ContactPopup from "@/components/ui/contact-popup";
 
 // Import your local image
-import ctaBackground from "@/assets/v8.jpg"; 
+import ctaBackground from "@/assets/general/v8.jpg"; 
 
 const CallToAction = () => {
   const [showDonatePopup, setShowDonatePopup] = useState(false);

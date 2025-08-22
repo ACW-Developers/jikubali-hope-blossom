@@ -7,10 +7,10 @@ import {
 } from "lucide-react";
 
 // ✅ Import local program images
-import therapyImg from "@/assets/v5.jpg";
-import healingImg from "@/assets/v6.jpg";
-import gamingImg from "@/assets/v7.jpg";
-import mentorshipImg from "@/assets/v.jpg";
+import therapyImg from "@/assets/general/v5.jpg";
+import healingImg from "@/assets/general/v6.jpg";
+import gamingImg from "@/assets/general/v7.jpg";
+import mentorshipImg from "@/assets/general/v.jpg";
 
 // ✅ Import local event images
 import cycleImage from "@/assets/events/F8.jpg";
