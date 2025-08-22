@@ -151,7 +151,7 @@ const Programs = () => {
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-foreground/60" />
               </div>
-              <Button variant="outline" size="md">
+              <Button variant="outline" size="lg">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
               </Button>
