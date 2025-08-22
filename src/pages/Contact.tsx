@@ -207,7 +207,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden bg-gray-50">
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden bg-gray-50">
       <style>{`
         @keyframes pulse-glow {
           0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
@@ -306,8 +306,8 @@ const Contact = () => {
             <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
           </div>
           
-          <div className="container-padding max-w-7xl mx-auto relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="animate-fade-up text-white">
                 {/* Animated badge */}
                 <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 animate-shimmer">

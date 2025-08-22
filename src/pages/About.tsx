@@ -202,7 +202,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-sky-blue-light/5 to-brand-pink-light/5"></div>
@@ -279,13 +279,13 @@ const About = () => {
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
           
-          <div className="container-padding max-w-7xl mx-auto relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="animate-fade-up text-white">
                 <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
                   ✨ Empowering Mental Wellness Since 2020
                 </div>
-                <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
                   About <span className="text-brand-pink">Jikubali</span>
                 </h1>
                 <div className="h-12 mb-6">

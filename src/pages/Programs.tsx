@@ -215,7 +215,7 @@ const Programs = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -293,7 +293,7 @@ const Programs = () => {
                 <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
                   🎯 Comprehensive Mental Health Support
                 </div>
-                <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
                   Our <span className="text-brand-pink">Programs</span>
                 </h1>
                 

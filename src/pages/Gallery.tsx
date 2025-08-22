@@ -388,7 +388,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
     : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-32 right-16 w-64 h-64 bg-brand-pink/5 rounded-full animate-float"></div>
@@ -415,14 +415,14 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
         <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden section-spacing bg-gradient-to-br from-sky-blue-light/20 via-brand-pink-light/10 to-sunshine-yellow/10">
           <div className="absolute inset-0 bg-black/5 z-0"></div>
           
-          <div className="container-padding max-w-7xl mx-auto text-center relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 text-center relative z-10">
             <div className="animate-fade-up">
               <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full mb-8 text-brand-pink">
                 <Camera className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">Capturing Hope & Healing</span>
               </div>
               
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 Our <span className="text-brand-pink relative">
                   Gallery
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 10" xmlns="http://www.w3.org/2000/svg">

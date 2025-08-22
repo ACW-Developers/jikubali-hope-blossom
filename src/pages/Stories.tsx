@@ -146,7 +146,7 @@ const Stories = () => {
     : stories.filter(story => story.category === selectedCategory);
 
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-32 right-16 w-64 h-64 bg-brand-pink/5 rounded-full animate-float"></div>
@@ -186,7 +186,7 @@ const Stories = () => {
         {/* Animated gradient overlay for visual interest */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-pink/10 via-transparent to-sky-blue-light/10 z-0 animate-gradient-shift"></div>
         
-        <div className="container-padding max-w-7xl text-left relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 text-left relative z-10">
           <div className={`max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-8 text-white border border-white/20">
               <Sparkles className="w-5 h-5 mr-2 text-sunshine-yellow" />
