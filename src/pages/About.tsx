@@ -17,8 +17,6 @@ import {
   Flag,
   Eye,
   Handshake,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
 
 // Import team member images
