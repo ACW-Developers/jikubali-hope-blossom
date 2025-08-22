@@ -469,10 +469,6 @@ const Programs = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button variant="outline" className="w-full group">
-                      Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
                   </CardContent>
                 </div>
               ))}

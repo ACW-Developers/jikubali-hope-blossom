@@ -1,10 +1,21 @@
-import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote } from "lucide-react";
+import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote, Mail, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
 import { useEffect, useRef, useState } from "react";
 import localImage from "@/assets/v21.png"; 
 import bgImage from "@/assets/v4.jpg";
 import patternBg from "@/assets/v8.jpg";
+import bgImage1 from "@/assets/v4.jpg";
+
+// Import leadership images (replace with actual paths)
+import leader1 from "@/assets/team/v21.png";
+import leader2 from "@/assets/team/Brian.jpg";
+import leader3 from "@/assets/team/Jacinta.jpg";
+import leader4 from "@/assets/team/Boniface.jpg";
+import leader5 from "@/assets/team/peris3.png";
+import leader6 from "@/assets/team/Rono.jpg";
+import leader7 from "@/assets/team/Cephas.jpg";
+import leader8 from "@/assets/team/Kebabe.jpg";
 
 const About = () => {
   const [typingIndex, setTypingIndex] = useState(0);
@@ -38,6 +49,97 @@ const About = () => {
       description: "Committed to the highest standards in mental health support, education, and community programs."
     }
   ];
+
+  const leadershipTeam = [
+  {
+    name: "Lilian Wairimu",
+    position: "Chairperson",
+    image: leader1,
+    bio: "Provides overall leadership and strategic direction for Jikubali Africa’s programs.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Brian Kipruto",
+    position: "Secretary General",
+    image: leader2,
+    bio: "Oversees communication, records, and ensures smooth coordination of organizational activities.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Jacinta Omariba",
+    position: "Treasurer",
+    image: leader3,
+    bio: "Manages finances and ensures accountability in all Jikubali Africa projects.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Boniface Masaku",
+    position: "Event Organizer",
+    image: leader4,
+    bio: "Plans and coordinates awareness events and community outreach initiatives.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Peris Mwangi",
+    position: "Project Manager",
+    image: leader5,
+    bio: "Leads implementation of mental health and community empowerment projects.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Hillary Rono",
+    position: "Brand Ambassador",
+    image: leader6,
+    bio: "Represents Jikubali Africa and promotes its mission to wider audiences.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Cephas Koech",
+    position: "Logistic Manager",
+    image: leader7,
+    bio: "Handles logistics to ensure efficient delivery of programs and activities.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Kebabe",
+    position: "Marketing Director",
+    image: leader8,
+    bio: "Leads marketing strategies to expand Jikubali Africa’s visibility and impact.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  }
+];
 
   const typingTexts = [
     "Jikubali Africa",
@@ -150,12 +252,19 @@ const About = () => {
             background: transparent;
           }
         }
+        .leader-card {
+          transition: all 0.3s ease;
+        }
+        .leader-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
       `}</style>
 
       <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-sky-blue-light/30 to-brand-pink-light/20">
-          {/* Darker background image with overlay */}
+        {/* Hero Section with Darker Background */}
+        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+          {/* Much darker background image with overlay */}
           <div className="absolute inset-0 z-0 parallax-bg">
             <div 
               className="absolute inset-0"
@@ -166,8 +275,8 @@ const About = () => {
                 backgroundSize: 'cover'
               }}
             ></div>
-            {/* Darker overlay for better text visibility */}
-            <div className="absolute inset-0 bg-black/60"></div>
+            {/* Much darker overlay for better text visibility */}
+            <div className="absolute inset-0 bg-black/70"></div>
           </div>
           
           <div className="container-padding max-w-7xl mx-auto relative z-10">
@@ -216,8 +325,9 @@ const About = () => {
                         backgroundColor: 'transparent'
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-                    <div className="p-10 text-white">
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
+                    <div className="p-6 text-white">
                       <div className="flex items-center mb-2">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-sunshine-yellow text-sunshine-yellow" />
@@ -226,7 +336,6 @@ const About = () => {
                       </div>
                       <p className="text-sm">"Jikubali changed my perspective on mental health" - Wairimu L.</p>
                     </div>
-                  </div>
                   </div>
                 </div>
               </div>
@@ -401,64 +510,93 @@ const About = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-20 bg-dark-navy text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${patternBg})` }}
-            ></div>
+        {/* Leadership Team Section */}
+<section className="py-20 bg-dark-navy text-white relative overflow-hidden">
+  <div className="absolute inset-0 opacity-5">
+    <div
+      className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+      style={{ backgroundImage: `url(${patternBg})` }}
+    ></div>
+  </div>
+  
+  <div className="container-padding max-w-7xl mx-auto relative z-10">
+    <div className="text-center mb-16">
+      <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
+        👥 Leadership Team
+      </div>
+      <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+        Meet Our <span className="text-sky-blue">Leaders</span>
+      </h2>
+      <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
+      <p className="text-lg text-white/80 max-w-3xl mx-auto">
+        Our dedicated leadership team brings decades of experience in mental health advocacy, 
+        community development, and program management.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {leadershipTeam.map((leader, index) => (
+        <div 
+          key={index}
+          className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
+        >
+          {/* Image container with fixed aspect ratio */}
+          <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
+            <img 
+              src={leader.image} 
+              alt={leader.name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+              <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="flex space-x-2 justify-center">
+                  <a 
+                    href={`mailto:${leader.social.email}`}
+                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                    style={{ transitionDelay: '0.1s' }}
+                    aria-label="Email"
+                  >
+                    <Mail className="w-4 h-4" />
+                  </a>
+                  <a 
+                    href={leader.social.linkedin}
+                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                    style={{ transitionDelay: '0.2s' }}
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a 
+                    href={leader.social.twitter}
+                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                    style={{ transitionDelay: '0.3s' }}
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           
-          <div className="container-padding max-w-6xl mx-auto relative z-10">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
-                ❤️ Stories of Hope
-              </div>
-              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
-                Community <span className="text-sky-blue">Testimonials</span>
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  text: "Jikubali helped me find my strength during my darkest days. The support group gave me a community when I felt completely alone.",
-                  author: "Grace W.",
-                  role: "Nairobi Support Group"
-                },
-                {
-                  text: "As a teacher, I've used Jikubali's resources to help my students cope with anxiety. The impact on our school community has been incredible.",
-                  author: "Michael K.",
-                  role: "School Counselor"
-                },
-                {
-                  text: "The workshops transformed how our community views mental health. We're now having open conversations that were once considered taboo.",
-                  author: "Community Leader",
-                  role: "Kisumu County"
-                }
-              ].map((testimonial, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover-lift transition-all duration-500"
-                >
-                  <Quote className="w-10 h-10 text-brand-pink/30 mb-4" />
-                  <p className="text-white/90 mb-6 italic">"{testimonial.text}"</p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-sky-blue to-brand-pink rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      {testimonial.author.charAt(0)}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-white">{testimonial.author}</div>
-                      <div className="text-sm text-white/60">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Content */}
+          <div className="flex flex-col flex-grow">
+            <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
+            <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
+            <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
           </div>
-        </section>
+        </div>
+      ))}
+    </div>
+
+    {/* View All Button for Mobile */}
+    <div className="mt-12 text-center md:hidden">
+      <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+        View All Team Members
+      </Button>
+    </div>
+  </div>
+</section>
 
         {/* Mission & Vision */}
         <section className="py-20 bg-gradient-to-br from-white to-sky-blue-light/20 relative overflow-hidden">
@@ -501,8 +639,10 @@ const About = () => {
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-sky-blue to-brand-pink text-white text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10"></div>
-          
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: `url(${bgImage1})` }}
+          ></div>          
           <div className="container-padding max-w-4xl mx-auto relative z-10">
             <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
               Join Us in Making a Difference
