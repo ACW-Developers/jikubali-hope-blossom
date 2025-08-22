@@ -15,7 +15,7 @@ import leader4 from "@/assets/team/Boniface.jpg";
 import leader5 from "@/assets/team/peris3.png";
 import leader6 from "@/assets/team/Rono.jpg";
 import leader7 from "@/assets/team/Cephas.jpg";
-import leader8 from "@/assets/team/Kebabe.jpg";
+import leader8 from "@/assets/team/kebabe.jpg";
 
 const About = () => {
   const [typingIndex, setTypingIndex] = useState(0);
