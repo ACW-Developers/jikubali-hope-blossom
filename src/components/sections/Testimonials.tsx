@@ -103,7 +103,7 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-1 transition-all duration-300 hover:scale-110"
             disabled={currentIndex === 0}
           >
             <ChevronLeft className="w-6 h-6 text-foreground" />

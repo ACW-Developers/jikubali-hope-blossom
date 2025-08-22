@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Target, Users2, Sparkles } from "lucide-react";
 
@@ -200,13 +202,18 @@ const About = () => {
 
             <FadeIn delay={500}>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
-                  Our Full Story
-                </button>
-                <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
-                  Meet The Team
-                </button>
-              </div>
+  <Link to="/about">
+    <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
+      Our Full Story
+    </button>
+  </Link>
+  
+  <Link to="/about">
+    <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
+      Meet The Team
+    </button>
+  </Link>
+</div>
             </FadeIn>
           </div>
         </div>

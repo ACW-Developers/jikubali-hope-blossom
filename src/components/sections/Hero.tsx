@@ -172,9 +172,6 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-24">
         <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl py-24">
           {/* Animated Decorative Elements */}
-          <div className="absolute -top-10 left-0 animate-float opacity-70">
-            <Heart className="w-12 h-12 text-sunshine-yellow fill-sunshine-yellow/20" />
-          </div>
           <div className="absolute top-1/3 right-1/4 animate-float" style={{ animationDelay: '1.5s' }}>
             <div className="relative">
               <Sparkles className="w-8 h-8 text-brand-pink" />
@@ -243,9 +240,9 @@ const Hero = () => {
             className="mt-16 lg:mt-24 grid grid-cols-3 gap-6 max-w-xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
           >
             {[
-              { value: "500+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
-              { value: "50+", label: "Communities Reached", color: "text-brand-pink-light", delay: 0.2 },
-              { value: "10+", label: "Counties Served", color: "text-sky-blue-light", delay: 0.4 }
+              { value: "1000+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
+              { value: "10+", label: "Communities Reached", color: "text-brand-pink-light", delay: 0.2 },
+              { value: "6+", label: "Counties Served", color: "text-sky-blue-light", delay: 0.4 }
             ].map((stat, index) => (
               <div 
                 key={index}
@@ -265,7 +262,8 @@ const Hero = () => {
       </div>
 
       {/* Image Indicators - Vertical */}
-      <div className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 flex flex-col space-y-3">
+      {/* Modified positioning for small devices */}
+      <div className="absolute left-2 sm:left-4 md:left-6 top-1/2 transform -translate-y-1/2 z-20 flex flex-col space-y-3">
         {images.map((_, index) => (
           <button
             key={index}

@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-import { Quote, Heart, Star, ChevronDown, Sparkles } from "lucide-react";
+import { Quote, Heart, Star, Play, ChevronDown, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
 
-// Import your local background image - update the path as needed
-import heroBackground from "@/assets/general/bg5.jpg";
+// Import local images
+import heroBackground from "@/assets/general/v24.jpg";
+import story1 from "@/assets/general/bg5.jpg";
+import story2 from "@/assets/general/v25.jpg";
+import story3 from "@/assets/general/v26.jpg";
+import story4 from "@/assets/general/v27.jpg";
+import story5 from "@/assets/general/v28.jpg";
+import story6 from "@/assets/general/v2.jpg";
+import ctaBackground from "@/assets/general/v27.jpg";
 
 const Stories = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -16,7 +23,7 @@ const Stories = () => {
   const sectionRefs = useRef([]);
 
   const typingWords = ["Hope", "Healing", "Recovery", "Strength"];
-  const typingSpeed = 200;
+  const typingSpeed = 300;
   const eraseSpeed = 120;
   const pauseTime = 1500;
 
@@ -77,7 +84,7 @@ const Stories = () => {
       title: "Finding My Voice Again",
       story: "After years of struggling with anxiety and depression, Jikubali Africa's community support groups gave me the courage to speak up and seek help. The weekly sessions became my safe haven, and the peer support helped me realize I wasn't alone.",
       impact: "Completed anxiety management program",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story1
     },
     {
       id: 2,
@@ -87,7 +94,7 @@ const Stories = () => {
       title: "Healing Our Family",
       story: "When my teenage son started showing signs of depression, our family didn't know where to turn. Jikubali Africa's family counseling program not only helped my son but taught us all how to communicate better and support each other.",
       impact: "Family therapy success",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story2
     },
     {
       id: 3,
@@ -97,7 +104,7 @@ const Stories = () => {
       title: "From Survivor to Advocate",
       story: "The trauma I experienced almost broke me, but through Jikubali's individual counseling and peer mentorship program, I not only healed but found my purpose in helping other survivors. Now I'm training to become a peer counselor myself.",
       impact: "Now training as peer counselor",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story3
     },
     {
       id: 4,
@@ -107,7 +114,7 @@ const Stories = () => {
       title: "Breaking the Stigma",
       story: "As a corporate manager, I thought seeking mental health support would hurt my career. Jikubali's workplace wellness program showed me that taking care of my mental health actually made me a better leader and colleague.",
       impact: "Workplace mental health champion",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story4
     },
     {
       id: 5,
@@ -117,7 +124,7 @@ const Stories = () => {
       title: "University Life Transformed",
       story: "University pressure and being away from home for the first time triggered severe anxiety. The youth-focused programs at Jikubali helped me develop coping strategies and connect with other students facing similar challenges.",
       impact: "Academic performance improved",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story5
     },
     {
       id: 6,
@@ -127,7 +134,7 @@ const Stories = () => {
       title: "Building Stronger Communities",
       story: "As a community elder, I initially resisted the idea of mental health programs in our village. But after seeing the positive changes in my neighbors who participated, I became one of Jikubali's biggest advocates.",
       impact: "Community mental health ambassador",
-      image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"
+      image: story6
     }
   ];
 
@@ -193,7 +200,7 @@ const Stories = () => {
               <span className="text-md font-medium">Inspiring Hope & Healing</span>
             </div>
             
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+            <h1 className="font-heading text-5xl md:text-6xl lg:text-6xl font-bold mb-6 leading-tight text-white">
               Transformative <br />
               Stories of <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink-light to-sunshine-yellow relative typing-text">
                 {typingText}
@@ -201,7 +208,7 @@ const Stories = () => {
               </span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-xl lg:text-xl text-white/90 mb-8 leading-relaxed">
               Discover powerful journeys of resilience and transformation from people who found hope 
               through mental health support and community connection.
             </p>
@@ -211,8 +218,9 @@ const Stories = () => {
                 Read Their Stories
               </Button>
               
-              <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-3 rounded-full">
-                Share Your Story
+              <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+                <Play className="w-5 h-5 mr-2" />
+                Watch Our Story
               </Button>
             </div>
             
@@ -338,7 +346,7 @@ const Stories = () => {
       >
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80)' }}
+          style={{ backgroundImage: `url(${ctaBackground})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-sky-blue/90 to-brand-pink/90"></div>
         </div>

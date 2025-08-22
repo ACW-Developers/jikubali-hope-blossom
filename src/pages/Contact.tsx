@@ -151,8 +151,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      info: "hello@jikubaliafrica.org",
-      description: "We respond within 24 hours",
+      info: "jikubaliafrica@gmail.com",
+      description: "We respond within 48 hours",
       color: "from-purple-500 to-purple-600",
       animationDelay: "0.2s"
     },
@@ -175,8 +175,8 @@ const Contact = () => {
       image: nairobiOffice,
     },
     {
-      city: "Mombasa",
-      address: "Digo Road, Coast General Building, 2nd Floor",
+      city: "Kisii",
+      address: "Kisii University, Kisii Town, Kenya",
       phone: "+254 700 222 222",
       hours: "Mon-Fri: 8AM-5PM, Sat: 9AM-12PM",
       image: mombasaOffice,
@@ -306,13 +306,13 @@ const Contact = () => {
             <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
           </div>
           
-          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="animate-fade-up text-white">
                 {/* Animated badge */}
                 <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 animate-shimmer">
                   <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
-                  <span>Your Journey to Wellness Starts Here</span>
+                  <span>Your Journey to Wellness Starts </span>
                 </div>
                 
                 <h1 className="font-heading text-5xl lg:text-5xl font-bold mb-6 leading-tight">
@@ -463,10 +463,11 @@ const Contact = () => {
                   <h3 className="font-heading text-2xl font-bold mb-2 text-gray-800">Mr. Amos Clinton</h3>
                   <p className="text-purple-600 font-medium mb-4">Software Developer</p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    With over 15 years of experience in clinical psychology and community mental health, 
-                    Dr. Mwangi leads our support team with compassion and expertise. She specializes in 
-                    trauma-informed care and has helped hundreds of individuals find healing and hope.
-                  </p>
+  With extensive experience in web development and digital solutions, 
+  he is in charge of the development and maintenance of our website, ensuring a seamless user experience. 
+  In addition to managing technical updates, he oversees other digital initiatives to keep our online presence effective and engaging.
+</p>
+
                   <div className="space-y-2 text-sm text-gray-500">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-2 text-blue-500" />

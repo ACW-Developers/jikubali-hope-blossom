@@ -55,7 +55,7 @@ const About = () => {
     name: "Lilian Wairimu",
     position: "Chairperson",
     image: leader1,
-    bio: "Provides overall leadership and strategic direction for Jikubali Africa’s programs.",
+    bio: "Provides overall leadership and strategic direction for Jikubali Africa's programs.",
     social: {
       twitter: "#",
       linkedin: "#",
@@ -99,7 +99,7 @@ const About = () => {
     name: "Peris Mwangi",
     position: "Project Manager",
     image: leader5,
-    bio: "Leads implementation of mental health and community empowerment projects.",
+    bio: "Leads implementation of organization activities and empowerment projects.",
     social: {
       twitter: "#",
       linkedin: "#",
@@ -132,7 +132,7 @@ const About = () => {
     name: "Kebabe",
     position: "Marketing Director",
     image: leader8,
-    bio: "Leads marketing strategies to expand Jikubali Africa’s visibility and impact.",
+    bio: "Leads marketing strategies to expand Jikubali Africa's visibility and impact.",
     social: {
       twitter: "#",
       linkedin: "#",
@@ -279,7 +279,7 @@ const About = () => {
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
           
-          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24  mt-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="animate-fade-up text-white">
                 <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -332,7 +332,7 @@ const About = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-sunshine-yellow text-sunshine-yellow" />
                         ))}
-                        <span className="ml-2 text-sm">5.0 (200+ reviews)</span>
+                        <span className="ml-2 text-sm">5.0 /5.0</span>
                       </div>
                       <p className="text-sm">"Jikubali changed my perspective on mental health" - Wairimu L.</p>
                     </div>
@@ -395,9 +395,9 @@ const About = () => {
               >
                 {[
                   { value: "5,000+", label: "Lives Touched", color: "sky-blue", delay: 0 },
-                  { value: "15", label: "Counties Served", color: "brand-pink", delay: 0.1 },
-                  { value: "50+", label: "Community Partners", color: "sunshine-yellow", delay: 0.2 },
-                  { value: "24/7", label: "Crisis Support", color: "dark-navy", delay: 0.3 }
+                  { value: "6", label: "Counties Served", color: "brand-pink", delay: 0.1 },
+                  { value: "10+", label: "Community Partners", color: "sunshine-yellow", delay: 0.2 },
+                  { value: "24/7", label: "Support", color: "dark-navy", delay: 0.3 }
                 ].map((stat, index) => (
                   <div 
                     key={stat.label}
@@ -422,21 +422,25 @@ const About = () => {
             
             {/* Timeline */}
             <div className="relative mt-24">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-blue to-brand-pink"></div>
+              {/* Lifeline - Centered on large screens, left-aligned on small screens */}
+              <div className="absolute left-1/2 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-blue to-brand-pink
+                              sm:left-6 sm:transform-none"></div>
               
               {[
-                { year: "2020", title: "Foundation", desc: "Jikubali Africa founded in response to mental health gap" },
-                { year: "2021", title: "Expansion", desc: "Programs expanded to 5 additional counties" },
-                { year: "2022", title: "Recognition", desc: "Received national award for community mental health work" },
-                { year: "2023", title: "Growth", desc: "Reached 5,000+ individuals with mental health support" },
-                { year: "2024", title: "Innovation", desc: "Launched digital platform for wider accessibility" },
+                { year: "2022", title: "Foundation", desc: "Jikubali Africa founded in response to mental health gap" },
+                { year: "2022", title: "Expansion", desc: "Programs expanded to 3 additional counties" },
+                { year: "2023", title: "Recognition", desc: "Received national award for community mental health work" },
+                { year: "2024", title: "Growth", desc: "Reached 5,000+ individuals with mental health support" },
+                { year: "2025", title: "Innovation", desc: "Launched digital platform for wider accessibility" },
               ].map((item, index) => (
                 <div 
                   key={index} 
-                  className={`mb-12 flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                  className={`mb-12 flex flex-col md:flex-row items-start ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                 >
-                  <div className="md:w-1/2 flex justify-center md:justify-end">
-                    <div className={`w-64 p-6 rounded-2xl shadow-lg bg-white border-l-4 ${
+                  {/* Content Card - Full width on mobile, half on desktop */}
+                  <div className="w-full md:w-1/2 flex justify-center md:justify-end mb-4 md:mb-0
+                                  md:pl-8 md:pr-8 order-2 md:order-none">
+                    <div className={`w-full max-w-md p-6 rounded-2xl shadow-lg bg-white border-l-4 ${
                       index % 4 === 0 ? 'border-sky-blue' : 
                       index % 4 === 1 ? 'border-brand-pink' : 
                       index % 4 === 2 ? 'border-sunshine-yellow' : 'border-dark-navy'
@@ -445,18 +449,114 @@ const About = () => {
                       <p className="text-foreground/70 text-sm">{item.desc}</p>
                     </div>
                   </div>
-                  <div className="flex justify-center md:justify-center md:w-1/2 relative">
-                    <div className="w-6 h-6 rounded-full bg-white border-4 border-brand-pink z-10"></div>
-                    <div className="absolute text-lg font-bold text-foreground/80 top-8">{item.year}</div>
+                  
+                  {/* Timeline dot and year */}
+                  <div className="flex justify-start md:justify-center w-full md:w-1/2 relative order-1 md:order-none
+                                  pl-8 md:pl-0">
+                    <div className="flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-white border-4 border-brand-pink z-10 mr-4 md:mr-0"></div>
+                      <div className="text-lg font-bold text-foreground/80 md:absolute md:top-8 md:left-1/2 md:transform md:-translate-x-1/2
+                                      block md:hidden">
+                        {item.year}
+                      </div>
+                    </div>
+                    {/* Year for desktop */}
+                    <div className="absolute text-lg font-bold text-foreground/80 top-8 left-1/2 transform -translate-x-1/2
+                                    hidden md:block">
+                      {item.year}
+                    </div>
                   </div>
-                  <div className="md:w-1/2"></div>
+                  
+                  {/* Spacer for desktop layout */}
+                  <div className="md:w-1/2 hidden md:block"></div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Our Values */}
+        {/* Leadership Team Section - MOVED ABOVE VALUES */}
+        <section className="py-20 bg-dark-navy text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${patternBg})` }}
+            ></div>
+          </div>
+          
+          <div className="container-padding max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
+                👥 Leadership Team
+              </div>
+              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+                Meet Our <span className="text-sky-blue">Leaders</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
+              <p className="text-lg text-white/80 max-w-3xl mx-auto">
+                Our dedicated leadership team brings decades of experience in mental health advocacy, 
+                community development, and program management.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {leadershipTeam.map((leader, index) => (
+                <div 
+                  key={index}
+                  className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
+                >
+                  {/* Image container with fixed aspect ratio */}
+                  <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div className="flex space-x-2 justify-center">
+                          <a 
+                            href={`mailto:${leader.social.email}`}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.1s' }}
+                            aria-label="Email"
+                          >
+                            <Mail className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.linkedin}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.2s' }}
+                            aria-label="LinkedIn"
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.twitter}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.3s' }}
+                            aria-label="Twitter"
+                          >
+                            <Twitter className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
+                    <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Values - MOVED BELOW LEADERSHIP */}
         <section className="py-20 bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/10 relative overflow-hidden">
           <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>
           
@@ -509,94 +609,6 @@ const About = () => {
             </div>
           </div>
         </section>
-
-        {/* Leadership Team Section */}
-<section className="py-20 bg-dark-navy text-white relative overflow-hidden">
-  <div className="absolute inset-0 opacity-5">
-    <div
-      className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-      style={{ backgroundImage: `url(${patternBg})` }}
-    ></div>
-  </div>
-  
-  <div className="container-padding max-w-7xl mx-auto relative z-10">
-    <div className="text-center mb-16">
-      <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
-        👥 Leadership Team
-      </div>
-      <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
-        Meet Our <span className="text-sky-blue">Leaders</span>
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
-      <p className="text-lg text-white/80 max-w-3xl mx-auto">
-        Our dedicated leadership team brings decades of experience in mental health advocacy, 
-        community development, and program management.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {leadershipTeam.map((leader, index) => (
-        <div 
-          key={index}
-          className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
-        >
-          {/* Image container with fixed aspect ratio */}
-          <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
-            <img 
-              src={leader.image} 
-              alt={leader.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-              <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="flex space-x-2 justify-center">
-                  <a 
-                    href={`mailto:${leader.social.email}`}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.1s' }}
-                    aria-label="Email"
-                  >
-                    <Mail className="w-4 h-4" />
-                  </a>
-                  <a 
-                    href={leader.social.linkedin}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.2s' }}
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                  <a 
-                    href={leader.social.twitter}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.3s' }}
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Content */}
-          <div className="flex flex-col flex-grow">
-            <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
-            <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
-            <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    {/* View All Button for Mobile */}
-    <div className="mt-12 text-center md:hidden">
-      <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-        View All Team Members
-      </Button>
-    </div>
-  </div>
-</section>
 
         {/* Mission & Vision */}
         <section className="py-20 bg-gradient-to-br from-white to-sky-blue-light/20 relative overflow-hidden">
@@ -654,10 +666,7 @@ const About = () => {
               <Button variant="secondary" size="lg" className="bg-white text-dark-navy hover:bg-gray-100">
                 Volunteer With Us
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                Make a Donation
-              </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-white text-dark-navy hover:bg-white/10">
                 Partner With Us
               </Button>
             </div>

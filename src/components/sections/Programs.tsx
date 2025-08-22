@@ -135,10 +135,6 @@ const Programs = () => {
                   <h3 className="text-2xl lg:text-3xl font-bold">{event.title}</h3>
                 </div>
                 <p className="text-lg opacity-90 mb-6 max-w-2xl">{event.description}</p>
-                <Button className="bg-white text-gray-900 hover:bg-gray-100">
-                  View Event Details
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
               </div>
             </div>
           ))}
@@ -186,10 +182,6 @@ const Programs = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button variant="outline" className="group w-full">
-                      Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
                   </CardContent>
                 </div>
               </div>

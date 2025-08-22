@@ -19,6 +19,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -34,7 +39,7 @@ const Navbar = () => {
   // Determine text color based on background state and page
   const textColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
   const logoTextColorClass = !isHomePage ? "text-sky-blue" : (scrolled ? "text-sky-blue" : "text-white");
-  const mobileMenuBgClass = !isHomePage ? "bg-white" : (scrolled ? "bg-white" : "bg-gray-900/95 backdrop-blur-md");
+  const mobileMenuBgClass = !isHomePage ? "bg-white" : (scrolled ? "bg-white" : "bg-gray-900/98 backdrop-blur-lg");
   const mobileLinkColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
   const menuButtonColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
 
@@ -92,45 +97,69 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${menuButtonColorClass}`}
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6 transform transition-transform duration-300 rotate-90" />
+              ) : (
+                <Menu className="w-6 h-6 transform transition-transform duration-300" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        <div className={`lg:hidden fixed inset-x-0 top-16 z-40 transition-all duration-500 ease-in-out ${
+          isOpen 
+            ? "opacity-100 translate-y-0 pointer-events-auto" 
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}>
-          <div className={`py-4 space-y-2 ${mobileMenuBgClass}`}>
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:text-brand-pink transform ${
-                  location.pathname === link.path ? "text-brand-pink bg-brand-pink/10" : mobileLinkColorClass
-                } ${isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"}`}
-                style={{ 
-                  animationDelay: `${index * 50}ms`,
-                  transitionDelay: isOpen ? `${index * 50}ms` : "0ms"
-                }}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="px-4 pt-4">
-              <Button 
-                variant="warm" 
-                size="sm" 
-                className="w-full"
-                onClick={() => {
-                  setShowContactPopup(true);
-                  setIsOpen(false);
-                }}
-              >
-                Get Involved
-              </Button>
+          <div className={`${mobileMenuBgClass} shadow-xl rounded-b-xl mx-4 overflow-hidden`}>
+            <div className="py-2 space-y-1">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`flex items-center px-6 py-4 text-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:pl-8 ${
+                    location.pathname === link.path 
+                      ? "text-brand-pink bg-brand-pink/10 border-l-4 border-brand-pink pl-8" 
+                      : `${mobileLinkColorClass} pl-6 border-l-4 border-transparent`
+                  } ${
+                    isOpen 
+                      ? "opacity-100 translate-x-0" 
+                      : "opacity-0 translate-x-4"
+                  }`}
+                  style={{ 
+                    transitionDelay: isOpen ? `${index * 50}ms` : "0ms"
+                  }}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              
+              {/* Divider */}
+              <div className="border-t border-gray-200/30 mx-6 my-2"></div>
+              
+              <div className="px-6 py-4">
+                <Button 
+                  variant="warm" 
+                  size="lg" 
+                  className="w-full py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-shadow"
+                  onClick={() => {
+                    setShowContactPopup(true);
+                    setIsOpen(false);
+                  }}
+                >
+                  Get Involved
+                </Button>
+              </div>
+              
+              {/* Social links or additional info can be added here */}
+              <div className="px-6 py-3 text-center text-sm text-gray-500">
+                Transforming mental health in Kenya
+              </div>
             </div>
           </div>
         </div>
@@ -143,6 +172,14 @@ const Navbar = () => {
         title="Get Involved"
         subtitle="Join our mission to transform mental health in Kenya"
       />
+      
+      {/* Backdrop for mobile menu */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </nav>
   );
 };

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom"; // or "next/link" if using Next.js
 import { TrendingUp, Users, MapPin, Heart, Calendar, Award, ChevronRight, Quote } from "lucide-react";
 
 // Import local images
-import livesTransformedImg from "@/assets/general/v.jpg";
+import livesTransformedImg from "@/assets/general/v23.jpg";
 import communitiesReachedImg from "@/assets/general/v2.jpg";
 import countiesServedImg from "@/assets/general/v3.jpg";
-import yearsFoundedImg from "@/assets/general/v4.jpg";
+import yearsFoundedImg from "@/assets/general/v25.jpg";
 import volunteersActiveImg from "@/assets/general/bg.jpg";
 import programsOfferedImg from "@/assets/general/bg1.jpg";
 import lastingChangeImg from "@/assets/general/v.jpg";
@@ -25,11 +25,11 @@ const Impact = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const targetValues = {
-    livesTransformed: 500,
-    communitiesReached: 20,
-    countiesServed: 10,
-    yearsFounded: 5,
-    volunteersActive: 25,
+    livesTransformed: 1000,
+    communitiesReached: 10,
+    countiesServed: 6,
+    yearsFounded: 3,
+    volunteersActive: 40,
     programsOffered: 8
   };
 

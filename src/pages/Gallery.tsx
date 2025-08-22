@@ -439,7 +439,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
               <div className="flex items-center justify-center space-x-8 text-foreground/60">
                 <div className="flex items-center">
                   <Calendar className="w-5 h-5 mr-2 text-sky-blue" />
-                  <span>2024 Events</span>
+                  <span>2025 Events</span>
                 </div>
                 <div className="flex items-center">
                   <Users className="w-5 h-5 mr-2 text-brand-pink" />
@@ -552,10 +552,10 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {[
-                { value: "32+", label: "Events Organized", color: "text-sky-blue" },
+                { value: "10+", label: "Events Organized", color: "text-sky-blue" },
                 { value: "2000+", label: "Participants Reached", color: "text-brand-pink" },
-                { value: "15", label: "Counties Covered", color: "text-sunshine-yellow" },
-                { value: "100%", label: "Positive Feedback", color: "text-sky-blue" }
+                { value: "6", label: "Counties Covered", color: "text-sunshine-yellow" },
+                { value: "98%", label: "Positive Feedback", color: "text-sky-blue" }
               ].map((stat, index) => (
                 <div 
                   key={index}
