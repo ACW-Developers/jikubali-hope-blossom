@@ -1,12 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
 
 // Import your logo image
-import LogoImage from "@/assets/logos/jikubali.png";
+import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +39,8 @@ const Navbar = () => {
   // Determine text color based on background state and page
   const textColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
   const logoTextColorClass = !isHomePage ? "text-sky-blue" : (scrolled ? "text-sky-blue" : "text-white");
+  const mobileMenuBgClass = !isHomePage ? "bg-white" : (scrolled ? "bg-white" : "bg-gray-900/98 backdrop-blur-lg");
+  const mobileLinkColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
   const menuButtonColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
 
   return (
@@ -95,98 +96,71 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 rounded-xl hover:bg-muted/20 transition-all duration-300 ${menuButtonColorClass} ${
-                isOpen ? 'bg-muted/10' : ''
-              }`}
+              className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${menuButtonColorClass}`}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
-              <div className="relative w-6 h-6 flex items-center justify-center">
-                <Menu className={`w-5 h-5 absolute transition-all duration-300 ${
-                  isOpen ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
-                }`} />
-                <X className={`w-5 h-5 absolute transition-all duration-300 ${
-                  isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
-                }`} />
-              </div>
+              {isOpen ? (
+                <X className="w-6 h-6 transform transition-transform duration-300 rotate-90" />
+              ) : (
+                <Menu className="w-6 h-6 transform transition-transform duration-300" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
-        <div className={`lg:hidden fixed inset-x-0 top-16 z-40 transition-all duration-500 ease-out ${
+        {/* Mobile Navigation */}
+        <div className={`lg:hidden fixed inset-x-0 top-16 z-40 transition-all duration-500 ease-in-out ${
           isOpen 
             ? "opacity-100 translate-y-0 pointer-events-auto" 
-            : "opacity-0 -translate-y-8 pointer-events-none"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}>
-          {/* Enhanced mobile menu container with wave design */}
-          <div className="mx-4 mt-2 bg-white/98 backdrop-blur-xl shadow-2xl rounded-3xl border border-white/20 overflow-hidden">
-            {/* Decorative wave at top */}
-            <div className="w-full h-2 bg-gradient-to-r from-sky-blue via-brand-pink to-sunshine-yellow"></div>
-            
-            <div className="p-2">
+          <div className={`${mobileMenuBgClass} shadow-xl rounded-b-xl mx-4 overflow-hidden`}>
+            <div className="py-2 space-y-1">
               {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`group flex items-center justify-between px-6 py-4 mx-2 my-1 text-lg font-medium rounded-2xl transition-all duration-300 ${
+                  className={`flex items-center px-6 py-4 text-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:pl-8 ${
                     location.pathname === link.path 
-                      ? "text-brand-pink bg-gradient-to-r from-brand-pink/10 via-brand-pink/5 to-transparent border-l-4 border-brand-pink shadow-sm" 
-                      : "text-foreground hover:bg-gradient-to-r hover:from-muted/30 hover:via-muted/10 hover:to-transparent hover:translate-x-2"
+                      ? "text-brand-pink bg-brand-pink/10 border-l-4 border-brand-pink pl-8" 
+                      : `${mobileLinkColorClass} pl-6 border-l-4 border-transparent`
                   } ${
                     isOpen 
                       ? "opacity-100 translate-x-0" 
-                      : "opacity-0 translate-x-8"
+                      : "opacity-0 translate-x-4"
                   }`}
                   style={{ 
-                    transitionDelay: isOpen ? `${index * 80 + 100}ms` : "0ms"
+                    transitionDelay: isOpen ? `${index * 50}ms` : "0ms"
                   }}
                 >
-                  <span className="flex items-center">
-                    {link.name}
-                    {location.pathname === link.path && (
-                      <div className="ml-2 w-2 h-2 bg-brand-pink rounded-full animate-pulse"></div>
-                    )}
-                  </span>
-                  <ChevronDown className={`w-4 h-4 transition-all duration-300 ${
-                    location.pathname === link.path ? 'text-brand-pink rotate-180' : 'text-muted-foreground group-hover:text-brand-pink group-hover:translate-x-1'
-                  }`} />
+                  {link.name}
                 </Link>
               ))}
               
-              {/* Enhanced CTA section */}
-              <div className="mt-4 p-4 bg-gradient-to-br from-muted/20 via-transparent to-brand-pink/5 rounded-2xl border border-muted/20">
+              {/* Divider */}
+              <div className="border-t border-gray-200/30 mx-6 my-2"></div>
+              
+              <div className="px-6 py-4">
                 <Button 
                   variant="warm" 
                   size="lg" 
-                  className="w-full py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-brand-pink to-sky-blue hover:scale-[1.02]"
+                  className="w-full py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-shadow"
                   onClick={() => {
                     setShowContactPopup(true);
                     setIsOpen(false);
                   }}
                 >
-                  <span className="flex items-center justify-center gap-2">
-                    Get Involved
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                  </span>
+                  Get Involved
                 </Button>
-                
-                <div className="mt-3 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Join our mission to transform mental health
-                  </p>
-                  <div className="flex justify-center items-center gap-2 mt-2">
-                    <div className="w-1 h-1 bg-sky-blue rounded-full animate-pulse"></div>
-                    <div className="w-1 h-1 bg-brand-pink rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                    <div className="w-1 h-1 bg-sunshine-yellow rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
-                  </div>
-                </div>
+              </div>
+              
+              {/* Social links or additional info can be added here */}
+              <div className="px-6 py-3 text-center text-sm text-gray-500">
+                Transforming mental health in Kenya
               </div>
             </div>
-            
-            {/* Decorative wave at bottom */}
-            <div className="w-full h-2 bg-gradient-to-r from-sunshine-yellow via-sky-blue to-brand-pink"></div>
           </div>
         </div>
       </div>
@@ -199,10 +173,10 @@ const Navbar = () => {
         subtitle="Join our mission to transform mental health in Kenya"
       />
       
-      {/* Enhanced backdrop for mobile menu */}
+      {/* Backdrop for mobile menu */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/10 backdrop-blur-sm z-30 lg:hidden transition-all duration-500"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

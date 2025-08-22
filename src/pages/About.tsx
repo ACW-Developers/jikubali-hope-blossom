@@ -1,326 +1,680 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  Users,
-  BookOpen,
-  Heart,
-  Megaphone,
-  Lightbulb,
-  ShieldCheck,
-  TrendingUp,
-  UserPlus,
-  Settings,
-  MessageSquare,
-  CalendarCheck,
-  ArrowRight,
-  Award,
-  Flag,
-  Eye,
-  Handshake,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
-
-// Import team member images
-import teamMember1 from "@/assets/team/member1.jpg";
-import teamMember2 from "@/assets/team/member2.jpg";
-import teamMember3 from "@/assets/team/member3.jpg";
-import teamMember4 from "@/assets/team/member4.jpg";
-
-// Import components
+import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote, Mail, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
-import WaveSeparator from "@/components/ui/wave-separator";
+import Footer from "@/components/sections/Footer";
+import { useEffect, useRef, useState } from "react";
+import localImage from "@/assets/general/v21.png"; 
+import bgImage from "@/assets/general/v4.jpg";
+import patternBg from "@/assets/general/v8.jpg";
+import bgImage1 from "@/assets/general/v4.jpg";
+
+// Import leadership images (replace with actual paths)
+import leader1 from "@/assets/team/v21.png";
+import leader2 from "@/assets/team/Brian.jpg";
+import leader3 from "@/assets/team/Jacinta.jpg";
+import leader4 from "@/assets/team/Boniface.jpg";
+import leader5 from "@/assets/team/peris3.png";
+import leader6 from "@/assets/team/Rono.jpg";
+import leader7 from "@/assets/team/Cephas.jpg";
+import leader8 from "@/assets/team/kebabe.jpg";
 
 const About = () => {
-  const [missionVisible, setMissionVisible] = useState(false);
-  const [valuesVisible, setValuesVisible] = useState(false);
-  const [teamVisible, setTeamVisible] = useState(false);
-  const [impactVisible, setImpactVisible] = useState(false);
+  const [typingIndex, setTypingIndex] = useState(0);
+  const [typingText, setTypingText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  const valuesRef = useRef(null);
+  const statsRef = useRef(null);
+  const [isValuesVisible, setIsValuesVisible] = useState(false);
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
 
+  const values = [
+    {
+      icon: Heart,
+      title: "Compassion",
+      description: "We approach mental health with empathy, understanding, and genuine care for every individual's journey."
+    },
+    {
+      icon: Users,
+      title: "Community",
+      description: "Building strong, supportive networks that foster healing, growth, and lasting connections."
+    },
+    {
+      icon: Target,
+      title: "Purpose",
+      description: "Dedicated to creating meaningful change in mental health awareness and access across Kenya."
+    },
+    {
+      icon: Award,
+      title: "Excellence",
+      description: "Committed to the highest standards in mental health support, education, and community programs."
+    }
+  ];
+
+  const leadershipTeam = [
+  {
+    name: "Lilian Wairimu",
+    position: "Chairperson",
+    image: leader1,
+    bio: "Provides overall leadership and strategic direction for Jikubali Africa's programs.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Brian Kipruto",
+    position: "Secretary General",
+    image: leader2,
+    bio: "Oversees communication, records, and ensures smooth coordination of organizational activities.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Jacinta Omariba",
+    position: "Treasurer",
+    image: leader3,
+    bio: "Manages finances and ensures accountability in all Jikubali Africa projects.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Boniface Masaku",
+    position: "Event Organizer",
+    image: leader4,
+    bio: "Plans and coordinates awareness events and community outreach initiatives.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Peris Mwangi",
+    position: "Project Manager",
+    image: leader5,
+    bio: "Leads implementation of organization activities and empowerment projects.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Hillary Rono",
+    position: "Brand Ambassador",
+    image: leader6,
+    bio: "Represents Jikubali Africa and promotes its mission to wider audiences.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Cephas Koech",
+    position: "Logistic Manager",
+    image: leader7,
+    bio: "Handles logistics to ensure efficient delivery of programs and activities.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  },
+  {
+    name: "Kebabe",
+    position: "Marketing Director",
+    image: leader8,
+    bio: "Leads marketing strategies to expand Jikubali Africa's visibility and impact.",
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      email: "jikubaliafrica@gmail.com"
+    }
+  }
+];
+
+  const typingTexts = [
+    "Jikubali Africa",
+    "Mental Wellness",
+    "Community Support",
+    "Healing & Growth"
+  ];
+
+  // Typing animation effect
+  useEffect(() => {
+    const handleTyping = () => {
+      const current = typingIndex % typingTexts.length;
+      const fullText = typingTexts[current];
+      
+      if (isDeleting) {
+        setTypingText(fullText.substring(0, typingText.length - 1));
+        setTypingSpeed(typingSpeed / 1.5);
+      } else {
+        setTypingText(fullText.substring(0, typingText.length + 1));
+      }
+      
+      if (!isDeleting && typingText === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+        setTypingSpeed(500);
+      } else if (isDeleting && typingText === '') {
+        setIsDeleting(false);
+        setTypingIndex(typingIndex + 1);
+        setTypingSpeed(150);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typingText, isDeleting, typingIndex, typingTexts, typingSpeed]);
+
+  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            switch (entry.target.id) {
-              case "mission":
-                setMissionVisible(true);
-                break;
-              case "values":
-                setValuesVisible(true);
-                break;
-              case "team":
-                setTeamVisible(true);
-                break;
-              case "impact":
-                setImpactVisible(true);
-                break;
-              default:
-                break;
+            if (entry.target.id === "values-section") {
+              setIsValuesVisible(true);
+            } else if (entry.target.id === "stats-section") {
+              setIsStatsVisible(true);
             }
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
 
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
+    if (valuesRef.current) observer.observe(valuesRef.current);
+    if (statsRef.current) observer.observe(statsRef.current);
 
-    return () => observer.disconnect();
+    return () => {
+      if (valuesRef.current) observer.unobserve(valuesRef.current);
+      if (statsRef.current) observer.unobserve(statsRef.current);
+    };
   }, []);
 
-  const teamMembers = [
-    {
-      name: "Akinyi Odongo",
-      title: "Executive Director",
-      image: teamMember1,
-      bio: "Akinyi is a passionate advocate for mental health with over 10 years of experience in community development.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-    {
-      name: "Kamau Mwangi",
-      title: "Programs Manager",
-      image: teamMember2,
-      bio: "Kamau oversees all program development and implementation, ensuring quality and impact.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-    {
-      name: "Fatuma Hassan",
-      title: "Communications Officer",
-      image: teamMember3,
-      bio: "Fatuma manages our communications and outreach, raising awareness about mental health issues.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-    {
-      name: "David Omondi",
-      title: "Counseling Psychologist",
-      image: teamMember4,
-      bio: "David provides counseling services and support to individuals and families in need.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-  ];
-
-  const coreValues = [
-    {
-      name: "Compassion",
-      description:
-        "We approach our work with empathy and understanding, recognizing the inherent worth of every individual.",
-      icon: Heart,
-    },
-    {
-      name: "Integrity",
-      description:
-        "We uphold the highest ethical standards, ensuring transparency and accountability in all our actions.",
-      icon: ShieldCheck,
-    },
-    {
-      name: "Empowerment",
-      description:
-        "We empower individuals to take control of their mental health and well-being, providing them with the tools and resources they need to thrive.",
-      icon: Lightbulb,
-    },
-    {
-      name: "Collaboration",
-      description:
-        "We work collaboratively with partners and stakeholders to create sustainable solutions and maximize our impact.",
-      icon: Handshake,
-    },
-    {
-      name: "Innovation",
-      description:
-        "We embrace innovation and creativity, constantly seeking new and better ways to address the challenges facing our community.",
-      icon: Settings,
-    },
-    {
-      name: "Inclusivity",
-      description:
-        "We are committed to creating a welcoming and inclusive environment for all, regardless of background or identity.",
-      icon: UserPlus,
-    },
-  ];
-
-  const impactStats = [
-    { label: "Individuals Reached", value: "5000+", icon: Users },
-    { label: "Workshops Conducted", value: "200+", icon: BookOpen },
-    { label: "Counseling Sessions", value: "1000+", icon: MessageSquare },
-    { label: "Community Events", value: "50+", icon: CalendarCheck },
-  ];
-
   return (
-    <div className="min-h-screen bg-background pt-20">
-      {/* Hero Section */}
-      <section className="section-spacing bg-gradient-to-br from-sky-blue/10 via-white to-brand-pink/10 relative overflow-hidden">
-        <div className="container-padding max-w-7xl mx-auto text-center relative z-10">
-          {/* Decorative Circle */}
-          <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-sky-blue/20 blur-2xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 transform translate-x-1/2 translate-y-1/2 w-40 h-40 rounded-full bg-brand-pink/20 blur-2xl"></div>
+    <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-sky-blue-light/5 to-brand-pink-light/5"></div>
+        <div className="absolute top-24 right-12 w-44 h-44 bg-brand-pink/10 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-8 w-36 h-36 bg-sunshine-yellow/10 rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-6 w-28 h-28 bg-sky-blue-light/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Floating elements */}
+        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-brand-pink/20 rounded-full animate-float" style={{ animationDelay: '0.5s', animationDuration: '15s' }}></div>
+        <div className="absolute top-1/3 right-1/4 w-6 h-6 bg-sky-blue/20 rounded-full animate-float" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-sunshine-yellow/20 rounded-full animate-float" style={{ animationDelay: '4s', animationDuration: '18s' }}></div>
+      </div>
 
-          <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-foreground">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-sky-blue">Jikubali Africa</span>
-          </h1>
-          <p className="text-foreground/80 text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-            Learn about our mission, vision, and the dedicated team behind Jikubali Africa. We are committed to transforming mental health in Kenya through community-based programs and advocacy.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Button variant="warm" size="lg" className="group">
-              Our Programs
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="cool" size="lg" className="group">
-              Get Involved
-              <UserPlus className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-            </Button>
+      <style>{`
+        @keyframes float {
+          0% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(10deg); }
+          100% { transform: translateY(0) rotate(0deg); }
+        }
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+        .typing-cursor {
+          display: inline-block;
+          margin-left: 2px;
+          width: 3px;
+          background-color: #ec4899;
+          animation: blink 1s infinite;
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .parallax-bg {
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .image-no-bg {
+          mix-blend-mode: multiply;
+          filter: contrast(1.1) brightness(1.1);
+        }
+        @supports (mix-blend-mode: multiply) {
+          .image-no-bg {
+            mix-blend-mode: multiply;
+            background: transparent;
+          }
+        }
+        .leader-card {
+          transition: all 0.3s ease;
+        }
+        .leader-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
+
+      <div className="relative z-10">
+        {/* Hero Section with Darker Background */}
+        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+          {/* Much darker background image with overlay */}
+          <div className="absolute inset-0 z-0 parallax-bg">
+            <div 
+              className="absolute inset-0"
+              style={{ 
+                backgroundImage: `url(${bgImage})`,
+                backgroundAttachment: 'fixed',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover'
+              }}
+            ></div>
+            {/* Much darker overlay for better text visibility */}
+            <div className="absolute inset-0 bg-black/70"></div>
           </div>
-        </div>
-      </section>
-
-      <WaveSeparator variant="both" color="primary" height="md" />
-
-      {/* Mission & Vision Section */}
-      <section id="mission" className="section-spacing bg-muted/30">
-        <div className="container-padding max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="font-heading text-3xl lg:text-4xl font-semibold text-foreground">
-              Our <span className="text-brand-pink">Mission</span>
-            </h2>
-            <p className="text-foreground/80 text-lg leading-relaxed">
-              To champion mental wellness, foster self-acceptance, and empower communities across Kenya through sustainable, community-based programs and advocacy.
-            </p>
-            <ul className="list-disc pl-5 space-y-2 text-foreground/90">
-              <li>Provide accessible mental health education and resources.</li>
-              <li>Offer safe and supportive spaces for individuals to share their experiences.</li>
-              <li>Advocate for policies that promote mental health and well-being.</li>
-            </ul>
-            {/* Add animation trigger here if needed */}
-          </div>
-          <div className="space-y-6">
-            <h2 className="font-heading text-3xl lg:text-4xl font-semibold text-foreground">
-              Our <span className="text-sky-blue">Vision</span>
-            </h2>
-            <p className="text-foreground/80 text-lg leading-relaxed">
-              To create a Kenya where mental wellness is valued, stigma is eliminated, and every individual has the opportunity to reach their full potential.
-            </p>
-            <ul className="list-disc pl-5 space-y-2 text-foreground/90">
-              <li>A society that embraces mental health as a fundamental human right.</li>
-              <li>Communities equipped to support individuals facing mental health challenges.</li>
-              <li>A future where every Kenyan has access to quality mental healthcare.</li>
-            </ul>
-            {/* Add animation trigger here if needed */}
-          </div>
-        </div>
-      </section>
-
-      <WaveSeparator variant="both" color="secondary" height="lg" />
-
-      {/* Core Values Section */}
-      <section id="values" className="section-spacing bg-gradient-to-br from-brand-pink/5 to-sky-blue/5">
-        <div className="container-padding max-w-7xl mx-auto text-center">
-          <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-8 text-foreground">
-            Our Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-brand-pink">Values</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreValues.map((value, index) => (
-              <div
-                key={index}
-                className="p-6 bg-white/5 backdrop-blur-sm rounded-2xl shadow-soft hover:shadow-warm transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-8 h-8 text-foreground" />
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24  mt-4 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="animate-fade-up text-white">
+                <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  ✨ Empowering Mental Wellness Since 2020
                 </div>
-                <h3 className="font-heading text-xl font-semibold mb-2 text-foreground">{value.name}</h3>
-                <p className="text-foreground/70 text-sm leading-relaxed">{value.description}</p>
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                  About <span className="text-brand-pink">Jikubali</span>
+                </h1>
+                <div className="h-12 mb-6">
+                  <span className="text-lg lg:text-xl bg-white/10 backdrop-blur-sm p-2 rounded-lg">
+                    Championing <span className="text-brand-pink font-semibold">{typingText}</span>
+                    <span className="typing-cursor h-6 align-middle"></span>
+                  </span>
+                </div>
+                <p className="text-lg lg:text-xl text-white/90 mb-8 leading-relaxed backdrop-blur-sm bg-black/10 p-4 rounded-lg">
+                  Founded with a vision to transform mental health care in Kenya, Jikubali Africa 
+                  champions self-acceptance, empowerment, and community support for all.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button variant="warm" size="lg" className="group">
+                    Join Our Mission
+                    <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+                    <Play className="mr-2 h-4 w-4" />
+                    Watch Our Story
+                  </Button>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <WaveSeparator variant="both" color="accent" height="md" flip />
-
-      {/* Team Section */}
-      <section id="team" className="section-spacing bg-muted/20">
-        <div className="container-padding max-w-7xl mx-auto">
-          <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-12 text-center text-foreground">
-            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-sky-blue">Team</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-soft hover:shadow-warm transition-all duration-300 overflow-hidden"
-              >
-                <img src={member.image} alt={member.name} className="w-full h-56 object-cover object-center" />
-                <div className="p-6 space-y-3">
-                  <h3 className="font-heading text-xl font-semibold text-foreground">{member.name}</h3>
-                  <p className="text-foreground/70 text-sm">{member.title}</p>
-                  <p className="text-foreground/80 text-sm leading-relaxed">{member.bio}</p>
-                  <div className="flex justify-start gap-4">
-                    {member.social.linkedin && (
-                      <a href={member.social.linkedin} className="text-sky-blue hover:text-brand-pink transition-colors">
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                    )}
-                    {member.social.twitter && (
-                      <a href={member.social.twitter} className="text-sky-blue hover:text-brand-pink transition-colors">
-                        <Twitter className="w-5 h-5" />
-                      </a>
-                    )}
+              
+              {/* Modified image section */}
+              <div className="animate-fade-up relative" style={{ animationDelay: '0.2s' }}>
+                <div className="absolute -inset-4 bg-gradient-to-r from-sky-blue to-brand-pink rounded-3xl opacity-30 blur-2xl animate-pulse"></div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-700 bg-transparent">
+                  {/* Container to control size and remove background */}
+                  <div className="w-4/5 mx-auto bg-transparent">
+                    <img 
+                      src={localImage} 
+                      alt="Community mental health support session"
+                      className="w-full h-full object-contain drop-shadow-2xl image-no-bg"
+                      style={{ 
+                        filter: 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3)) brightness(1.1) contrast(1.2)',
+                        backgroundColor: 'transparent'
+                      }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
+                    <div className="p-6 text-white">
+                      <div className="flex items-center mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-sunshine-yellow text-sunshine-yellow" />
+                        ))}
+                        <span className="ml-2 text-sm">5.0 /5.0</span>
+                      </div>
+                      <p className="text-sm">"Jikubali changed my perspective on mental health" - Wairimu L.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <WaveSeparator variant="both" color="muted" height="lg" />
-
-      {/* Impact Section */}
-      <section id="impact" className="section-spacing bg-gradient-to-r from-sky-blue/10 to-brand-pink/10">
-        <div className="container-padding max-w-7xl mx-auto text-center">
-          <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-8 text-foreground">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-sky-blue">Impact</span>
-          </h2>
-          <p className="text-foreground/80 text-lg max-w-3xl mx-auto leading-relaxed mb-12">
-            Since our founding, we have been dedicated to making a measurable difference in the lives of individuals and communities across Kenya. Here are some of our key achievements:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {impactStats.map((stat, index) => (
-              <div
-                key={index}
-                className="p-6 bg-white/5 backdrop-blur-sm rounded-2xl shadow-soft hover:shadow-warm transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="font-heading text-2xl font-bold mb-2 text-foreground">{stat.value}</h3>
-                <p className="text-foreground/70 text-sm uppercase tracking-wider">{stat.label}</p>
+        {/* Our Story */}
+        <section className="py-20 bg-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-sky-blue-light/30 to-transparent"></div>
+          
+          <div className="container-padding max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-sky-blue/10 text-sky-blue px-4 py-2 rounded-full text-sm font-medium mb-6">
+                📖 Our Journey
               </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Button variant="warm" size="lg" className="group">
-              View Our Full Impact Report
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </div>
-      </section>
+              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+                Our <span className="text-brand-pink">Story</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-sky-blue to-brand-pink mx-auto mb-8 rounded-full"></div>
+              <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+                Jikubali Africa was born from a deep understanding that mental health is not a luxury, 
+                but a fundamental human right that should be accessible to all Kenyans.
+              </p>
+            </div>
 
-      <WaveSeparator variant="top" color="primary" height="md" />
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+              <div className="animate-fade-up">
+                <h3 className="font-heading text-2xl font-bold mb-6 text-brand-pink">
+                  The Beginning
+                </h3>
+                <p className="text-foreground/80 leading-relaxed mb-6">
+                  In 2020, our founders recognized a critical gap in mental health services across Kenya. 
+                  Traditional barriers—stigma, cost, and accessibility—were preventing millions from 
+                  receiving the support they needed.
+                </p>
+                <p className="text-foreground/80 leading-relaxed mb-6">
+                  What started as community conversations in Nairobi has grown into a nationwide movement, 
+                  reaching over 50 communities and transforming hundreds of lives through innovative 
+                  programs and genuine human connection.
+                </p>
+                <div className="flex items-center gap-4 p-4 bg-sky-blue-light/10 rounded-xl">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-blue to-brand-pink rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">JA</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Founded with Purpose</div>
+                    <div className="text-sm text-foreground/60">Driven by community need</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div 
+                id="stats-section"
+                ref={statsRef}
+                className="grid grid-cols-2 gap-6"
+              >
+                {[
+                  { value: "5,000+", label: "Lives Touched", color: "sky-blue", delay: 0 },
+                  { value: "6", label: "Counties Served", color: "brand-pink", delay: 0.1 },
+                  { value: "10+", label: "Community Partners", color: "sunshine-yellow", delay: 0.2 },
+                  { value: "24/7", label: "Support", color: "dark-navy", delay: 0.3 }
+                ].map((stat, index) => (
+                  <div 
+                    key={stat.label}
+                    className={`bg-white backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg hover-lift border border-gray-100 transition-all duration-500 transform ${
+                      isStatsVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ 
+                      transitionDelay: `${stat.delay}s`,
+                      borderLeft: `4px solid var(--${stat.color})`
+                    }}
+                  >
+                    <div className={`text-4xl font-bold text-${stat.color} mb-2`}>
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-foreground/60 font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Timeline */}
+            <div className="relative mt-24">
+              {/* Lifeline - Centered on large screens, left-aligned on small screens */}
+              <div className="absolute left-1/2 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-blue to-brand-pink
+                              sm:left-6 sm:transform-none"></div>
+              
+              {[
+                { year: "2022", title: "Foundation", desc: "Jikubali Africa founded in response to mental health gap" },
+                { year: "2022", title: "Expansion", desc: "Programs expanded to 3 additional counties" },
+                { year: "2023", title: "Recognition", desc: "Received national award for community mental health work" },
+                { year: "2024", title: "Growth", desc: "Reached 5,000+ individuals with mental health support" },
+                { year: "2025", title: "Innovation", desc: "Launched digital platform for wider accessibility" },
+              ].map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`mb-12 flex flex-col md:flex-row items-start ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                >
+                  {/* Content Card - Full width on mobile, half on desktop */}
+                  <div className="w-full md:w-1/2 flex justify-center md:justify-end mb-4 md:mb-0
+                                  md:pl-8 md:pr-8 order-2 md:order-none">
+                    <div className={`w-full max-w-md p-6 rounded-2xl shadow-lg bg-white border-l-4 ${
+                      index % 4 === 0 ? 'border-sky-blue' : 
+                      index % 4 === 1 ? 'border-brand-pink' : 
+                      index % 4 === 2 ? 'border-sunshine-yellow' : 'border-dark-navy'
+                    }`}>
+                      <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                      <p className="text-foreground/70 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline dot and year */}
+                  <div className="flex justify-start md:justify-center w-full md:w-1/2 relative order-1 md:order-none
+                                  pl-8 md:pl-0">
+                    <div className="flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-white border-4 border-brand-pink z-10 mr-4 md:mr-0"></div>
+                      <div className="text-lg font-bold text-foreground/80 md:absolute md:top-8 md:left-1/2 md:transform md:-translate-x-1/2
+                                      block md:hidden">
+                        {item.year}
+                      </div>
+                    </div>
+                    {/* Year for desktop */}
+                    <div className="absolute text-lg font-bold text-foreground/80 top-8 left-1/2 transform -translate-x-1/2
+                                    hidden md:block">
+                      {item.year}
+                    </div>
+                  </div>
+                  
+                  {/* Spacer for desktop layout */}
+                  <div className="md:w-1/2 hidden md:block"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership Team Section - MOVED ABOVE VALUES */}
+        <section className="py-20 bg-dark-navy text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${patternBg})` }}
+            ></div>
+          </div>
+          
+          <div className="container-padding max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
+                👥 Leadership Team
+              </div>
+              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+                Meet Our <span className="text-sky-blue">Leaders</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
+              <p className="text-lg text-white/80 max-w-3xl mx-auto">
+                Our dedicated leadership team brings decades of experience in mental health advocacy, 
+                community development, and program management.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {leadershipTeam.map((leader, index) => (
+                <div 
+                  key={index}
+                  className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
+                >
+                  {/* Image container with fixed aspect ratio */}
+                  <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div className="flex space-x-2 justify-center">
+                          <a 
+                            href={`mailto:${leader.social.email}`}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.1s' }}
+                            aria-label="Email"
+                          >
+                            <Mail className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.linkedin}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.2s' }}
+                            aria-label="LinkedIn"
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.twitter}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.3s' }}
+                            aria-label="Twitter"
+                          >
+                            <Twitter className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
+                    <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Values - MOVED BELOW LEADERSHIP */}
+        <section className="py-20 bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/10 relative overflow-hidden">
+          <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>
+          
+          <div className="container-padding max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-brand-pink/10 text-brand-pink px-4 py-2 rounded-full text-sm font-medium mb-6">
+                💎 Core Values
+              </div>
+              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+                Our <span className="text-sky-blue">Values</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sunshine-yellow mx-auto mb-8 rounded-full"></div>
+              <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+                These core principles guide everything we do, from community outreach to individual support sessions.
+              </p>
+            </div>
+
+            <div 
+              id="values-section"
+              ref={valuesRef} 
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            >
+              {values.map((value, index) => {
+                const colors = ['sky-blue', 'brand-pink', 'sunshine-yellow', 'dark-navy'];
+                const colorClass = colors[index];
+                
+                return (
+                  <div 
+                    key={value.title}
+                    className={`text-center bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-lg border-0 hover-lift transition-all duration-700 transform ${
+                      isValuesVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${index * 0.1}s` }}
+                  >
+                    <div className={`w-20 h-20 ${
+                      colorClass === 'sky-blue' ? 'bg-sky-blue' :
+                      colorClass === 'brand-pink' ? 'bg-brand-pink' :
+                      colorClass === 'sunshine-yellow' ? 'bg-sunshine-yellow' :
+                      'bg-dark-navy'
+                    } rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg transform transition-transform duration-500 group-hover:scale-110 hover:scale-110`}>
+                      <value.icon className={`w-10 h-10 ${colorClass === 'sunshine-yellow' ? 'text-dark-navy' : 'text-white'}`} />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold mb-4 text-foreground">{value.title}</h3>
+                    <p className="text-foreground/70 leading-relaxed">{value.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision */}
+        <section className="py-20 bg-gradient-to-br from-white to-sky-blue-light/20 relative overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-brand-pink/5 rounded-full"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-sky-blue/5 rounded-full"></div>
+          
+          <div className="container-padding max-w-6xl mx-auto relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12">
+              <div className="animate-slide-in p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
+                <div className="w-16 h-16 bg-brand-pink/10 rounded-2xl flex items-center justify-center mb-6">
+                  <Target className="w-8 h-8 text-brand-pink" />
+                </div>
+                <h3 className="font-heading text-3xl font-bold mb-6 text-brand-pink">Our Mission</h3>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                  To champion mental health awareness, provide accessible support services, and create 
+                  empowering communities where every individual can embrace their authentic self and thrive.
+                </p>
+                <p className="text-foreground/80">
+                  We believe that mental wellness is not a destination but a journey—one that should be 
+                  supported with compassion, understanding, and evidence-based care.
+                </p>
+              </div>
+              <div className="animate-fade-up p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg" style={{ animationDelay: '0.2s' }}>
+                <div className="w-16 h-16 bg-sky-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                  <Award className="w-8 h-8 text-sky-blue" />
+                </div>
+                <h3 className="font-heading text-3xl font-bold mb-6 text-sky-blue">Our Vision</h3>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                  A Kenya where mental health stigma is eliminated, support is universally accessible, 
+                  and every individual has the tools and community they need to flourish.
+                </p>
+                <p className="text-foreground/80">
+                  We envision thriving communities where mental wellness is prioritized, celebrated, 
+                  and integrated into the fabric of daily life.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-sky-blue to-brand-pink text-white text-center relative overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: `url(${bgImage1})` }}
+          ></div>          
+          <div className="container-padding max-w-4xl mx-auto relative z-10">
+            <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+              Join Us in Making a Difference
+            </h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Together, we can create a Kenya where mental health is prioritized and everyone has access to the support they need.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="secondary" size="lg" className="bg-white text-dark-navy hover:bg-gray-100">
+                Volunteer With Us
+              </Button>
+              <Button variant="outline" size="lg" className="border-white text-dark-navy hover:bg-white/10">
+                Partner With Us
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
     </div>
   );
 };
