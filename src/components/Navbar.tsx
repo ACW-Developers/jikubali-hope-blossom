@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Home, Info, BookOpen, Image, Phone, Users } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
-
-// Import your logo image
-import LogoImage from "@/assets/logos/jikubali.png"; // replace with your actual logo path
+import LogoImage from "@/assets/logos/jikubali.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,15 +43,27 @@ const Navbar = () => {
     { name: "Contact", path: "/contact", icon: <Phone size={16} /> },
   ];
 
-  // Check if current page is home
   const isHomePage = location.pathname === "/";
   
-  // Determine text color based on background state and page
-  const textColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
-  const logoTextColorClass = !isHomePage ? "text-sky-blue" : (scrolled ? "text-sky-blue" : "text-white");
-  const mobileMenuBgClass = !isHomePage ? "bg-white" : (scrolled ? "bg-white" : "bg-gray-900/98 backdrop-blur-lg");
-  const mobileLinkColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
-  const menuButtonColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
+  const textColorClass = !isHomePage 
+    ? "text-foreground" 
+    : (scrolled ? "text-foreground" : "text-white");
+  
+  const logoTextColorClass = !isHomePage 
+    ? "text-sky-blue" 
+    : (scrolled ? "text-sky-blue" : "text-white");
+  
+  const mobileMenuBgClass = !isHomePage 
+    ? "bg-background/95 backdrop-blur-md" 
+    : (scrolled ? "bg-background/95 backdrop-blur-md" : "bg-background/95 backdrop-blur-lg");
+  
+  const mobileLinkColorClass = !isHomePage 
+    ? "text-foreground" 
+    : (scrolled ? "text-foreground" : "text-foreground");
+  
+  const menuButtonColorClass = !isHomePage 
+    ? "text-foreground" 
+    : (scrolled ? "text-foreground" : "text-white");
 
   return (
     <nav
@@ -63,11 +73,11 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10">
+          {/* Logo - Left Side */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
               <img
                 src={LogoImage}
                 alt="Jikubali Africa Logo"
@@ -106,12 +116,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          {/* Right Side - CTA Button & Mobile Menu Button */}
+          <div className="flex items-center gap-4">
             <Button
               variant="warm"
               size="sm"
-              className="hidden lg:flex animate-fade-up"
+              className="hidden lg:flex"
               onClick={() => setShowContactPopup(true)}
             >
               Get Involved
@@ -120,28 +130,28 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 ${menuButtonColorClass}`}
+              className={`lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors duration-200 ${menuButtonColorClass}`}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
               {isOpen ? (
-                <X className="w-6 h-6 transform transition-transform duration-300 rotate-90" />
+                <X className="w-6 h-6 transition-transform duration-300" />
               ) : (
-                <Menu className="w-6 h-6 transform transition-transform duration-300" />
+                <Menu className="w-6 h-6 transition-transform duration-300" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation (floating dropdown) */}
+        {/* Mobile Navigation */}
         <div
           ref={menuRef}
-          className={`lg:hidden absolute right-4 top-16 z-40 transition-all duration-300 ${
+          className={`lg:hidden absolute right-4 top-full mt-2 z-40 transition-all duration-300 ${
             isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
           }`}
         >
           <div
-            className={`${mobileMenuBgClass} shadow-xl rounded-2xl w-60 overflow-hidden`}
+            className={`${mobileMenuBgClass} shadow-xl rounded-2xl w-64 overflow-hidden border border-border/20`}
           >
             <div className="py-2">
               {navLinks.map((link, index) => (
