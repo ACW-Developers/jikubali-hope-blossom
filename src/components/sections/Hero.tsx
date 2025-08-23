@@ -217,7 +217,7 @@ const Hero = () => {
 <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
   {/* Small devices */}
   <p className="text-lg sm:hidden text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
-    Advocating for mental wellness, self-love and acceptance for everyone.
+    Advocating mental well-being through the power of self-love and acceptance, inspiring growth and positive change.
   </p>
 
   {/* Medium and larger devices */}
