@@ -4,22 +4,21 @@ import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
 
 // Import event images
-import communityEvent1 from "@/assets/events/community-event-1.jpg";
-import workshopSession from "@/assets/events/workshop-session.jpg";
-import youthCampaign from "@/assets/events/youth-campaign.jpg";
-import familyTherapy from "@/assets/events/family-therapy.jpg";
-import healthFair from "@/assets/events/health-fair.jpg";
-import meditationSession from "@/assets/events/meditation-session.jpg";
+import communityEvent1 from "@/assets/general/v28.jpg";
+import workshopSession from "@/assets/general/v23.jpg";
+import youthCampaign from "@/assets/general/v24.jpg";
+import familyTherapy from "@/assets/general/v25.jpg";
+import healthFair from "@/assets/general/v26.jpg";
+import meditationSession from "@/assets/general/v27.jpg";
 import F from "@/assets/events/F.jpg";
 import F1 from "@/assets/events/F1.jpg";
-import F2 from "@/assets/events/F2.jpg";
+import F2 from "@/assets/general/bg1.jpg";
 import F3 from "@/assets/events/F3.jpg";
 import F4 from "@/assets/events/F4.jpg";
 import F5 from "@/assets/events/F5.jpg";
 import F7 from "@/assets/events/F7.jpg";
 import F8 from "@/assets/events/F8.jpg";
-import F9 from "@/assets/events/F9.jpg";
-import F10 from "@/assets/events/F10.jpg";
+
 
 // Import v series images
 import v from "@/assets/general/v.jpg";
@@ -59,318 +58,337 @@ const Gallery = () => {
 const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   const galleryItems = [
-    {
-      id: 1,
-      title: "Community Mental Health Awareness Event",
-      category: "community",
-      date: "March 2024",
-      location: "Nairobi",
-      participants: "200+",
-      image: communityEvent1,
-      description: "Our largest community outreach event bringing together families, healthcare providers, and mental health advocates to break stigma and promote awareness."
-    },
-    {
-      id: 2,
-      title: "Peer Support Workshop",
-      category: "workshops",
-      date: "February 2024",
-      location: "Mombasa",
-      participants: "45",
-      image: workshopSession,
-      description: "Interactive workshop focusing on peer-to-peer support techniques and building resilient community networks."
-    },
-    {
-      id: 3,
-      title: "Youth Mental Health Campaign",
-      category: "youth",
-      date: "January 2024",
-      location: "Kisumu",
-      participants: "150+",
-      image: youthCampaign,
-      description: "Engaging young people in conversations about mental health, featuring interactive activities and youth-led discussions."
-    },
-    {
-      id: 4,
-      title: "Family Therapy Session",
-      category: "therapy",
-      date: "March 2024",
-      location: "Nairobi Center",
-      participants: "8 families",
-      image: familyTherapy,
-      description: "Group family therapy session helping families develop better communication and support systems."
-    },
-    {
-      id: 5,
-      title: "Community Health Fair",
-      category: "community",
-      date: "February 2024",
-      location: "Nakuru",
-      participants: "300+",
-      image: healthFair,
-      description: "Health fair offering free mental health screenings, resources, and connecting community members with support services."
-    },
-    {
-      id: 6,
-      title: "Mindfulness & Meditation Session",
-      category: "wellness",
-      date: "March 2024",
-      location: "Nairobi Park",
-      participants: "75",
-      image: meditationSession,
-      description: "Outdoor meditation session teaching mindfulness techniques and stress management strategies."
-    },
-    {
-      id: 7,
-      title: "Support Group Meeting",
-      category: "support",
-      date: "February 2024",
-      location: "Eldoret",
-      participants: "25",
-      image: F,
-      description: "Weekly support group providing safe space for sharing experiences and building community connections."
-    },
-    {
-      id: 8,
-      title: "Mental Health Training for Educators",
-      category: "workshops",
-      date: "January 2024",
-      location: "Nairobi",
-      participants: "60 teachers",
-      image: F1,
-      description: "Professional development workshop training educators to recognize and support student mental health needs."
-    },
-    {
-      id: 9,
-      title: "Crisis Intervention Training",
-      category: "training",
-      date: "March 2024",
-      location: "Mombasa",
-      participants: "40 volunteers",
-      image: F2,
-      description: "Intensive training session for volunteer crisis counselors and community first responders."
-    },
-    {
-      id: 10,
-      title: "Art Therapy Workshop",
-      category: "wellness",
-      date: "February 2024",
-      location: "Nairobi",
-      participants: "30",
-      image: F3,
-      description: "Creative healing session using art as therapeutic expression and emotional processing tool."
-    },
-    {
-      id: 11,
-      title: "Women's Mental Health Forum",
-      category: "community",
-      date: "January 2024",
-      location: "Kisumu",
-      participants: "80 women",
-      image: F4,
-      description: "Empowering forum addressing women-specific mental health challenges and building support networks."
-    },
-    {
-      id: 12,
-      title: "School Mental Health Program Launch",
-      category: "youth",
-      date: "March 2024",
-      location: "Thika",
-      participants: "500 students",
-      image: F5,
-      description: "Launch event for comprehensive school-based mental health program reaching students across five schools."
-    },
-    // Additional items using v series images
-    {
-      id: 13,
-      title: "Community Outreach Program",
-      category: "community",
-      date: "April 2024",
-      location: "Nairobi Slums",
-      participants: "150+",
-      image: v,
-      description: "Bringing mental health services to underserved communities through mobile clinics and outreach programs."
-    },
-    {
-      id: 14,
-      title: "Teen Mental Health Workshop",
-      category: "youth",
-      date: "April 2024",
-      location: "Kibera",
-      participants: "75 teens",
-      image: v2,
-      description: "Specialized workshop addressing mental health challenges faced by teenagers in urban settings."
-    },
-    {
-      id: 15,
-      title: "Trauma Healing Session",
-      category: "therapy",
-      date: "March 2024",
-      location: "Nairobi Center",
-      participants: "12 survivors",
-      image: v3,
-      description: "Specialized therapy session focused on trauma recovery and building resilience."
-    },
-    {
-      id: 16,
-      title: "Corporate Wellness Program",
-      category: "workshops",
-      date: "April 2024",
-      location: "Westlands",
-      participants: "35 professionals",
-      image: v4,
-      description: "Workplace mental health initiative helping employees manage stress and maintain work-life balance."
-    },
-    {
-      id: 17,
-      title: "Community Garden Therapy",
-      category: "wellness",
-      date: "March 2024",
-      location: "Karen",
-      participants: "20 members",
-      image: v5,
-      description: "Therapeutic gardening program combining nature therapy with group support sessions."
-    },
-    {
-      id: 18,
-      title: "Peer Counselor Training",
-      category: "training",
-      date: "April 2024",
-      location: "Nairobi",
-      participants: "25 trainees",
-      image: v6,
-      description: "Intensive training program for community members to become certified peer mental health counselors."
-    },
-    {
-      id: 19,
-      title: "Mental Health Awareness March",
-      category: "community",
-      date: "May 2024",
-      location: "City Center",
-      participants: "500+",
-      image: v7,
-      description: "Annual awareness march through the city center to break stigma and promote mental health resources."
-    },
-    {
-      id: 20,
-      title: "Youth Art Exhibition",
-      category: "youth",
-      date: "April 2024",
-      location: "National Museum",
-      participants: "200+ visitors",
-      image: v8,
-      description: "Exhibition showcasing artwork created by youth participants in our art therapy programs."
-    },
-    {
-      id: 21,
-      title: "Family Support Day",
-      category: "therapy",
-      date: "May 2024",
-      location: "Uhuru Park",
-      participants: "40 families",
-      image: v9,
-      description: "Day-long event offering family counseling, activities, and resources for mental wellness."
-    },
-    {
-      id: 22,
-      title: "Mindfulness Retreat",
-      category: "wellness",
-      date: "April 2024",
-      location: "Limuru",
-      participants: "30 participants",
-      image: v10,
-      description: "Weekend retreat focused on meditation, yoga, and mindfulness practices for stress reduction."
-    },
-    {
-      id: 23,
-      title: "Community Leaders Training",
-      category: "training",
-      date: "May 2024",
-      location: "Nairobi",
-      participants: "50 leaders",
-      image: v11,
-      description: "Training program for community leaders to recognize and address mental health issues in their communities."
-    },
-    {
-      id: 24,
-      title: "School Counselor Workshop",
-      category: "workshops",
-      date: "April 2024",
-      location: "Thika",
-      participants: "45 counselors",
-      image: v12,
-      description: "Professional development for school counselors on contemporary youth mental health challenges."
-    },
-    {
-      id: 25,
-      title: "Mental Health First Aid Training",
-      category: "training",
-      date: "May 2024",
-      location: "Mombasa",
-      participants: "60 participants",
-      image: v13,
-      description: "Certification program teaching community members how to provide mental health first aid."
-    },
-    {
-      id: 26,
-      title: "Community Dialogue Session",
-      category: "community",
-      date: "April 2024",
-      location: "Eastleigh",
-      participants: "80 residents",
-      image: v14,
-      description: "Open forum discussion about mental health challenges and solutions in the community."
-    },
-    {
-      id: 27,
-      title: "Youth Sports Therapy",
-      category: "youth",
-      date: "May 2024",
-      location: "Kasarani",
-      participants: "50 youth",
-      image: v15,
-      description: "Sports-based therapy program using physical activity to promote mental wellness and teamwork."
-    },
-    {
-      id: 28,
-      title: "Creative Writing Workshop",
-      category: "wellness",
-      date: "April 2024",
-      location: "Nairobi Library",
-      participants: "25 writers",
-      image: v16,
-      description: "Therapeutic writing workshop helping participants process emotions through creative expression."
-    },
-    {
-      id: 29,
-      title: "Parent Support Group",
-      category: "therapy",
-      date: "May 2024",
-      location: "Karen",
-      participants: "15 parents",
-      image: v17,
-      description: "Support group for parents navigating mental health challenges with their children."
-    },
-    {
-      id: 30,
-      title: "Community Resource Fair",
-      category: "community",
-      date: "April 2024",
-      location: "Kawangware",
-      participants: "300+",
-      image: v18,
-      description: "Resource fair connecting community members with mental health services and support organizations."
-    },
-    {
-      id: 31,
-      title: "Yoga for Mental Health",
-      category: "wellness",
-      date: "May 2024",
-      location: "Karura Forest",
-      participants: "40 participants",
-      image: v19,
-      description: "Outdoor yoga sessions specifically designed to reduce anxiety and improve mental wellbeing."
-    },
-  ];
+  {
+    id: 1,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: communityEvent1,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 2,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: workshopSession,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 3,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: youthCampaign,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 4,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: familyTherapy,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 5,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: healthFair,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 6,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: meditationSession,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 7,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 8,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F1,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 9,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F2,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 10,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F3,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 11,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F4,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 12,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F5,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 13,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 14,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v2,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 15,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v3,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 16,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v4,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 17,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v5,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 18,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v6,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 19,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v7,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 20,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v8,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 21,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v9,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 22,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v10,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 23,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v11,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 24,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v12,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 25,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v13,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 26,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v14,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 27,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v15,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 28,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v16,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 29,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v17,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 30,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v18,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 31,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: v19,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 32,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F7,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  },
+  {
+    id: 33,
+    title: "Jikubali Africa Program",
+    category: "Event",
+    date: null,
+    location: "Kisii University",
+    participants: "100+",
+    image: F8,
+    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+  }
+]
 
   const categories = [
     { id: "all", name: "All Events", count: galleryItems.length },

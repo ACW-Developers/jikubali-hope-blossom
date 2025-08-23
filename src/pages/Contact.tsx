@@ -460,7 +460,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="md:w-3/5 p-8 flex flex-col justify-center">
-                  <h3 className="font-heading text-2xl font-bold mb-2 text-gray-800">Mr. Amos Clinton</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-2 text-gray-800">ACW_developer</h3>
                   <p className="text-purple-600 font-medium mb-4">Software Developer</p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
   With extensive experience in web development and digital solutions, 
@@ -478,9 +478,15 @@ const Contact = () => {
                       <span>8:00 AM - 8:00 PM</span>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="mt-6 w-fit border-blue-500 text-blue-600 hover:bg-blue-50">
-                    Schedule Consultation
-                  </Button>
+                  <Button 
+  variant="outline" 
+  size="sm" 
+  className="mt-6 w-fit border-blue-500 text-blue-600 hover:bg-blue-50"
+  onClick={() => window.open("https://clinton.miteexplorers.com", "_blank")}
+>
+  Schedule Consultation
+</Button>
+
                 </div>
               </div>
             </div>
