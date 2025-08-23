@@ -252,7 +252,7 @@ const About = () => {
                   </h3>
                 </div>
                 <p className="leading-relaxed opacity-95">
-                  "A Kenya where mental health is understood, supported, and
+                  "A world where mental health is understood, supported, and
                   celebrated. Where every individual has access to resources,
                   community, and the tools they need to live authentically and
                   thrive completely."
