@@ -287,114 +287,103 @@ const Contact = () => {
 
       <div className="relative z-10">
         {/* Enhanced Hero Section with Creative Design */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
-          
-          {/* Background image with parallax effect */}
-          <div
-            className="absolute inset-0 z-0 parallax-bg"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${bgImage})`,
-              backgroundPosition: "center 30%",
-            }}
-          ></div>
-          
-          {/* Animated geometric shapes */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-          </div>
-          
-          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="animate-fade-up text-white">
-                {/* Animated badge */}
-                <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 animate-shimmer">
-                  <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
-                  <span>Your Journey to Wellness Starts </span>
-                </div>
-                
-                <h1 className="font-heading text-5xl lg:text-5xl font-bold mb-6 leading-tight">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">Reach Out</span>
-                  <br />
-                  <span className="text-white">We're Listening</span>
-                </h1>
-                
-                {/* Typing animation subheading */}
-                <div className="h-12 mb-8">
-                  <span className="text-xl lg:text-xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
-                    {typingText}
-                    <span className="typing-cursor h-6 align-middle"></span>
-                  </span>
-                </div>
-                
-                <div className="flex items-center space-x-4 mb-8 p-5 bg-gradient-to-r from-blue-500/30 to-purple-500/10 backdrop-blur-lg rounded-xl border border-red-400/30 shadow-lg">
-                  <div className="flex items-center text-white">
-                    <Phone className="w-6 h-6 mr-3" />
-                    <span className="font-bold text-lg">Hotline: +254 700 000 000</span>
-                  </div>
-                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse-glow"></div>
-                  <span className="text-sm text-white/80">24/7 Availability</span>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
+        <section className="min-h-screen flex items-center relative overflow-hidden">
+  {/* Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
 
-                  
-                  <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm">
-                    <Users className="mr-3 h-5 w-5" />
-                    Join Community
-                  </Button>
-                </div>
-              </div>
-              
-              {/* Interactive contact card */}
-              <div className="animate-fade-up relative" style={{ animationDelay: '0.3s' }}>
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl blur-xl animate-pulse"></div>
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl border border-white/20 p-8">
-                  <div className="text-center mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <MessageCircle className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Quick Connect</h3>
-                    <p className="text-white/80">Send us a message directly</p>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <Input 
-                      placeholder="Your Name" 
-                      className="bg-white/5 border-white/10 text-white placeholder:text-white/60 backdrop-blur-sm"
-                    />
-                    <Input 
-                      type="email" 
-                      placeholder="Your Email" 
-                      className="bg-white/5 border-white/10 text-white placeholder:text-white/60 backdrop-blur-sm"
-                    />
-                    <Textarea 
-                      placeholder="How can we help you today?" 
-                      rows={3}
-                      className="bg-white/5 border-white/10 text-white placeholder:text-white/60 backdrop-blur-sm"
-                    />
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                      Send Quick Message
-                    </Button>
-                  </div>
-                  
-                  <div className="mt-6 pt-6 border-t border-white/10 text-center">
-                    <p className="text-white/70 text-sm">Or reach us through our other channels below</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  {/* Background image with parallax */}
+  <div
+    className="absolute inset-0 z-0 parallax-bg"
+    style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${bgImage})`,
+      backgroundPosition: "center 30%",
+    }}
+  ></div>
+
+  {/* Decorative shapes */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div
+      className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+      style={{ animationDelay: "1s" }}
+    ></div>
+    <div
+      className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse"
+      style={{ animationDelay: "2s" }}
+    ></div>
+  </div>
+
+  {/* Content */}
+  <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
+    <div className="flex flex-col items-start text-left max-w-3xl">
+      <div className="animate-fade-up text-white w-full">
+        {/* Badge */}
+        <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
+          <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
+          <span>Your Journey to Wellness Starts Here</span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+            We're Here
+          </span>
+          <br />
+          <span className="text-white">To Support You</span>
+        </h1>
+
+        {/* Typing effect */}
+        <div className="h-12 mb-8">
+          <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
+            {typingText}
+            <span className="typing-cursor h-6 align-middle"></span>
+          </span>
+        </div>
+
+
+        {/* Contact Methods */}
+        <div className="grid grid-cols-2 gap-4 mb-12 max-w-md">
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+            <Mail className="w-8 h-8 mb-2 text-blue-300" />
+            <p className="text-white font-medium">Email Us</p>
+            <p className="text-white/80 text-sm">jikubaliafrica@gmail.com</p>
           </div>
-          
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
-            </div>
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+            <MapPin className="w-8 h-8 mb-2 text-blue-300" />
+            <p className="text-white font-medium">Visit Us</p>
+            <p className="text-white/80 text-sm">Nairobi & Kisii</p>
           </div>
-        </section>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
+          >
+            <MessageCircle className="mr-3 h-5 w-5" />
+            Send Message
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm"
+          >
+            <Users className="mr-3 h-5 w-5" />
+            Join Community
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll indicator stays centered */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+      <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+    </div>
+  </div>
+</section>
 
         {/* Rest of your components (Contact Methods, Support Lead, Form, FAQ, etc.) remain the same */}
         {/* Contact Methods */}
@@ -463,10 +452,10 @@ const Contact = () => {
                   <h3 className="font-heading text-2xl font-bold mb-2 text-gray-800">ACW_developer</h3>
                   <p className="text-purple-600 font-medium mb-4">Software Developer</p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-  With extensive experience in web development and digital solutions, 
-  he is in charge of the development and maintenance of our website, ensuring a seamless user experience. 
-  In addition to managing technical updates, he oversees other digital initiatives to keep our online presence effective and engaging.
-</p>
+                    With extensive experience in web development and digital solutions, 
+                    he is in charge of the development and maintenance of our website, ensuring a seamless user experience. 
+                    In addition to managing technical updates, he oversees other digital initiatives to keep our online presence effective and engaging.
+                  </p>
 
                   <div className="space-y-2 text-sm text-gray-500">
                     <div className="flex items-center">
@@ -479,14 +468,13 @@ const Contact = () => {
                     </div>
                   </div>
                   <Button 
-  variant="outline" 
-  size="sm" 
-  className="mt-6 w-fit border-blue-500 text-blue-600 hover:bg-blue-50"
-  onClick={() => window.open("https://clinton.miteexplorers.com", "_blank")}
->
-  Schedule Consultation
-</Button>
-
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-6 w-fit border-blue-500 text-blue-600 hover:bg-blue-50"
+                    onClick={() => window.open("https://clinton.miteexplorers.com", "_blank")}
+                  >
+                    Schedule Consultation
+                  </Button>
                 </div>
               </div>
             </div>

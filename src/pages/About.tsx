@@ -1,5 +1,6 @@
 import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote, Mail, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
+import { Link } from "react-router-dom"
 import Footer from "@/components/sections/Footer";
 import { useEffect, useRef, useState } from "react";
 import localImage from "@/assets/general/v21.png"; 
@@ -299,15 +300,24 @@ const About = () => {
                   champions self-acceptance, empowerment, and community support for all.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="warm" size="lg" className="group">
-                    Join Our Mission
-                    <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                    <Play className="mr-2 h-4 w-4" />
-                    Watch Our Story
-                  </Button>
-                </div>
+  <Link to="/contact">
+    <Button variant="warm" size="lg" className="group">
+      Join Our Mission
+      <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+    </Button>
+  </Link>
+  <Link to="/stories">
+    <Button
+      variant="outline"
+      size="lg"
+      className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+    >
+      <Play className="mr-2 h-4 w-4" />
+      Watch Our Story
+    </Button>
+  </Link>
+</div>
+
               </div>
               
               {/* Modified image section */}

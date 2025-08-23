@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Info, BookOpen, Image, Phone, Users } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const location = useLocation();
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -24,13 +25,24 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  // Close if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Programs", path: "/programs" },
-    { name: "Stories", path: "/stories" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/", icon: <Home size={16} /> },
+    { name: "About", path: "/about", icon: <Info size={16} /> },
+    { name: "Programs", path: "/programs", icon: <BookOpen size={16} /> },
+    { name: "Stories", path: "/stories", icon: <Users size={16} /> },
+    { name: "Gallery", path: "/gallery", icon: <Image size={16} /> },
+    { name: "Contact", path: "/contact", icon: <Phone size={16} /> },
   ];
 
   // Check if current page is home
@@ -44,9 +56,13 @@ const Navbar = () => {
   const menuButtonColorClass = !isHomePage ? "text-foreground" : (scrolled ? "text-foreground" : "text-white");
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled || !isHomePage ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled || !isHomePage
+          ? "bg-white/95 backdrop-blur-md shadow-soft"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container-padding max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -58,7 +74,9 @@ const Navbar = () => {
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <span className={`font-heading font-bold text-xl lg:text-2xl group-hover:text-brand-pink transition-colors duration-300 ${logoTextColorClass}`}>
+            <span
+              className={`font-heading font-bold text-xl lg:text-2xl group-hover:text-brand-pink transition-colors duration-300 ${logoTextColorClass}`}
+            >
               Jikubali Africa
             </span>
           </Link>
@@ -70,29 +88,35 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`relative group font-medium transition-all duration-300 hover:text-brand-pink ${
-                  location.pathname === link.path ? "text-brand-pink" : textColorClass
+                  location.pathname === link.path
+                    ? "text-brand-pink"
+                    : textColorClass
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {link.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-brand-pink transition-all duration-300 ${
-                  location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-brand-pink transition-all duration-300 ${
+                    location.pathname === link.path
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
               </Link>
             ))}
           </div>
 
           {/* CTA Button & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            <Button 
-              variant="warm" 
-              size="sm" 
+            <Button
+              variant="warm"
+              size="sm"
               className="hidden lg:flex animate-fade-up"
               onClick={() => setShowContactPopup(true)}
             >
               Get Involved
             </Button>
-            
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -109,44 +133,44 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden fixed inset-x-0 top-16 z-40 transition-all duration-500 ease-in-out ${
-          isOpen 
-            ? "opacity-100 translate-y-0 pointer-events-auto" 
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}>
-          <div className={`${mobileMenuBgClass} shadow-xl rounded-b-xl mx-4 overflow-hidden`}>
-            <div className="py-2 space-y-1">
+        {/* Mobile Navigation (floating dropdown) */}
+        <div
+          ref={menuRef}
+          className={`lg:hidden absolute right-4 top-16 z-40 transition-all duration-300 ${
+            isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+          }`}
+        >
+          <div
+            className={`${mobileMenuBgClass} shadow-xl rounded-2xl w-60 overflow-hidden`}
+          >
+            <div className="py-2">
               {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center px-6 py-4 text-lg font-medium transition-all duration-300 hover:bg-brand-pink/10 hover:pl-8 ${
-                    location.pathname === link.path 
-                      ? "text-brand-pink bg-brand-pink/10 border-l-4 border-brand-pink pl-8" 
-                      : `${mobileLinkColorClass} pl-6 border-l-4 border-transparent`
-                  } ${
-                    isOpen 
-                      ? "opacity-100 translate-x-0" 
-                      : "opacity-0 translate-x-4"
+                  className={`flex items-center gap-3 px-5 py-3 text-sm font-medium transition-all duration-200 hover:bg-brand-pink/10 ${
+                    location.pathname === link.path
+                      ? "text-brand-pink bg-brand-pink/10"
+                      : `${mobileLinkColorClass}`
                   }`}
-                  style={{ 
-                    transitionDelay: isOpen ? `${index * 50}ms` : "0ms"
+                  style={{
+                    transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
                   }}
                 >
+                  {link.icon}
                   {link.name}
                 </Link>
               ))}
-              
+
               {/* Divider */}
-              <div className="border-t border-gray-200/30 mx-6 my-2"></div>
-              
-              <div className="px-6 py-4">
-                <Button 
-                  variant="warm" 
-                  size="lg" 
-                  className="w-full py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-shadow"
+              <div className="border-t border-gray-200/30 mx-5 my-2"></div>
+
+              <div className="px-5 pb-3">
+                <Button
+                  variant="warm"
+                  size="sm"
+                  className="w-full text-sm font-semibold shadow-md hover:shadow-lg transition-shadow"
                   onClick={() => {
                     setShowContactPopup(true);
                     setIsOpen(false);
@@ -154,11 +178,6 @@ const Navbar = () => {
                 >
                   Get Involved
                 </Button>
-              </div>
-              
-              {/* Social links or additional info can be added here */}
-              <div className="px-6 py-3 text-center text-sm text-gray-500">
-                Transforming mental health in Kenya
               </div>
             </div>
           </div>
@@ -172,14 +191,6 @@ const Navbar = () => {
         title="Get Involved"
         subtitle="Join our mission to transform mental health in Kenya"
       />
-      
-      {/* Backdrop for mobile menu */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
     </nav>
   );
 };

@@ -275,20 +275,17 @@ const About = () => {
 
         {/* Core Values */}
         <div className="text-center mb-16">
-          <FadeIn delay={100}>
+         
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               Our{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">
                 Core Values
               </span>
             </h3>
-          </FadeIn>
-          <FadeIn delay={200}>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               These principles guide every aspect of our work and define who we
               are as an organization.
             </p>
-          </FadeIn>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

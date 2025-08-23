@@ -222,42 +222,54 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="animate-fade-in-up flex flex-wrap gap-4 pt-4" style={{ animationDelay: '0.8s' }}>
-              <Button variant="warm" size="xl" className="group animate-pulse-glow">
-                Join Our Movement
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="cool" size="xl" className="group backdrop-blur-sm bg-white/10 border-white/20 text-white hover:bg-white/20">
-                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Watch Our Story
-              </Button>
-            </div>
+            <div 
+  className="animate-fade-in-up flex flex-wrap gap-4 pt-4" 
+  style={{ animationDelay: '0.8s' }}
+>
+  <a href="/contact">
+    <Button variant="warm" size="xl" className="group animate-pulse-glow">
+      Join Our Movement
+      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+    </Button>
+  </a>
+  
+  <a href="/stories">
+    <Button 
+      variant="cool" 
+      size="xl" 
+      className="group backdrop-blur-sm bg-white/10 border-white/20 text-white hover:bg-white/20"
+    >
+      <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+      Watch Our Story
+    </Button>
+  </a>
+</div>
           </div>
 
           {/* Stats Section */}
           <div 
-            ref={statsRef}
-            className="mt-16 lg:mt-24 grid grid-cols-3 gap-6 max-w-xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
-          >
-            {[
-              { value: "1000+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
-              { value: "10+", label: "Communities Reached", color: "text-brand-pink-light", delay: 0.2 },
-              { value: "6+", label: "Counties Served", color: "text-sky-blue-light", delay: 0.4 }
-            ].map((stat, index) => (
-              <div 
-                key={index}
-                className="text-left transition-all duration-1000 ease-out"
-                style={{
-                  opacity: isStatsVisible ? 1 : 0,
-                  transform: isStatsVisible ? 'translateY(0)' : 'translateY(20px)',
-                  transitionDelay: `${stat.delay}s`
-                }}
-              >
-                <div className={`text-4xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
-                <div className="text-sm uppercase tracking-wider text-white/80">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+  ref={statsRef}
+  className="hidden md:grid mt-16 lg:mt-24 grid-cols-3 gap-6 max-w-xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
+>
+  {[
+    { value: "1000+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
+    { value: "10+", label: "Communities Reached", color: "text-brand-pink-light", delay: 0.2 },
+    { value: "6+", label: "Counties Served", color: "text-sky-blue-light", delay: 0.4 }
+  ].map((stat, index) => (
+    <div 
+      key={index}
+      className="text-left transition-all duration-1000 ease-out"
+      style={{
+        opacity: isStatsVisible ? 1 : 0,
+        transform: isStatsVisible ? 'translateY(0)' : 'translateY(20px)',
+        transitionDelay: `${stat.delay}s`
+      }}
+    >
+      <div className={`text-4xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+      <div className="text-sm uppercase tracking-wider text-white/80">{stat.label}</div>
+    </div>
+  ))}
+</div>
         </div>
       </div>
 
