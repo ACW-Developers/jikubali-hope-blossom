@@ -214,12 +214,18 @@ const Hero = () => {
             </div>
 
             {/* Description */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <p className="text-lg sm:text-xl text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
-                We're building a Kenya where mental wellness thrives, stigma dissolves, 
-                and every individual discovers their inherent worth and unlimited potential.
-              </p>
-            </div>
+<div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+  {/* Small devices */}
+  <p className="text-lg sm:hidden text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
+    Advocating for mental wellness, self-love and acceptance for everyone.
+  </p>
+
+  {/* Medium and larger devices */}
+  <p className="hidden sm:block text-lg sm:text-xl text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
+    We're building a Kenya where mental wellness thrives, stigma dissolves, 
+    and every individual discovers their inherent worth and unlimited potential.
+  </p>
+</div>
 
             {/* CTA Buttons */}
             <div 
@@ -294,14 +300,14 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div className="flex flex-col items-center">
-          <div className="w-8 h-8 border-2 border-white/50 rounded-full flex items-center justify-center">
-            <ChevronDown className="w-4 h-4 text-white/80" />
-          </div>
-          <span className="text-xs text-white/60 mt-2">Scroll to Explore</span>
-        </div>
-      </div>
+      <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+  <div className="flex flex-col items-center">
+    <div className="w-8 h-8 border-2 border-white/50 rounded-full flex items-center justify-center">
+      <ChevronDown className="w-4 h-4 text-white/80" />
+    </div>
+    <span className="text-xs text-white/60 mt-2">Scroll to Explore</span>
+  </div>
+</div>
     </section>
   );
 };
