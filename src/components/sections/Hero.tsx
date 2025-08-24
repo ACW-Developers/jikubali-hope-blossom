@@ -246,7 +246,7 @@ const Hero = () => {
       className="group backdrop-blur-sm bg-white/10 border-white/20 text-white hover:bg-white/20"
     > 
       Impact Stories
-
+      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
     </Button>
   </a>
 </div>
