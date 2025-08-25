@@ -22,7 +22,7 @@ const Stories = () => {
   const [typingComplete, setTypingComplete] = useState(false);
   const sectionRefs = useRef([]);
 
-  const typingWords = ["Hope", "Courage", "Healing", "Belonging"];
+  const typingWords = ["Hope", "Healing", "Recovery", "Strength"];
   const typingSpeed = 300;
   const eraseSpeed = 120;
   const pauseTime = 1500;
@@ -82,7 +82,7 @@ const Stories = () => {
       age: 28,
       category: "recovery",
       title: "Finding My Voice Again",
-      story: "I spent years hiding behind a smile, convinced I was broken. Then someone at Jikubali looked me in the eye and said 'You're not crazy, you're human.' Those words changed everything. Now I use my voice to remind others they're not alone.",
+      story: "After years of struggling with anxiety and depression, Jikubali Africa's community support groups gave me the courage to speak up and seek help. The weekly sessions became my safe haven, and the peer support helped me realize I wasn't alone.",
       impact: "Completed anxiety management program",
       image: story1
     },
@@ -92,7 +92,7 @@ const Stories = () => {
       age: 35,
       category: "family",
       title: "Healing Our Family",
-      story: "Watching my son withdraw broke my heart. I felt like I was failing as a parent. Jikubali didn't just help my son—they taught our whole family that love sometimes means asking hard questions and creating space for honest answers.",
+      story: "When my teenage son started showing signs of depression, our family didn't know where to turn. Jikubali Africa's family counseling program not only helped my son but taught us all how to communicate better and support each other.",
       impact: "Family therapy success",
       image: story2
     },
@@ -102,7 +102,7 @@ const Stories = () => {
       age: 22,
       category: "empowerment",
       title: "From Survivor to Advocate",
-      story: "There was a time I thought I'd never feel safe again. But healing isn't about forgetting—it's about choosing to write a new chapter. Now I sit with other survivors and remind them: your story didn't end when the trauma happened. It's just beginning.",
+      story: "The trauma I experienced almost broke me, but through Jikubali's individual counseling and peer mentorship program, I not only healed but found my purpose in helping other survivors. Now I'm training to become a peer counselor myself.",
       impact: "Now training as peer counselor",
       image: story3
     },
@@ -112,7 +112,7 @@ const Stories = () => {
       age: 42,
       category: "workplace",
       title: "Breaking the Stigma",
-      story: "I used to think vulnerability was weakness in the boardroom. Then burnout almost cost me everything. Learning to take care of my mental health didn't make me less of a leader—it made me the kind of leader people actually want to follow.",
+      story: "As a corporate manager, I thought seeking mental health support would hurt my career. Jikubali's workplace wellness program showed me that taking care of my mental health actually made me a better leader and colleague.",
       impact: "Workplace mental health champion",
       image: story4
     },
@@ -122,7 +122,7 @@ const Stories = () => {
       age: 19,
       category: "youth",
       title: "University Life Transformed",
-      story: "Campus felt like everyone had it figured out except me. I was drowning in anxiety attacks and homesickness. Jikubali showed me that struggling doesn't mean failing—sometimes it just means you're growing faster than you thought possible.",
+      story: "University pressure and being away from home for the first time triggered severe anxiety. The youth-focused programs at Jikubali helped me develop coping strategies and connect with other students facing similar challenges.",
       impact: "Academic performance improved",
       image: story5
     },
@@ -132,7 +132,7 @@ const Stories = () => {
       age: 55,
       category: "community",
       title: "Building Stronger Communities",
-      story: "At my age, I thought I knew everything about life. But watching young people in our village transform through mental health support taught me that wisdom isn't about having all the answers—it's about being willing to learn new ones.",
+      story: "As a community elder, I initially resisted the idea of mental health programs in our village. But after seeing the positive changes in my neighbors who participated, I became one of Jikubali's biggest advocates.",
       impact: "Community mental health ambassador",
       image: story6
     }
@@ -197,30 +197,30 @@ const Stories = () => {
           <div className={`max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-8 text-white border border-white/20">
               <Sparkles className="w-5 h-5 mr-2 text-sunshine-yellow" />
-              <span className="text-md font-medium">Stories That Matter</span>
+              <span className="text-md font-medium">Inspiring Hope & Healing</span>
             </div>
             
             <h1 className="font-heading text-5xl md:text-6xl lg:text-6xl font-bold mb-6 leading-tight text-white">
-              Real Stories,<br />
-              Real <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink-light to-sunshine-yellow relative typing-text">
+              Transformative <br />
+              Stories of <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink-light to-sunshine-yellow relative typing-text">
                 {typingText}
                 <span className="typing-cursor">|</span>
               </span>
             </h1>
             
             <p className="text-xl lg:text-xl text-white/90 mb-8 leading-relaxed">
-              These are the voices of people who chose to keep going, who found their tribe, 
-              and who discovered that their darkest moments could become their greatest strength.
+              Discover powerful journeys of resilience and transformation from people who found hope 
+              through mental health support and community connection.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button size="lg" className="bg-brand-pink hover:bg-brand-pink-dark text-white transition-all duration-300 transform hover:scale-105 px-8 py-3 rounded-full">
-                Dive Into Their Journeys
+                Read Their Stories
               </Button>
               
               <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
                 <Play className="w-5 h-5 mr-2" />
-                See Us In Action
+                Watch Our Story
               </Button>
             </div>
             
@@ -237,7 +237,7 @@ const Stories = () => {
         className="py-12 bg-white/90 backdrop-blur-md sticky top-20 z-20 transition-all duration-500 shadow-lg"
       >
         <div className="container-padding max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-sky-blue-dark">Find Stories That Speak to You</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-sky-blue-dark">Browse Stories by Category</h2>
           <div className="flex flex-wrap gap-4 justify-center">
             {categories.map((category) => (
               <button
@@ -267,11 +267,10 @@ const Stories = () => {
         <div className="container-padding max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
-              Where <span className="text-brand-pink">Vulnerability</span> Meets Strength
+              Inspiring <span className="text-brand-pink">Journeys</span> of Hope
             </h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">
-              Each story here started with someone saying "I need help" or "I can't do this alone." 
-              That's where transformation begins.
+              These powerful stories showcase the resilience of the human spirit and the transformative power of mental health support.
             </p>
           </div>
           

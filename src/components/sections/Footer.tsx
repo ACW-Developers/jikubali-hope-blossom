@@ -170,8 +170,8 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-white/90 leading-relaxed mb-6 max-w-md text-sm">
-                We started with a simple belief: everyone deserves to feel whole. Today, we're a 
-                family of survivors, healers, and advocates creating spaces where mental health matters.
+                Championing mental health, self-acceptance, and empowerment across Kenya. 
+                Building communities where everyone thrives through comprehensive support programs.
               </p>
 
               {/* Trust Badges */}

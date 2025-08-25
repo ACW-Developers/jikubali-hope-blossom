@@ -93,7 +93,7 @@ const Impact = () => {
       value: counters.livesTransformed,
       suffix: "+",
       label: "Lives Transformed",
-      description: "People discovering they're not alone",
+      description: "Individuals who have found healing and hope",
       color: "text-pink-600",
       bgColor: "bg-pink-100",
       borderColor: "border-pink-200",
@@ -106,7 +106,7 @@ const Impact = () => {
       value: counters.communitiesReached,
       suffix: "+",
       label: "Communities Reached",
-      description: "Communities breaking the silence together",
+      description: "Neighborhoods actively engaged in our programs",
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       borderColor: "border-blue-200",
@@ -119,7 +119,7 @@ const Impact = () => {
       value: counters.countiesServed,
       suffix: "+",
       label: "Counties Served",
-      description: "From coast to highlands, hope spreads",
+      description: "Across Kenya, expanding our reach",
       color: "text-amber-600",
       bgColor: "bg-amber-100",
       borderColor: "border-amber-200",
@@ -132,7 +132,7 @@ const Impact = () => {
       value: counters.yearsFounded,
       suffix: "+",
       label: "Years of Impact",
-      description: "Three years of showing up, every day",
+      description: "Building trust and changing lives",
       color: "text-emerald-600",
       bgColor: "bg-emerald-100",
       borderColor: "border-emerald-200",
@@ -145,7 +145,7 @@ const Impact = () => {
       value: counters.volunteersActive,
       suffix: "+",
       label: "Active Volunteers",
-      description: "Hearts that beat for this work",
+      description: "Dedicated individuals making a difference",
       color: "text-indigo-600",
       bgColor: "bg-indigo-100",
       borderColor: "border-indigo-200",
@@ -158,7 +158,7 @@ const Impact = () => {
       value: counters.programsOffered,
       suffix: "+",
       label: "Programs Offered",
-      description: "Different paths to the same destination: healing",
+      description: "Comprehensive mental health services",
       color: "text-violet-600",
       bgColor: "bg-violet-100",
       borderColor: "border-violet-200",
@@ -178,15 +178,15 @@ const Impact = () => {
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 text-pink-600 font-medium text-sm mb-4 md:mb-6">
-            Real Change Happening
+            Making a Difference
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
-            This Is What <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-blue-600">Hope</span> Looks Like
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-blue-600">Impact</span> in Action
           </h2>
           <div className="w-24 h-1.5 sm:w-32 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto mb-6 md:mb-8 rounded-full"></div>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
-            Every number here represents someone's story, someone's breakthrough, someone's new beginning. 
-            These aren't just statistics—they're lives transformed.
+            Real change, real lives, real hope. See how Jikubali Africa is transforming 
+            mental health across Kenya, one community at a time.
           </p>
         </div>
 
@@ -267,8 +267,8 @@ const Impact = () => {
               </div>
               <div className="space-y-3 md:space-y-4 text-white/90">
                 <p className="leading-relaxed text-base md:text-lg font-light italic border-l-4 border-white/30 pl-4 md:pl-6 py-1 md:py-2">
-                  "I used to think being sad meant I was broken. Now I know that asking for help 
-                  makes me brave. This place saved my life, and now I want to help save others."
+                  "Since joining Jikubali Africa's peer support groups, I've found my voice and 
+                  my purpose. The shame I carried for years has transformed into strength."
                 </p>
                 <div className="flex items-center gap-3 pt-3 md:pt-4">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/10">
@@ -285,25 +285,25 @@ const Impact = () => {
 
           <div className="space-y-4 md:space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs md:text-sm font-medium">
-              The Real Story
+              Beyond the Numbers
             </div>
             <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">
-              What Numbers Can't Capture
+              Stories of Hope & Transformation
             </h3>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              Behind every number is a moment when someone decided to trust us with their pain. 
-              A family that learned to talk openly. A community that stopped whispering about 
-              mental health and started celebrating healing.
+              Every statistic represents a life touched, a family healed, and a community 
+              strengthened. Our impact extends far beyond what numbers can capture - it's 
+              measured in renewed hope, restored relationships, and resilient futures.
             </p>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              This isn't about programs or strategies. It's about showing up with love, 
-              staying through the hard parts, and believing in people even when they 
-              can't believe in themselves.
+              Through evidence-based programs, culturally sensitive approaches, and unwavering 
+              community support, we're not just changing lives - we're transforming the 
+              landscape of mental health in Kenya.
             </p>
             <div className="pt-3 md:pt-4">
               <Link to="/stories">
   <button className="group inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium hover:shadow-lg transition-all hover:shadow-blue-400/30 text-sm md:text-base">
-    Hear More Stories
+    Read More Success Stories
     <ChevronRight className="ml-1 md:ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
   </button>
 </Link>

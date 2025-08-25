@@ -20,25 +20,25 @@ const About = () => {
       icon: Heart,
       title: "Compassion",
       description:
-        "Every story matters. Every struggle is valid. We meet you exactly where you are.",
+        "We approach mental health with empathy, understanding, and unconditional acceptance.",
     },
     {
       icon: Target,
       title: "Empowerment",
       description:
-        "You already have everything you need inside you. We're just here to help you see it.",
+        "We believe in each person's capacity to heal, grow, and create positive change.",
     },
     {
       icon: Users2,
       title: "Community",
       description:
-        "Nobody heals alone. Together, we're stronger, braver, and more resilient.",
+        "Healing happens in connection. We build supportive networks that uplift everyone.",
     },
     {
       icon: Sparkles,
       title: "Hope",
       description:
-        "Even in the darkest moments, there's always a reason to keep going. We help you find it.",
+        "We nurture hope and resilience, lighting the path toward mental wellness.",
     },
   ];
 
@@ -173,16 +173,16 @@ const About = () => {
             <FadeIn delay={100}>
               <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
                 <span className="text-sm font-medium text-blue-600">
-                  Who We Really Are
+                  Our Identity
                 </span>
               </div>
             </FadeIn>
 
             <FadeIn delay={200}>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-                We're{" "}
+                More Than{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">
-                  Your People
+                  An Organization
                 </span>
               </h2>
             </FadeIn>
@@ -193,9 +193,10 @@ const About = () => {
 
             <FadeIn delay={400}>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Jikubali started when three friends realized they weren't alone in their struggles. 
-                What began as honest conversations over chai became a movement. "Jikubali" means 
-                "accept yourself" in Swahili—because that's where healing begins.
+                Jikubali Africa is a movement born from lived experiences and a
+                deep understanding of mental health challenges in African
+                communities. Our name "Jikubali" (Swahili for "accept yourself")
+                represents our core philosophy.
               </p>
             </FadeIn>
 
@@ -203,13 +204,13 @@ const About = () => {
               <div className="flex flex-wrap gap-4 pt-4">
   <Link to="/about">
     <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
-      Our Journey
+      Our Full Story
     </button>
   </Link>
   
   <Link to="/about">
     <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
-      Meet Us
+      Meet The Team
     </button>
   </Link>
 </div>
@@ -230,9 +231,11 @@ const About = () => {
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                To normalize mental health conversations in every Kenyan home, workplace, and community. 
-                We're here to listen without judgment, support without conditions, and create spaces 
-                where vulnerability is welcomed, not feared.
+                To champion mental health awareness, self-acceptance, and
+                empowerment across Kenya, creating safe spaces where individuals
+                can heal, thrive, and discover their full potential. We work
+                tirelessly to dismantle stigma and build a society that values
+                mental wellness.
               </p>
             </div>
           </FadeIn>
@@ -249,9 +252,10 @@ const About = () => {
                   </h3>
                 </div>
                 <p className="leading-relaxed opacity-95">
-                  "A Kenya where your mental health story matters. Where seeking help is seen as 
-                  strength, not weakness. Where every person knows they belong and have a community 
-                  that truly gets them."
+                  "A world where mental health is understood, supported, and
+                  celebrated. Where every individual has access to resources,
+                  community, and the tools they need to live authentically and
+                  thrive completely."
                 </p>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-10">
                   <svg
@@ -279,8 +283,8 @@ const About = () => {
               </span>
             </h3>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              These aren't just words on our website—they're how we show up every single day 
-              for the people who trust us with their stories.
+              These principles guide every aspect of our work and define who we
+              are as an organization.
             </p>
         </div>
 
