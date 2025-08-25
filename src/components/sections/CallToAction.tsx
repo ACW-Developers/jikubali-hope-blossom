@@ -66,19 +66,19 @@ const CallToAction = () => {
       <div className="max-w-4xl mx-auto container-padding text-center relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="font-heading text-4xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
-            Be Part of the
+            Ready to Make
             <span className="block text-sky-300 bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-pink-300 animate-text">
-              Change
+              A Difference?
             </span>
           </h2>
           
           <p className="text-xl lg:text-2xl mb-4 opacity-95 font-medium drop-shadow-md">
-            Your support transforms lives
+            Every small action creates ripples of hope
           </p>
           
           <p className="text-lg mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-            Whether through volunteering, donating, or simply spreading awareness, 
-            you can help us build a Kenya where mental health is understood, supported, and celebrated.
+            Your time, your voice, your story—whatever you can offer matters. Join a community 
+            that believes healing happens when we stand together.
           </p>
         </div>
 
@@ -88,34 +88,34 @@ const CallToAction = () => {
             className="glass-effect bg-white/5 border border-white/20 text-sky-200 hover:bg-white/10 hover:border-white/40 backdrop-blur-md px-8 py-5 transition-all duration-300 group hover:scale-105 shadow-lg hover:shadow-xl"
             onClick={() => setShowPartnerPopup(true)}
           >
-            Partner With Us
+            Join Forces
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 
             className="glass-effect bg-white/5 border border-white/20 text-sky-200 hover:bg-white/10 hover:border-white/40 backdrop-blur-md px-8 py-5 transition-all duration-300 group hover:scale-105 shadow-lg hover:shadow-xl"
             onClick={() => setShowVolunteerPopup(true)}
           >
-            Volunteer
+            Get Involved
             <Users className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
           </Button>
           <Button 
             className="glass-effect bg-white/5 border border-white/20 text-sky-200 hover:bg-white/10 hover:border-white/40 backdrop-blur-md px-8 py-5 transition-all duration-300 group hover:scale-105 shadow-lg hover:shadow-xl"
             onClick={() => setShowDonatePopup(true)}
           >
-            Donate
+            Support Us
             <Heart className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" fill="currentColor" />
           </Button>
         </div>
 
         {/* Additional CTA */}
         <div className={`mt-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-sm uppercase tracking-widest mb-4 opacity-80">Need immediate support?</p>
+          <p className="text-sm uppercase tracking-widest mb-4 opacity-80">Struggling right now?</p>
           <Button 
             className="bg-pink-500/90 border border-pink-300/30 text-white hover:bg-pink-600 backdrop-blur-sm px-6 py-4 transition-all duration-300 group hover:scale-105"
             onClick={() => setShowHelpPopup(true)}
           >
             <Phone className="w-4 h-4 mr-2" />
-            Get Help Now
+            We're Here
           </Button>
         </div>
       </div>

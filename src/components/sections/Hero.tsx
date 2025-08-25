@@ -23,11 +23,11 @@ const Hero = () => {
   ];
 
   const typingTexts = [
-    "Self Acceptance",
-    "Mental Wellness",
-    "Community Support",
-    "Healing & Growth",
-    "Hope & Empowerment"
+    "embracing who you are",
+    "healing together",
+    "finding your tribe",
+    "growing stronger",
+    "discovering hope"
   ];
 
   // Typing animation effect
@@ -188,7 +188,7 @@ const Hero = () => {
             <div className="animate-fade-in-up">
               <span className="inline-flex items-center px-4 py-2 bg-brand-pink-light/20 backdrop-blur-sm text-brand-pink-light rounded-full text-sm font-medium mb-4 border border-brand-pink-light/30">
                 <Sparkles className="w-4 h-4 mr-2" />
-                Championing Mental Wellness
+                Where healing meets hope
               </span>
             </div>
 
@@ -204,7 +204,7 @@ const Hero = () => {
             <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <div className="h-12 flex items-center">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-light text-white/90 max-w-lg leading-snug">
-                  Empowering minds through{" "}
+                  We're here for{" "}
                   <span className="text-sunshine-yellow font-medium bg-black/20 px-2 py-1 rounded-lg">
                     {typingText}
                     <span className="typing-cursor"></span>
@@ -217,13 +217,13 @@ const Hero = () => {
 <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
   {/* Small devices */}
   <p className="text-lg sm:hidden text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
-    Advocating mental well-being through the power of self-love and acceptance, inspiring growth and positive change.
+    Because mental health isn't a luxury—it's a right. And everyone deserves to feel whole.
   </p>
 
   {/* Medium and larger devices */}
   <p className="hidden sm:block text-lg sm:text-xl text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
-    We're building a Kenya where mental wellness thrives, stigma dissolves, 
-    and every individual discovers their inherent worth and unlimited potential.
+    We believe every Kenyan deserves to feel understood, supported, and valued. 
+    Together, we're creating spaces where mental wellness isn't whispered about—it's celebrated.
   </p>
 </div>
 
@@ -234,7 +234,7 @@ const Hero = () => {
 >
   <a href="/contact">
     <Button variant="warm" size="xl" className="group animate-pulse-glow">
-      Join Our Movement
+      Start Your Journey
       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
     </Button>
   </a>
@@ -245,7 +245,7 @@ const Hero = () => {
       size="xl" 
       className="group backdrop-blur-sm bg-white/10 border-white/20 text-white hover:bg-white/20"
     > 
-      Impact Stories
+      Real Stories
       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
     </Button>
   </a>

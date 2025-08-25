@@ -35,10 +35,10 @@ const Contact = () => {
   // Typing animation effect
   useEffect(() => {
     const typingTexts = [
-      "We're here for you 24/7",
-      "Immediate crisis support available",
-      "Caring team ready to help",
-      "Your mental wellness matters"
+      "You don't have to face this alone",
+      "Someone is always here to listen",
+      "Your story matters to us",
+      "Help is just a message away"
     ];
 
     const currentText = typingTexts[typingIndex];
@@ -320,17 +320,17 @@ const Contact = () => {
         {/* Badge */}
         <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
           <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
-          <span>Your Journey to Wellness Starts Here</span>
+          <span>You Took the Hardest Step by Being Here</span>
         </div>
 
         {/* Headline */}
-        <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
-            We're Here
-          </span>
-          <br />
-          <span className="text-white">To Support You</span>
-        </h1>
+          <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+              Let's Talk
+            </span>
+            <br />
+            <span className="text-white">We're Listening</span>
+          </h1>
 
         {/* Typing effect */}
         <div className="h-12 mb-8">
@@ -391,14 +391,15 @@ const Contact = () => {
           <div className="container-padding max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16 observe">
               <div className="inline-flex items-center bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                📞 Multiple Ways to Connect
+                💬 Here's How to Find Us
               </div>
               <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6 text-gray-800">
-                How to <span className="text-purple-600">Reach Us</span>
+                We're Just a <span className="text-purple-600">Call</span> Away
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8 rounded-full"></div>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Multiple ways to connect with our team, from crisis intervention to general inquiries.
+                Whether you need immediate support or just want to chat, we're here. 
+                No judgment, no pressure—just real people who care.
               </p>
             </div>
 
