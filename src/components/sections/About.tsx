@@ -16,31 +16,31 @@ import localImage6 from "@/assets/general/v9.jpg";
 const About = () => {
   // Core values data
   const values = [
-    {
-      icon: Heart,
-      title: "Compassion",
-      description:
-        "We approach mental health with empathy, understanding, and unconditional acceptance.",
-    },
-    {
-      icon: Target,
-      title: "Empowerment",
-      description:
-        "We believe in each person's capacity to heal, grow, and create positive change.",
-    },
-    {
-      icon: Users2,
-      title: "Community",
-      description:
-        "Healing happens in connection. We build supportive networks that uplift everyone.",
-    },
-    {
-      icon: Sparkles,
-      title: "Hope",
-      description:
-        "We nurture hope and resilience, lighting the path toward mental wellness.",
-    },
-  ];
+  {
+    icon: Heart,
+    title: "Joyful Living & Inclusivity",
+    description:
+      "We celebrate diversity and foster a sense of belonging, ensuring everyone experiences joy and acceptance.",
+  },
+  {
+    icon: Target,
+    title: "Kindness & Love",
+    description:
+      "We spread compassion and care, creating a safe space where love drives healing and transformation.",
+  },
+  {
+    icon: Users2,
+    title: "Authenticity & Boldness",
+    description:
+      "We encourage individuals to embrace their true selves and boldly share their stories without fear or shame.",
+  },
+  {
+    icon: Sparkles,
+    title: "Uniqueness & Integrity",
+    description:
+      "We honor each person’s uniqueness while staying true to our values of honesty, trust, and transparency.",
+  },
+];
 
   // ✅ Mixed local + online gallery images
   const galleryImages = [
@@ -80,7 +80,7 @@ const About = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % galleryImages.length);
-    }, 6000);
+    }, 11000);
     return () => clearInterval(interval);
   }, [galleryImages.length]);
 
@@ -202,18 +202,18 @@ const About = () => {
 
             <FadeIn delay={500}>
               <div className="flex flex-wrap gap-4 pt-4">
-  <Link to="/about">
-    <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
-      Our Full Story
-    </button>
-  </Link>
-  
-  <Link to="/about">
-    <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
-      Meet The Team
-    </button>
-  </Link>
-</div>
+              <Link to="/about">
+                <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
+                  Our Full Story
+                </button>
+              </Link>
+              
+              <Link to="/about">
+                <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
+                  Meet The Team
+                </button>
+              </Link>
+            </div>
             </FadeIn>
           </div>
         </div>
@@ -231,11 +231,10 @@ const About = () => {
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                To champion mental health awareness, self-acceptance, and
-                empowerment across Kenya, creating safe spaces where individuals
-                can heal, thrive, and discover their full potential. We work
-                tirelessly to dismantle stigma and build a society that values
-                mental wellness.
+                Dedicated to Empowering individuals by promoting self-love 
+                and acceptance through innovative programs and initiative.
+                 We strive to inspire and support youth in their journey 
+                 to personal growth, confidence and well being.
               </p>
             </div>
           </FadeIn>
@@ -252,10 +251,8 @@ const About = () => {
                   </h3>
                 </div>
                 <p className="leading-relaxed opacity-95">
-                  "A world where mental health is understood, supported, and
-                  celebrated. Where every individual has access to resources,
-                  community, and the tools they need to live authentically and
-                  thrive completely."
+                  "To create a world where individuals embrace self-love and acceptance, 
+                  fostering a culture of empowerment and positivity"
                 </p>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-10">
                   <svg
@@ -302,6 +299,7 @@ const About = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {value.description}
                   </p>
+
                 </CardContent>
               </Card>
             </FadeIn>

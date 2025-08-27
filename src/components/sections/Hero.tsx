@@ -222,7 +222,7 @@ const Hero = () => {
 
   {/* Medium and larger devices */}
   <p className="hidden sm:block text-lg sm:text-xl text-white/85 max-w-2xl leading-relaxed backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10">
-    We're building a Kenya where mental wellness thrives, stigma dissolves, 
+    We're building a World where mental wellness thrives, stigma dissolves, 
     and every individual discovers their inherent worth and unlimited potential.
   </p>
 </div>

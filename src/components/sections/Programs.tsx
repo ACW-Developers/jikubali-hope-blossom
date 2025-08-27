@@ -209,8 +209,8 @@ const Programs = () => {
                     <h4 className="font-semibold text-gray-900">{event.title}</h4>
                   </div>
                   <p className="text-sm text-gray-600 mb-4">{event.description}</p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Register Interest
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <a href="/gallery">Photo Highlights</a>
                   </Button>
                 </CardContent>
               </Card>

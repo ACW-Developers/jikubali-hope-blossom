@@ -77,7 +77,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo - Left Side */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
+            <div className="relative rounded-full bg-white/90 p-1 w-10 h-10 lg:w-12 lg:h-12">
               <img
                 src={LogoImage}
                 alt="Jikubali Africa Logo"

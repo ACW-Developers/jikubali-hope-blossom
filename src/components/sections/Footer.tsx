@@ -64,9 +64,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-400" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-300" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-300" },
+    { icon: Facebook, href: "https://www.facebook.com/p/Jikubali-Africa-61552797188673/", label: "Facebook", color: "hover:text-blue-400" },
+    { icon: Twitter, href: "https://www.tiktok.com/@jikubali.africa", label: "Twitter", color: "hover:text-blue-300" },
+    { icon: Instagram, href: "https://www.instagram.com/jikubali_africa/", label: "Instagram", color: "hover:text-pink-300" },
     { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" }
   ];
 

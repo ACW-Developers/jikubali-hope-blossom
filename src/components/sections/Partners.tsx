@@ -12,7 +12,6 @@ import Unashamed from "@/assets/logos/unashamed.jpeg";
 const partners = [
   { name: "Girl Power", logo: galpower, description: "Awareness Patner" },
   { name: "Gusii Mental Health", logo: gusii, description: "Healthcare Alliance" },
-  { name: "Jikubali Africa", logo: jikubali, description: "Self Acceptance" },
   { name: "Kisii University", logo: kisii, description: "Emergency Response" },
   { name: "County Government of Kisii", logo: kisiicounty, description: "Research Partnership" },
   { name: "Dorcas Rigathi Foundation", logo: Dorcas, description: "Community Support" },
