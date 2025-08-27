@@ -258,7 +258,7 @@ const Hero = () => {
   className="hidden md:grid mt-16 lg:mt-24 grid-cols-3 gap-6 max-w-xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
 >
   {[
-    { value: "1000+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
+    { value: "5000+", label: "Lives Transformed", color: "text-sunshine-yellow", delay: 0 },
     { value: "10+", label: "Communities Reached", color: "text-brand-pink-light", delay: 0.2 },
     { value: "6+", label: "Counties Served", color: "text-sky-blue-light", delay: 0.4 }
   ].map((stat, index) => (

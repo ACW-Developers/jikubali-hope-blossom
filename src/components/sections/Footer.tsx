@@ -64,10 +64,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-500" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-400" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-500" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-600" }
+    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-400" },
+    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-300" },
+    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-300" },
+    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" }
   ];
 
   const trustBadges = [
@@ -76,8 +76,19 @@ const Footer = () => {
     { icon: Globe, text: "Nationwide Reach" }
   ];
 
+  // Color variations based on #141352
+  const colorPalette = {
+    primary: '#141352',        // Base color
+    lighter: '#1e1d72',        // Lighter variation
+    light: '#2a2991',          // Light variation
+    accent: '#4f4dce',         // Accent color
+    yellow: '#f9c74f',         // Complementary yellow
+    pink: '#f72585',           // Complementary pink
+    blue: '#4361ee'            // Complementary blue
+  };
+
   return (
-    <footer className="bg-primary text-white relative overflow-hidden">
+    <footer className="text-white relative overflow-hidden" style={{ backgroundColor: colorPalette.primary }}>
       <style >{`
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -97,7 +108,7 @@ const Footer = () => {
         }
         .gradient-border {
           position: relative;
-          background: linear-gradient(45deg, #3b82f6, #ec4899, #f59e0b);
+          background: linear-gradient(45deg, ${colorPalette.accent}, ${colorPalette.pink}, ${colorPalette.yellow});
           padding: 2px;
           border-radius: 12px;
         }
@@ -108,7 +119,7 @@ const Footer = () => {
           left: -2px;
           right: -2px;
           bottom: -2px;
-          background: linear-gradient(45deg, #3b82f6, #ec4899, #f59e0b);
+          background: linear-gradient(45deg, ${colorPalette.accent}, ${colorPalette.pink}, ${colorPalette.yellow});
           border-radius: 14px;
           z-index: -1;
           animation: gradient 3s ease infinite;
@@ -122,11 +133,12 @@ const Footer = () => {
       `}</style>
 
       {/* Premium wave top with enhanced design */}
-      <div className="w-full h-20 bg-white mb-6 relative">
+      <div className="w-full h-20 mb-6 relative" style={{ backgroundColor: 'white' }}>
         <svg 
           viewBox="0 0 1200 120" 
           preserveAspectRatio="none" 
-          className="w-full h-full text-primary"
+          className="w-full h-full"
+          style={{ color: colorPalette.primary }}
         >
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
                 fill="currentColor" opacity="0.2"></path>
@@ -137,18 +149,18 @@ const Footer = () => {
         </svg>
         
         {/* Floating elements above wave */}
-        <div className="absolute -top-4 left-1/4 w-8 h-8 bg-sunshine-yellow/20 rounded-full animate-float"></div>
-        <div className="absolute -top-6 right-1/3 w-6 h-6 bg-brand-pink/20 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -top-2 left-2/3 w-4 h-4 bg-sky-blue/20 rounded-full animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -top-4 left-1/4 w-8 h-8 rounded-full animate-float" style={{ backgroundColor: `${colorPalette.yellow}20` }}></div>
+        <div className="absolute -top-6 right-1/3 w-6 h-6 rounded-full animate-float" style={{ backgroundColor: `${colorPalette.pink}20`, animationDelay: '2s' }}></div>
+        <div className="absolute -top-2 left-2/3 w-4 h-4 rounded-full animate-float" style={{ backgroundColor: `${colorPalette.blue}20`, animationDelay: '4s' }}></div>
       </div>
 
       {/* Main Footer Content */}
       <div className="container-padding py-12 relative">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-10 right-10 w-32 h-32 bg-sunshine-yellow rounded-full blur-2xl"></div>
-          <div className="absolute bottom-10 left-10 w-24 h-24 bg-brand-pink rounded-full blur-2xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-sky-blue rounded-full blur-2xl"></div>
+          <div className="absolute top-10 right-10 w-32 h-32 rounded-full blur-2xl" style={{ backgroundColor: colorPalette.yellow }}></div>
+          <div className="absolute bottom-10 left-10 w-24 h-24 rounded-full blur-2xl" style={{ backgroundColor: colorPalette.pink }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full blur-2xl" style={{ backgroundColor: colorPalette.blue }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -157,13 +169,14 @@ const Footer = () => {
             {/* Brand Section - Enhanced */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full gradient flex items-center justify-center overflow-hidden shadow-lg">
+                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center overflow-hidden shadow-lg">
                   <img 
                     src={LogoImage} 
                     alt="Jikubali Africa Logo" 
-                    className="w-full h-full object-contain p-1"
+                    className="w-10 h-10 object-contain rounded-full"
                   />
                 </div>
+
                 <div>
                   <h3 className="font-heading text-2xl font-bold">Jikubali Africa</h3>
                   <p className="text-white/70 text-sm">Mental Wellness & Community Support</p>
@@ -179,8 +192,8 @@ const Footer = () => {
                 {trustBadges.map((badge, index) => {
                   const IconComponent = badge.icon;
                   return (
-                    <div key={index} className="text-center bg-white/5 p-3 rounded-xl">
-                      <IconComponent className="w-6 h-6 text-sunshine-yellow mx-auto mb-2" />
+                    <div key={index} className="text-center p-3 rounded-xl" style={{ backgroundColor: colorPalette.lighter }}>
+                      <IconComponent className="w-6 h-6 mx-auto mb-2" style={{ color: colorPalette.yellow }} />
                       <p className="text-xs text-white/80">{badge.text}</p>
                     </div>
                   );
@@ -189,16 +202,16 @@ const Footer = () => {
 
               {/* Contact Info - Enhanced */}
               <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                  <Mail className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: colorPalette.lighter }}>
+                  <Mail className="w-5 h-5 flex-shrink-0" style={{ color: colorPalette.yellow }} />
                   <span className="text-sm">info@jikubaliafrica.org</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                  <Phone className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: colorPalette.lighter }}>
+                  <Phone className="w-5 h-5 flex-shrink-0" style={{ color: colorPalette.yellow }} />
                   <span className="text-sm">+254 700 123 456</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                  <MapPin className="w-5 h-5 text-sunshine-yellow flex-shrink-0" />
+                <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: colorPalette.lighter }}>
+                  <MapPin className="w-5 h-5 flex-shrink-0" style={{ color: colorPalette.yellow }} />
                   <span className="text-sm">Nairobi, Kenya</span>
                 </div>
               </div>
@@ -212,7 +225,8 @@ const Footer = () => {
                       key={index}
                       href={social.href}
                       aria-label={social.label}
-                      className={`w-10 h-10 rounded-xl bg-white/10 ${social.color} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm`}
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm ${social.color}`}
+                      style={{ backgroundColor: colorPalette.lighter }}
                     >
                       <IconComponent className="w-5 h-5 text-white" />
                     </a>
@@ -223,7 +237,7 @@ const Footer = () => {
 
             {/* Programs Links - Enhanced */}
             <div>
-              <h4 className="font-heading font-semibold mb-4 text-sunshine-yellow text-lg flex items-center gap-2">
+              <h4 className="font-heading font-semibold mb-4 text-lg flex items-center gap-2" style={{ color: colorPalette.yellow }}>
                 <BookOpen className="w-5 h-5" />
                 Programs
               </h4>
@@ -234,7 +248,10 @@ const Footer = () => {
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-sunshine-yellow transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        className="text-white transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        style={{ color: 'white' }}
+                        onMouseOver={(e) => e.currentTarget.style.color = colorPalette.yellow}
+                        onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                       >
                         <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
                         <span>{link.label}</span>
@@ -247,7 +264,7 @@ const Footer = () => {
 
             {/* Resources Links - Enhanced */}
             <div>
-              <h4 className="font-heading font-semibold mb-4 text-brand-pink-light text-lg flex items-center gap-2">
+              <h4 className="font-heading font-semibold mb-4 text-lg flex items-center gap-2" style={{ color: colorPalette.yellow }}>
                 <FileText className="w-5 h-5" />
                 Resources
               </h4>
@@ -258,7 +275,10 @@ const Footer = () => {
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-brand-pink-light transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        className="text-white transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        style={{ color: 'white' }}
+                        onMouseOver={(e) => e.currentTarget.style.color = colorPalette.pink}
+                        onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                       >
                         <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
                         <span>{link.label}</span>
@@ -271,7 +291,7 @@ const Footer = () => {
 
             {/* About Links - Enhanced */}
             <div>
-              <h4 className="font-heading mb-4 text-sky-blue-light text-lg flex items-center gap-2">
+              <h4 className="font-heading mb-4 text-lg flex items-center gap-2" style={{ color: colorPalette.yellow }}>
                 <Users2 className="w-5 h-5" />
                 About
               </h4>
@@ -282,7 +302,10 @@ const Footer = () => {
                     <li key={index}>
                       <a 
                         href={link.href} 
-                        className="text-white hover:text-sky-blue-light transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        className="text-white transition-all duration-300 text-sm flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 group"
+                        style={{ color: 'white' }}
+                        onMouseOver={(e) => e.currentTarget.style.color = colorPalette.blue}
+                        onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                       >
                         <IconComponent className="w-4 h-4 transition-transform group-hover:scale-110" />
                         <span>{link.label}</span>
@@ -305,13 +328,13 @@ const Footer = () => {
               </span>
             </div>
             <div className="flex gap-6">
-              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors flex items-center gap-1">
+              <a href="#" className="text-white transition-colors flex items-center gap-1 hover:opacity-80">
                 <Shield className="w-4 h-4" />
                 Privacy
               </a>
-              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Terms</a>
-              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Cookies</a>
-              <a href="#" className="text-white hover:text-sunshine-yellow transition-colors">Accessibility</a>
+              <a href="#" className="text-white transition-colors hover:opacity-80">Terms</a>
+              <a href="#" className="text-white transition-colors hover:opacity-80">Cookies</a>
+              <a href="#" className="text-white transition-colors hover:opacity-80">Accessibility</a>
             </div>
           </div>
         </div>
@@ -321,7 +344,10 @@ const Footer = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-sky-blue to-brand-pink rounded-full flex items-center justify-center text-white shadow-lg z-50 transition-all duration-300 hover:scale-110 animate-pulse-soft"
+          className="fixed bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg z-50 transition-all duration-300 hover:scale-110 animate-pulse-soft"
+          style={{ 
+            background: `linear-gradient(to bottom right, ${colorPalette.accent}, ${colorPalette.pink})`
+          }}
           aria-label="Scroll to top"
         >
           <ChevronUp className="w-6 h-6" />
