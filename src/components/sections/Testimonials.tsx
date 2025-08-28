@@ -176,9 +176,6 @@ const Testimonials = () => {
               <button className="bg-sunshine-yellow text-dark-navy font-semibold px-8 py-3 rounded-lg hover:bg-sunshine-yellow-dark transition-colors duration-300">
                 Share Your Story
               </button>
-              <button className="border border-white/30 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300">
-                Join Support Group
-              </button>
             </div>
           </div>
         </div>

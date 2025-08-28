@@ -32,23 +32,26 @@ const About = () => {
   const values = [
     {
       icon: Heart,
-      title: "Compassion",
-      description: "We approach mental health with empathy, understanding, and genuine care for every individual's journey."
+      title: "Joyful Living & Inclusivity",
+      description: "We celebrate diversity and foster a sense of belonging, ensuring everyone experiences joy and acceptance."
     },
     {
       icon: Users,
-      title: "Community",
-      description: "Building strong, supportive networks that foster healing, growth, and lasting connections."
+      title: "Kindness & Love",
+      description:
+      "We spread compassion and care, creating a safe space where love drives healing and transformation.",
     },
     {
       icon: Target,
-      title: "Purpose",
-      description: "Dedicated to creating meaningful change in mental health awareness and access across Kenya."
+      title: "Authenticity & Boldness",
+      description:
+      "We encourage individuals to embrace their true selves and boldly share their stories without fear or shame.",
     },
     {
       icon: Award,
-      title: "Excellence",
-      description: "Committed to the highest standards in mental health support, education, and community programs."
+      title: "Uniqueness & Integrity",
+      description:
+      "We honor each person’s uniqueness while staying true to our values of honesty, trust, and transparency.",
     }
   ];
 
@@ -67,7 +70,7 @@ const About = () => {
   }
 },
   {
-    name: "Lilian Wairimu",
+    name: "Wairimu Lilian",
     position: "Chairperson",
     image: leader1,
     bio: "Provides overall leadership and strategic direction for Jikubali Africa's programs.",
@@ -712,8 +715,10 @@ const About = () => {
                 </div>
                 <h3 className="font-heading text-3xl font-bold mb-6 text-brand-pink">Our Mission</h3>
                 <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                  To champion mental health awareness, provide accessible support services, and create 
-                  empowering communities where every individual can embrace their authentic self and thrive.
+                  Dedicated to Empowering individuals by promoting self-love 
+                and acceptance through innovative programs and initiative.
+                 We strive to inspire and support youth in their journey 
+                 to personal growth, confidence and well being.
                 </p>
                 <p className="text-foreground/80">
                   We believe that mental wellness is not a destination but a journey—one that should be 
@@ -726,8 +731,8 @@ const About = () => {
                 </div>
                 <h3 className="font-heading text-3xl font-bold mb-6 text-sky-blue">Our Vision</h3>
                 <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                  A Kenya where mental health stigma is eliminated, support is universally accessible, 
-                  and every individual has the tools and community they need to flourish.
+                  To create a world where individuals embrace self-love and acceptance, 
+                  fostering a culture of empowerment and positivity
                 </p>
                 <p className="text-foreground/80">
                   We envision thriving communities where mental wellness is prioritized, celebrated, 

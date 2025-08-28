@@ -1,16 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Heart, ChevronRight, Users, Calendar, Star, ChevronDown, Sparkles } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Users, ChevronDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Footer from "@/components/sections/Footer";
-import bgImage from "@/assets/general/v26.jpg";
-
-import nairobiOffice from "@/assets/general/Nairobi.jpeg";
-import mombasaOffice from "@/assets/general/Nairobi.jpeg";
-
-import supportLeadImg from "@/assets/general/v21.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +16,16 @@ const Contact = () => {
     urgency: "normal"
   });
 
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
   const [typingText, setTypingText] = useState("");
   const [typingIndex, setTypingIndex] = useState(0);
@@ -30,7 +33,6 @@ const Contact = () => {
   const [typingSpeed, setTypingSpeed] = useState(100);
   
   const formRef = useRef<HTMLFormElement>(null);
-  const emergencyRef = useRef<HTMLDivElement>(null);
 
   // Typing animation effect
   useEffect(() => {
@@ -65,29 +67,116 @@ const Contact = () => {
     return () => clearTimeout(timer);
   }, [typingText, isDeleting, typingIndex, typingSpeed]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const validateForm = () => {
+    const errors = {
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    };
+    
+    let isValid = true;
+    
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+    
+    if (!formData.subject.trim()) {
+      errors.subject = "Subject is required";
+      isValid = false;
+    }
+    
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+      isValid = false;
+    }
+    
+    setFormErrors(errors);
+    return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
     
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        urgency: "normal"
+    // Clear error when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: ""
       });
-    }, 3000);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitError(null);
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('http://localhost:8000/api/contact/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Handle server-side validation errors
+        if (data && typeof data === 'object') {
+          const serverErrors = Object.values(data).flat().join(', ');
+          throw new Error(`Validation error: ${serverErrors}`);
+        }
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
+      console.log("Form submitted successfully:", data);
+      setIsSubmitted(true);
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          urgency: "normal"
+        });
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitError(error instanceof Error ? error.message : "An unknown error occurred");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleFAQ = (index: number) => {
@@ -134,8 +223,8 @@ const Contact = () => {
   const contactMethods = [
     {
       icon: Phone,
-      title: "Crisis Hotline",
-      info: "+254 700 000 000",
+      title: "Our Hotline",
+      info: "+254 795 761 414",
       description: "24/7 emergency support",
       color: "from-red-500 to-red-600",
       animationDelay: "0s"
@@ -143,7 +232,7 @@ const Contact = () => {
     {
       icon: MessageCircle,
       title: "General Support",
-      info: "+254 700 111 111",
+      info: "+254 742 749 461",
       description: "Monday - Friday, 8AM - 6PM",
       color: "from-blue-500 to-blue-600",
       animationDelay: "0.1s"
@@ -151,7 +240,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      info: "jikubaliafrica@gmail.com",
+      info: "info@jikubaliafrica.org",
       description: "We respond within 48 hours",
       color: "from-purple-500 to-purple-600",
       animationDelay: "0.2s"
@@ -170,16 +259,14 @@ const Contact = () => {
     {
       city: "Nairobi",
       address: "Kimathi Street, CBD Building, 3rd Floor",
-      phone: "+254 700 111 111",
+      phone: "+254 795 761 414",
       hours: "Mon-Fri: 8AM-6PM, Sat: 9AM-1PM",
-      image: nairobiOffice,
     },
     {
       city: "Kisii",
       address: "Kisii University, Kisii Town, Kenya",
-      phone: "+254 700 222 222",
+      phone: "+254 742 749 461",
       hours: "Mon-Fri: 8AM-5PM, Sat: 9AM-12PM",
-      image: mombasaOffice,
     },
   ];
 
@@ -288,107 +375,111 @@ const Contact = () => {
       <div className="relative z-10">
         {/* Enhanced Hero Section with Creative Design */}
         <section className="min-h-screen flex items-center relative overflow-hidden">
-  {/* Gradient Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
 
-  {/* Background image with parallax */}
-  <div
-    className="absolute inset-0 z-0 parallax-bg"
-    style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${bgImage})`,
-      backgroundPosition: "center 30%",
-    }}
-  ></div>
+          {/* Background image with parallax */}
+          <div
+            className="absolute inset-0 z-0 parallax-bg"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(/api/placeholder/800/600)`,
+              backgroundPosition: "center 30%",
+            }}
+          ></div>
 
-  {/* Decorative shapes */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-    <div
-      className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
-      style={{ animationDelay: "1s" }}
-    ></div>
-    <div
-      className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse"
-      style={{ animationDelay: "2s" }}
-    ></div>
-  </div>
-
-  {/* Content */}
-  <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
-    <div className="flex flex-col items-start text-left max-w-3xl">
-      <div className="animate-fade-up text-white w-full">
-        {/* Badge */}
-        <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
-          <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
-          <span>Your Journey to Wellness Starts Here</span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
-            We're Here
-          </span>
-          <br />
-          <span className="text-white">To Support You</span>
-        </h1>
-
-        {/* Typing effect */}
-        <div className="h-12 mb-8">
-          <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
-            {typingText}
-            <span className="typing-cursor h-6 align-middle"></span>
-          </span>
-        </div>
-
-
-        {/* Contact Methods */}
-        <div className="grid grid-cols-2 gap-4 mb-12 max-w-md">
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
-            <Mail className="w-8 h-8 mb-2 text-blue-300" />
-            <p className="text-white font-medium">Email Us</p>
-            <p className="text-white/80 text-sm">jikubaliafrica@gmail.com</p>
+          {/* Decorative shapes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
+            <div
+              className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse"
+              style={{ animationDelay: "2s" }}
+            ></div>
           </div>
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
-            <MapPin className="w-8 h-8 mb-2 text-blue-300" />
-            <p className="text-white font-medium">Visit Us</p>
-            <p className="text-white/80 text-sm">Nairobi & Kisii</p>
+
+          {/* Content */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
+            <div className="flex flex-col items-start text-left max-w-3xl">
+              <div className="animate-fade-up text-white w-full">
+                {/* Badge */}
+                <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
+                  <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
+                  <span>Your Journey to Wellness Starts Here</span>
+                </div>
+
+                {/* Headline */}
+                <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+                    We're Here
+                  </span>
+                  <br />
+                  <span className="text-white">To Support You</span>
+                </h1>
+
+                {/* Typing effect */}
+                <div className="h-12 mb-8">
+                  <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
+                    {typingText}
+                    <span className="typing-cursor h-6 align-middle"></span>
+                  </span>
+                </div>
+
+                {/* Contact Methods */}
+                <div className="grid grid-cols-2 gap-4 mb-12 max-w-md">
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+                    <Mail className="w-8 h-8 mb-2 text-blue-300" />
+                    <p className="text-white font-medium">Email Us</p>
+                    <p className="text-white/80 text-sm">info@jikubaliafrica.org</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+                    <MapPin className="w-8 h-8 mb-2 text-blue-300" />
+                    <p className="text-white font-medium">Visit Us</p>
+                    <p className="text-white/80 text-sm">Nairobi & Kisii</p>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
+                    onClick={() => {
+                      const formSection = document.getElementById('contact-form');
+                      if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    <MessageCircle className="mr-3 h-5 w-5" />
+                    Send Message
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm"
+                  >
+                    <Users className="mr-3 h-5 w-5" />
+                    Join Community
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
-          >
-            <MessageCircle className="mr-3 h-5 w-5" />
-            Send Message
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm"
-          >
-            <Users className="mr-3 h-5 w-5" />
-            Join Community
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
+          {/* Scroll indicator stays centered */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+            </div>
+          </div>
+        </section>
 
-  {/* Scroll indicator stays centered */}
-  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-      <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
-    </div>
-  </div>
-</section>
-
-        {/* Rest of your components (Contact Methods, Support Lead, Form, FAQ, etc.) remain the same */}
         {/* Contact Methods */}
         <section className="py-20 relative overflow-hidden bg-white">
-          <div className="container-padding max-w-7xl mx-auto relative z-10">
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
             <div className="text-center mb-16 observe">
               <div className="inline-flex items-center bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 📞 Multiple Ways to Connect
@@ -425,65 +516,9 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Meet the Support Lead */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-          <div className="container-padding max-w-7xl mx-auto">
-            <div className="text-center mb-16 observe">
-              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6 text-gray-800">
-                Meet Our <span className="text-blue-600">Support Lead</span>
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mb-8 rounded-full"></div>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our dedicated professional is here to provide compassionate care and support.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-xl observe max-w-4xl mx-auto">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-2/5">
-                  <img 
-                    src={supportLeadImg} 
-                    alt="Mr. Amos Clinton - Software Developer"
-                    className="w-full h-full object-cover min-h-[300px]"
-                  />
-                </div>
-                
-                <div className="md:w-3/5 p-8 flex flex-col justify-center">
-                  <h3 className="font-heading text-2xl font-bold mb-2 text-gray-800">ACW_developer</h3>
-                  <p className="text-purple-600 font-medium mb-4">Software Developer</p>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    With extensive experience in web development and digital solutions, 
-                    he is in charge of the development and maintenance of our website, ensuring a seamless user experience. 
-                    In addition to managing technical updates, he oversees other digital initiatives to keep our online presence effective and engaging.
-                  </p>
-
-                  <div className="space-y-2 text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-2 text-blue-500" />
-                      <span>Available: Mon - Sat</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-2 text-blue-500" />
-                      <span>8:00 AM - 8:00 PM</span>
-                    </div>
-                  </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="mt-6 w-fit border-blue-500 text-blue-600 hover:bg-blue-50"
-                    onClick={() => window.open("https://clinton.miteexplorers.com", "_blank")}
-                  >
-                    Schedule Consultation
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Contact Form & Office Locations */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="container-padding max-w-7xl mx-auto">
+        <section id="contact-form" className="py-20 bg-white relative overflow-hidden">
+          <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-12">
               <div className="observe">
                 <h3 className="font-heading text-3xl font-bold mb-6 text-blue-600">Send Us a Message</h3>
@@ -501,6 +536,13 @@ const Contact = () => {
                       </div>
                     ) : (
                       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                        {submitError && (
+                          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+                            <p>Error: {submitError}</p>
+                            <p className="text-sm mt-1">Please try again or contact us directly.</p>
+                          </div>
+                        )}
+                        
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-sm font-medium mb-2 text-gray-700">Full Name *</label>
@@ -510,7 +552,9 @@ const Contact = () => {
                               onChange={handleInputChange}
                               required
                               className="w-full"
+                              aria-invalid={!!formErrors.name}
                             />
+                            {formErrors.name && <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>}
                           </div>
                           <div>
                             <label className="block text-sm font-medium mb-2 text-gray-700">Email Address *</label>
@@ -521,11 +565,13 @@ const Contact = () => {
                               onChange={handleInputChange}
                               required
                               className="w-full"
+                              aria-invalid={!!formErrors.email}
                             />
+                            {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
                           </div>
                         </div>
                         
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid md:grid-cols-1 gap-4">
                           <div>
                             <label className="block text-sm font-medium mb-2 text-gray-700">Phone Number</label>
                             <Input
@@ -534,19 +580,6 @@ const Contact = () => {
                               onChange={handleInputChange}
                               className="w-full"
                             />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium mb-2 text-gray-700">Urgency Level</label>
-                            <select
-                              name="urgency"
-                              value={formData.urgency}
-                              onChange={handleInputChange}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            >
-                              <option value="normal">Normal</option>
-                              <option value="urgent">Urgent</option>
-                              <option value="crisis">Crisis</option>
-                            </select>
                           </div>
                         </div>
 
@@ -558,7 +591,9 @@ const Contact = () => {
                             onChange={handleInputChange}
                             required
                             className="w-full"
+                            aria-invalid={!!formErrors.subject}
                           />
+                          {formErrors.subject && <p className="text-red-500 text-sm mt-1">{formErrors.subject}</p>}
                         </div>
 
                         <div>
@@ -571,12 +606,27 @@ const Contact = () => {
                             rows={5}
                             className="w-full"
                             placeholder="Tell us how we can help you..."
+                            aria-invalid={!!formErrors.message}
                           />
+                          {formErrors.message && <p className="text-red-500 text-sm mt-1">{formErrors.message}</p>}
                         </div>
 
-                        <Button type="submit" className="w-full group bg-blue-600 hover:bg-blue-700">
-                          <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                          Send Message
+                        <Button 
+                          type="submit" 
+                          className="w-full group bg-blue-600 hover:bg-blue-700"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                              Send Message
+                            </>
+                          )}
                         </Button>
                       </form>
                     )}
@@ -590,12 +640,8 @@ const Contact = () => {
                   {offices.map((office, index) => (
                     <Card key={office.city} className="hover:shadow-xl transition-all duration-300 overflow-hidden border-0 shadow-lg">
                       <div className="flex flex-col sm:flex-row">
-                        <div className="sm:w-2/5">
-                          <img 
-                            src={office.image} 
-                            alt={office.city}
-                            className="w-full h-full object-cover min-h-[150px]"
-                          />
+                        <div className="sm:w-2/5 bg-gray-200 min-h-[150px] flex items-center justify-center">
+                          <MapPin className="w-12 h-12 text-gray-400" />
                         </div>
                         <CardContent className="p-6 flex-1">
                           <div className="flex items-start space-x-4">
@@ -635,7 +681,7 @@ const Contact = () => {
 
         {/* FAQ Section */}
         <section className="py-20 bg-gray-50">
-          <div className="container-padding max-w-4xl mx-auto">
+          <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center mb-16 observe">
               <h2 className="font-heading text-3xl lg:text-4xl font-bold mb-6 text-gray-800">
                 Frequently Asked <span className="text-purple-600">Questions</span>

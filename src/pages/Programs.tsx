@@ -626,13 +626,6 @@ const Programs = () => {
                 </p>
               </div>
             </div>
-
-            <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Button variant="warm" size="lg" className="group">
-                Start Your Journey Today
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
           </div>
         </section>
 

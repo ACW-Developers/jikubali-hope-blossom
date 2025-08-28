@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Home, Info, BookOpen, Image, Phone, Users } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
-import LogoImage from "@/assets/logos/jikubali.png";
+import LogoImage1 from "@/assets/logos/jikubali.png";
+import LogoImage from "@/assets/logos/Whitelogo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,10 +77,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo - Left Side */}
+          {/* Logo - Left Side */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative rounded-full bg-white/90 p-1 w-10 h-10 lg:w-12 lg:h-12">
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
               <img
-                src={LogoImage}
+                src={scrolled || !isHomePage ? LogoImage1 : LogoImage}
                 alt="Jikubali Africa Logo"
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />

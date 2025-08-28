@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 // Import your logo image
-import LogoImage from "@/assets/logos/jikubali.png"; 
+import LogoImage from "@/assets/logos/Whitelogo.png"; 
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -169,14 +169,11 @@ const Footer = () => {
             {/* Brand Section - Enhanced */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center overflow-hidden shadow-lg">
-                  <img 
-                    src={LogoImage} 
-                    alt="Jikubali Africa Logo" 
-                    className="w-10 h-10 object-contain rounded-full"
-                  />
-                </div>
-
+                <img 
+                src={LogoImage} 
+                alt="Jikubali Africa Logo" 
+                className="w-12 h-12 object-contain rounded-full"
+                />
                 <div>
                   <h3 className="font-heading text-2xl font-bold">Jikubali Africa</h3>
                   <p className="text-white/70 text-sm">Mental Wellness & Community Support</p>

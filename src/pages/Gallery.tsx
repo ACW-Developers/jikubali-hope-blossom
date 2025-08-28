@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Calendar, Users, Heart, Camera, ArrowRight, X, Play, MapPin, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, Users, Heart, Camera, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
+import { Link } from "react-router-dom";
 
 // Import event images
 import communityEvent1 from "@/assets/general/v28.jpg";
@@ -18,7 +19,6 @@ import F4 from "@/assets/events/F4.jpg";
 import F5 from "@/assets/events/F5.jpg";
 import F7 from "@/assets/events/F7.jpg";
 import F8 from "@/assets/events/F8.jpg";
-
 
 // Import v series images
 import v from "@/assets/general/v.jpg";
@@ -41,369 +41,429 @@ import v17 from "@/assets/general/v17.jpg";
 import v18 from "@/assets/general/v18.jpg";
 import v19 from "@/assets/general/v19.jpg";
 
-const Gallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [activeFilter, setActiveFilter] = useState("all");
-  interface GalleryItem {
+interface GalleryItem {
   id: number;
   title: string;
   category: string;
-  date: string;
+  date: string | null;
   location: string;
   participants: string;
   image: string;
   description: string;
 }
 
-const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+interface ApiGalleryItem {
+  id: number;
+  image: string;
+  category: string;
+  title: string;
+  date: string;
+  location: string;
+  participants_no: number;
+  uploaded_at: string;
+}
 
-  const galleryItems = [
-  {
-    id: 1,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: communityEvent1,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 2,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: workshopSession,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 3,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: youthCampaign,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 4,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: familyTherapy,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 5,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: healthFair,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 6,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: meditationSession,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 7,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 8,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F1,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 9,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F2,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 10,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F3,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 11,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F4,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 12,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F5,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 13,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 14,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v2,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 15,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v3,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 16,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v4,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 17,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v5,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 18,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v6,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 19,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v7,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 20,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v8,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 21,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v9,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 22,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v10,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 23,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v11,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 24,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v12,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 25,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v13,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 26,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v14,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 27,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v15,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 28,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v16,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 29,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v17,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 30,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v18,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 31,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: v19,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 32,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F7,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  },
-  {
-    id: 33,
-    title: "Jikubali Africa Program",
-    category: "Event",
-    date: null,
-    location: "Kisii University",
-    participants: "100+",
-    image: F8,
-    description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
-  }
-]
+const Gallery = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const [apiGalleryItems, setApiGalleryItems] = useState<GalleryItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const categories = [
-    { id: "all", name: "All Events", count: galleryItems.length },
-    { id: "community", name: "Community Events", count: galleryItems.filter(item => item.category === "community").length },
-    { id: "workshops", name: "Workshops", count: galleryItems.filter(item => item.category === "workshops").length },
-    { id: "youth", name: "Youth Programs", count: galleryItems.filter(item => item.category === "youth").length },
-    { id: "wellness", name: "Wellness", count: galleryItems.filter(item => item.category === "wellness").length },
-    { id: "therapy", name: "Therapy Sessions", count: galleryItems.filter(item => item.category === "therapy").length },
-    { id: "training", name: "Training", count: galleryItems.filter(item => item.category === "training").length },
-    { id: "support", name: "Support Groups", count: galleryItems.filter(item => item.category === "support").length }
+  // Static gallery items
+  const staticGalleryItems: GalleryItem[] = [
+    {
+      id: 1,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: communityEvent1,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 2,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: workshopSession,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 3,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: youthCampaign,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 4,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: familyTherapy,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 5,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: healthFair,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 6,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: meditationSession,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 7,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 8,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F1,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 9,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F2,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 10,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F3,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 11,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F4,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 12,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F5,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 13,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 14,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v2,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 15,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v3,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 16,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v4,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 17,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v5,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 18,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v6,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 19,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v7,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 20,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v8,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 21,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v9,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 22,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v10,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 23,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v11,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 24,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v12,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 25,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v13,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 26,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v14,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 27,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v15,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 28,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v16,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 29,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v17,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 30,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v18,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 31,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: v19,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 32,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F7,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    },
+    {
+      id: 33,
+      title: "Jikubali Africa Program",
+      category: "Event",
+      date: null,
+      location: "Kisii University",
+      participants: "100+",
+      image: F8,
+      description: "Jikubali sessions and program designed to foster self-acceptance and promote mental wellness."
+    }
   ];
 
+  // Fetch gallery items from API
+  useEffect(() => {
+    const fetchGalleryItems = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('http://localhost:8000/api/gallery/');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data: ApiGalleryItem[] = await response.json();
+        
+        // Transform API data to match our GalleryItem format
+        const transformedData: GalleryItem[] = data.map(item => ({
+          id: item.id + 1000, // Add offset to avoid ID conflicts with static items
+          title: item.title,
+          category: item.category,
+          date: item.date,
+          location: item.location,
+          participants: `${item.participants_no}+`,
+          image: item.image, // Use the direct image URL from the API
+          description: `Event at ${item.location} with ${item.participants_no} participants on ${item.date}`
+        }));
+        
+        setApiGalleryItems(transformedData);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching gallery items:", err);
+        setError("Failed to load gallery items. Showing static content only.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchGalleryItems();
+  }, []);
+
+  // Combine static and API gallery items (API items first)
+  const allGalleryItems = [...apiGalleryItems, ...staticGalleryItems];
+
+  // Get unique categories from all gallery items
+  const allCategories = Array.from(new Set(allGalleryItems.map(item => item.category)));
+
+  // Create categories for filter with counts
+  const categories = [
+    { id: "all", name: "All Events", count: allGalleryItems.length },
+    ...allCategories.map(category => ({
+      id: category.toLowerCase().replace(/\s+/g, '-'),
+      name: category,
+      count: allGalleryItems.filter(item => item.category === category).length
+    }))
+  ];
+
+  // Filter items based on selected category
   const filteredItems = selectedCategory === "all" 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedCategory);
+    ? allGalleryItems 
+    : allGalleryItems.filter(item => 
+        item.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory
+      );
 
   return (
     <div className="min-h-screen pt-16 sm:pt-20 relative overflow-hidden">
@@ -472,6 +532,22 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
           </div>
         </section>
 
+        {/* Loading and Error States */}
+        {isLoading && (
+          <div className="container-padding max-w-7xl mx-auto text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-pink mx-auto mb-4"></div>
+            <p className="text-foreground/70">Loading gallery items...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="container-padding max-w-7xl mx-auto py-4">
+            <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-md text-center">
+              <p>{error}</p>
+            </div>
+          </div>
+        )}
+
         {/* Category Filter */}
         <section className="py-8 bg-white/80 backdrop-blur-sm sticky top-20 z-20 transition-all duration-500 shadow-md">
           <div className="container-padding max-w-7xl mx-auto">
@@ -513,6 +589,11 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          // Fallback for broken images
+                          const target = e.target as HTMLImageElement;
+                          target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%23e5e7eb'%3E%3Crect width='200' height='200' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%239ca3af'%3EImage not available%3C/text%3E%3C/svg%3E";
+                        }}
                       />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -521,7 +602,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
                           {item.title}
                         </h3>
                         <div className="flex items-center justify-between text-sm">
-                          <span>{item.date}</span>
+                          <span>{item.date || "Ongoing"}</span>
                           <div className="flex items-center">
                             <Users className="w-4 h-4 mr-1" />
                             {item.participants}
@@ -546,7 +627,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
               ))}
             </div>
             
-            {filteredItems.length === 0 && (
+            {filteredItems.length === 0 && !isLoading && (
               <div className="text-center py-16 animate-fade-in">
                 <div className="text-6xl mb-4">📷</div>
                 <h3 className="text-xl font-medium text-foreground/70">No events found in this category</h3>
@@ -570,7 +651,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {[
-                { value: "10+", label: "Events Organized", color: "text-sky-blue" },
+                { value: allGalleryItems.length, label: "Events Organized", color: "text-sky-blue" },
                 { value: "2000+", label: "Participants Reached", color: "text-brand-pink" },
                 { value: "6", label: "Counties Covered", color: "text-sunshine-yellow" },
                 { value: "98%", label: "Positive Feedback", color: "text-sky-blue" }
@@ -610,13 +691,24 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-sky-blue hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 px-8">
-                  View Upcoming Events
-                </Button>
-                
-                <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-sky-blue">
-                  Volunteer With Us
-                </Button>
+                <Link to="/contact">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-sky-blue hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 px-8"
+                  >
+                    Partner with Us
+                  </Button>
+                </Link>
+
+                <Link to="/contact">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="bg-white/10 border-white text-white hover:bg-white hover:text-sky-blue"
+                  >
+                    Volunteer With Us
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -634,6 +726,11 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
                 src={selectedImage.image}
                 alt={selectedImage.title}
                 className="w-full h-96 object-cover"
+                onError={(e) => {
+                  // Fallback for broken images in modal
+                  const target = e.target as HTMLImageElement;
+                  target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%23e5e7eb'%3E%3Crect width='200' height='200' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%239ca3af'%3EImage not available%3C/text%3E%3C/svg%3E";
+                }}
               />
               <button
                 onClick={() => setSelectedImage(null)}
@@ -651,7 +748,7 @@ const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
               </p>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-brand-pink font-bold">{selectedImage.date}</div>
+                  <div className="text-brand-pink font-bold">{selectedImage.date || "Ongoing"}</div>
                   <div className="text-foreground/60 text-sm">Date</div>
                 </div>
                 <div>

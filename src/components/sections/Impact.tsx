@@ -25,7 +25,7 @@ const Impact = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const targetValues = {
-    livesTransformed: 1000,
+    livesTransformed: 5000,
     communitiesReached: 10,
     countiesServed: 6,
     yearsFounded: 3,
@@ -34,7 +34,7 @@ const Impact = () => {
   };
 
   const maxValues = {
-    livesTransformed: 600,
+    livesTransformed: 300,
     communitiesReached: 20,
     countiesServed: 15,
     yearsFounded: 5,

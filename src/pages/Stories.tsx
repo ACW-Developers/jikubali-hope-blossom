@@ -366,10 +366,6 @@ const Stories = () => {
               <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-sky-blue transition-all duration-300 transform hover:scale-105">
                 Submit Your Story
               </Button>
-              
-              <Button variant="ghost" size="lg" className="text-white/80 hover:text-white hover:bg-white/10">
-                Read Guidelines
-              </Button>
             </div>
           </div>
         </div>
