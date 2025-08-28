@@ -3,6 +3,7 @@ import { Quote, Heart, Star, Play, ChevronDown, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import Footer from "@/components/sections/Footer";
+import { TestimonialForm } from "@/components/ui/testimonial-form";
 
 // Import local images
 import heroBackground from "@/assets/general/v24.jpg";
@@ -362,11 +363,12 @@ const Stories = () => {
               toward mental wellness. Help us build a community of hope and resilience.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-sky-blue transition-all duration-300 transform hover:scale-105">
-                Submit Your Story
-              </Button>
-            </div>
+              <div className="flex justify-center text-black mt-6">
+                          <TestimonialForm 
+                            buttonText="Share Your Story" 
+                            buttonVariant="outline" 
+                          />
+                        </div>
           </div>
         </div>
       </section>

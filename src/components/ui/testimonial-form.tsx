@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { API_CONFIG, buildApiUrl } from "@/config/api";
 import { Share2, Send } from "lucide-react";
 
 interface TestimonialFormData {
@@ -56,7 +55,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name.trim() || !formData.age.trim() || !formData.title.trim() || !formData.story.trim()) {
       toast({
@@ -68,14 +67,19 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      const response = await fetch(buildApiUrl(API_CONFIG.ENDPOINTS.TESTIMONIALS), {
+      const response = await fetch("http://localhost:8000/api/testimonials/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          age: parseInt(formData.age, 10),
+          title: formData.title,
+          story: formData.story
+        })
       });
 
       if (response.ok) {
@@ -86,12 +90,14 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
         resetForm();
         setOpen(false);
       } else {
-        throw new Error('Failed to submit testimonial');
+        const data = await response.json();
+        const errorMessage = data?.detail || "Failed to submit testimonial";
+        throw new Error(errorMessage);
       }
     } catch (error) {
       toast({
         title: "Something went wrong",
-        description: "Please try again later or contact us directly.",
+        description: error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive"
       });
     } finally {
@@ -113,7 +119,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
         <DialogHeader>
           <DialogTitle className="text-2xl font-heading">Share Your Story</DialogTitle>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           <div className="space-y-2">
             <Label htmlFor="name">Full Name *</Label>
@@ -124,6 +130,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
               onChange={(e) => handleInputChange("name", e.target.value)}
               placeholder="Enter your full name"
               required
+              className="text-black"
             />
           </div>
 
@@ -138,6 +145,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
               onChange={(e) => handleInputChange("age", e.target.value)}
               placeholder="Enter your age"
               required
+              className="text-black"
             />
           </div>
 
@@ -150,6 +158,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
               onChange={(e) => handleInputChange("title", e.target.value)}
               placeholder="e.g., Student, Parent, Professional"
               required
+              className="text-black"
             />
           </div>
 
@@ -159,10 +168,10 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
               id="story"
               value={formData.story}
               onChange={(e) => handleInputChange("story", e.target.value)}
-              placeholder="Share your experience with mental health, our programs, or your journey of healing. Your story can inspire others..."
+              placeholder="Share your experience..."
               rows={6}
               required
-              className="resize-none"
+              className="resize-none text-black"
             />
             <div className="text-xs text-muted-foreground">
               {formData.story.length}/500 characters
@@ -182,7 +191,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
               type="button"
               variant="outline"
               onClick={() => setOpen(false)}
-              className="flex-1"
+              className="flex-1 bg-black text-white hover:bg-gray-900"
             >
               Cancel
             </Button>

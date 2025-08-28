@@ -173,9 +173,13 @@ const Testimonials = () => {
               Every journey to mental wellness is unique, but no one should walk it alone. 
               Join our community and discover the support, understanding, and hope you deserve.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <TestimonialForm buttonText="Share Your Story" />
-            </div>
+            <div className="flex justify-center text-black mt-6">
+            <TestimonialForm 
+              buttonText="Share Your Story" 
+              buttonVariant="outline" 
+            />
+          </div>
+
           </div>
         </div>
       </div>
