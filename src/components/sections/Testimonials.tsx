@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef } from "react";
 import testimonialsBackground from "@/assets/general/testimonials-bg.jpg";
+import { TestimonialForm } from "@/components/ui/testimonial-form";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -173,9 +174,7 @@ const Testimonials = () => {
               Join our community and discover the support, understanding, and hope you deserve.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-sunshine-yellow text-dark-navy font-semibold px-8 py-3 rounded-lg hover:bg-sunshine-yellow-dark transition-colors duration-300">
-                Share Your Story
-              </button>
+              <TestimonialForm buttonText="Share Your Story" />
             </div>
           </div>
         </div>
