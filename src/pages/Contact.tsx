@@ -10,7 +10,7 @@ import bgImage from "@/assets/general/v26.jpg";
 import nairobiOffice from "@/assets/general/Nairobi.jpeg";
 import mombasaOffice from "@/assets/general/Nairobi.jpeg";
 
-import supportLeadImg from "@/assets/general/v21.png";
+import supportLeadImg from "@/assets/team/Irihose.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -80,6 +80,7 @@ const Contact = () => {
     setSubmitError(null);
     
     try {
+      // Send to your backend
       const response = await fetch('http://localhost:8000/api/contact/', {
         method: 'POST',
         headers: {
@@ -97,6 +98,19 @@ const Contact = () => {
       if (!response.ok) {
         throw new Error(`Server responded with status: ${response.status}`);
       }
+
+      // Send to WhatsApp
+      const whatsappMessage = `New Contact Form Submission:
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Message: ${formData.message}`;
+
+      const whatsappUrl = `https://wa.me/254114290760?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank');
 
       const data = await response.json();
       console.log("Form submitted successfully:", data);
@@ -320,104 +334,108 @@ const Contact = () => {
       <div className="relative z-10">
         {/* Enhanced Hero Section with Creative Design */}
         <section className="min-h-screen flex items-center relative overflow-hidden">
-  {/* Gradient Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-pink-800/60 z-0"></div>
 
-  {/* Background image with parallax */}
-  <div
-    className="absolute inset-0 z-0 parallax-bg"
-    style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${bgImage})`,
-      backgroundPosition: "center 30%",
-    }}
-  ></div>
+          {/* Background image with parallax */}
+          <div
+            className="absolute inset-0 z-0 parallax-bg"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${bgImage})`,
+              backgroundPosition: "center 30%",
+            }}
+          ></div>
 
-  {/* Decorative shapes */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-    <div
-      className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
-      style={{ animationDelay: "1s" }}
-    ></div>
-    <div
-      className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse"
-      style={{ animationDelay: "2s" }}
-    ></div>
-  </div>
-
-  {/* Content */}
-  <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
-    <div className="flex flex-col items-start text-left max-w-3xl">
-      <div className="animate-fade-up text-white w-full">
-        {/* Badge */}
-        <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
-          <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
-          <span>Your Journey to Wellness Starts Here</span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
-            We're Here
-          </span>
-          <br />
-          <span className="text-white">To Support You</span>
-        </h1>
-
-        {/* Typing effect */}
-        <div className="h-12 mb-8">
-          <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
-            {typingText}
-            <span className="typing-cursor h-6 align-middle"></span>
-          </span>
-        </div>
-
-
-        {/* Contact Methods */}
-        <div className="grid grid-cols-2 gap-4 mb-12 max-w-md">
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
-            <Mail className="w-8 h-8 mb-2 text-blue-300" />
-            <p className="text-white font-medium">Email Us</p>
-            <p className="text-white/80 text-sm">info@jikubaliafrica.org</p>
+          {/* Decorative shapes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
+            <div
+              className="absolute top-1/2 left-1/4 w-64 h-64 bg-pink-500/10 rotate-45 blur-3xl animate-pulse"
+              style={{ animationDelay: "2s" }}
+            ></div>
           </div>
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
-            <MapPin className="w-8 h-8 mb-2 text-blue-300" />
-            <p className="text-white font-medium">Visit Us</p>
-            <p className="text-white/80 text-sm">Nairobi & Kisii</p>
+
+          {/* Content */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 mt-4 relative z-10">
+            <div className="flex flex-col items-start text-left max-w-3xl">
+              <div className="animate-fade-up text-white w-full">
+                {/* Badge */}
+                <div className="inline-flex items-center bg-white/20 backdrop-blur-lg text-white px-6 py-3 rounded-full text-base font-medium mb-8 border border-white/10 ">
+                  <Sparkles className="w-5 h-5 mr-2 text-yellow-300" />
+                  <span>Your Journey to Wellness Starts Here</span>
+                </div>
+
+                {/* Headline */}
+                <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+                    We're Here
+                  </span>
+                  <br />
+                  <span className="text-white">To Support You</span>
+                </h1>
+
+                {/* Typing effect */}
+                <div className="h-12 mb-8">
+                  <span className="text-xl lg:text-2xl bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/10 inline-block">
+                    {typingText}
+                    <span className="typing-cursor h-6 align-middle"></span>
+                  </span>
+                </div>
+
+                {/* Contact Methods */}
+                <div className="grid grid-cols-2 gap-4 mb-12 max-w-md">
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+                    <Mail className="w-8 h-8 mb-2 text-blue-300" />
+                    <p className="text-white font-medium">Email Us</p>
+                    <p className="text-white/80 text-sm">info@jikubaliafrica.org</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10">
+                    <MapPin className="w-8 h-8 mb-2 text-blue-300" />
+                    <p className="text-white font-medium">Visit Us</p>
+                    <p className="text-white/80 text-sm">Nairobi & Kisii</p>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
+                    onClick={() => {
+                      const formSection = document.getElementById("contact-form");
+                      if (formSection) {
+                        formSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    <MessageCircle className="mr-3 h-5 w-5" />
+                    Send Message
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm"
+                  >
+                    <Users className="mr-3 h-5 w-5" />
+                    Join Community
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
-          >
-            <MessageCircle className="mr-3 h-5 w-5" />
-            Send Message
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white px-8 py-4 rounded-xl backdrop-blur-sm"
-          >
-            <Users className="mr-3 h-5 w-5" />
-            Join Community
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
+          {/* Scroll indicator stays centered */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+            </div>
+          </div>
+        </section>
 
-  {/* Scroll indicator stays centered */}
-  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-      <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
-    </div>
-  </div>
-</section>
-
-        {/* Rest of your components (Contact Methods, Support Lead, Form, FAQ, etc.) remain the same */}
         {/* Contact Methods */}
         <section className="py-20 relative overflow-hidden bg-white">
           <div className="container-padding max-w-7xl mx-auto relative z-10">
@@ -514,7 +532,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Form & Office Locations */}
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section id="contact-form" className="py-20 bg-white relative overflow-hidden">
           <div className="container-padding max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               <div className="observe">
