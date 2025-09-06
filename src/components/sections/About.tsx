@@ -14,33 +14,65 @@ import localImage5 from "@/assets/general/jk.jpg";
 import localImage6 from "@/assets/general/v9.jpg";
 
 const About = () => {
-  // Core values data
+  // Core values data with JIKUBALI initials
   const values = [
-  {
-    icon: Heart,
-    title: "Joyful Living & Inclusivity",
-    description:
-      "We celebrate diversity and foster a sense of belonging, ensuring everyone experiences joy and acceptance.",
-  },
-  {
-    icon: Target,
-    title: "Kindness & Love",
-    description:
-      "We spread compassion and care, creating a safe space where love drives healing and transformation.",
-  },
-  {
-    icon: Users2,
-    title: "Authenticity & Boldness",
-    description:
-      "We encourage individuals to embrace their true selves and boldly share their stories without fear or shame.",
-  },
-  {
-    icon: Sparkles,
-    title: "Uniqueness & Integrity",
-    description:
-      "We honor each person’s uniqueness while staying true to our values of honesty, trust, and transparency.",
-  },
-];
+    {
+      icon: Heart,
+      title: "JoyfulLiving",
+      initial: "J",
+      description:
+        "We believe in spreading positivity and creating spaces where happiness thrives daily.",
+    },
+    {
+      icon: Users2,
+      title: "Inclusivity",
+      initial: "I",
+      description:
+        "We welcome and embrace all people, ensuring everyone feels valued and has a place to belong.",
+    },
+    {
+      icon: Target,
+      title: "Kindness",
+      initial: "K",
+      description:
+        "We act with compassion, showing genuine care in every interaction and initiative.",
+    },
+    {
+      icon: Sparkles,
+      title: "Uniqueness",
+      initial: "U",
+      description:
+        "We celebrate each person's distinct identity and strengths as essential to our shared journey.",
+    },
+    {
+      icon: Sparkles,
+      title: "Boldness",
+      initial: "B",
+      description:
+        "We challenge stigma and fearlessly advocate for mental health and community well-being.",
+    },
+    {
+      icon: Users2,
+      title: "Authenticity",
+      initial: "A",
+      description:
+        "We encourage individuals to embrace their true selves and live with honesty and courage.",
+    },
+    {
+      icon: Heart,
+      title: "Love",
+      initial: "L",
+      description:
+        "We center love in our work, inspiring healing, hope, and deeper human connection.",
+    },
+    {
+      icon: Target,
+      title: "Integrity",
+      initial: "I",
+      description:
+        "We stay true to our values, building trust through transparency, accountability, and respect.",
+    },
+  ];
 
   // ✅ Mixed local + online gallery images
   const galleryImages = [
@@ -202,18 +234,18 @@ const About = () => {
 
             <FadeIn delay={500}>
               <div className="flex flex-wrap gap-4 pt-4">
-              <Link to="/about">
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
-                  Our Full Story
-                </button>
-              </Link>
-              
-              <Link to="/about">
-                <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
-                  Meet The Team
-                </button>
-              </Link>
-            </div>
+                <Link to="/about">
+                  <button className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
+                    Our Full Story
+                  </button>
+                </Link>
+
+                <Link to="/about">
+                  <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-all">
+                    Meet The Team
+                  </button>
+                </Link>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -231,10 +263,10 @@ const About = () => {
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                Dedicated to Empowering individuals by promoting self-love 
-                and acceptance through innovative programs and initiative.
-                 We strive to inspire and support youth in their journey 
-                 to personal growth, confidence and well being.
+                Dedicated to Empowering individuals by promoting self-love and
+                acceptance through innovative programs and initiative. We strive
+                to inspire and support youth in their journey to personal
+                growth, confidence and well being.
               </p>
             </div>
           </FadeIn>
@@ -251,8 +283,8 @@ const About = () => {
                   </h3>
                 </div>
                 <p className="leading-relaxed opacity-95">
-                  "To create a world where individuals embrace self-love and acceptance, 
-                  fostering a culture of empowerment and positivity"
+                  "To create a world where individuals embrace self-love and
+                  acceptance, fostering a culture of empowerment and positivity"
                 </p>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-10">
                   <svg
@@ -272,37 +304,75 @@ const About = () => {
 
         {/* Core Values */}
         <div className="text-center mb-16">
-         
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Our{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">
-                Core Values
-              </span>
-            </h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              These principles guide every aspect of our work and define who we
-              are as an organization.
-            </p>
+          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">
+              Core Values
+            </span>
+          </h3>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            These principles guide every aspect of our work and define who we
+            are as an organization.
+          </p>
         </div>
 
+        {/* JIKUBALI Initials Banner */}
+      <div className="flex justify-center mb-12 px-4">
+        <div className="bg-gradient-to-r from-blue-600 to-pink-500 rounded-2xl p-6 shadow-xl w-full max-w-4xl">
+          {/* Grid for initials */}
+          <div className="grid grid-cols-4 sm:grid-cols-8 gap-4 place-items-center">
+            {values.slice(0, 8).map((value, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center"
+              >
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/20 flex items-center justify-center mb-1 sm:mb-2">
+                  <span className="text-white text-lg sm:text-xl md:text-2xl font-bold">
+                    {value.initial}
+                  </span>
+                </div>
+                <span className="text-white text-[10px] sm:text-xs md:text-sm font-medium text-center">
+                  {value.title.split(" ")[0]}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tagline */}
+          <div className="mt-4 text-center">
+            <span className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wider">
+              JIKUBALI - Accept Yourself
+            </span>
+          </div>
+        </div>
+      </div>
+
+        {/* Values Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
-            <FadeIn key={index} delay={index * 100 + 300}>
-              <Card className="border-none bg-white shadow-lg h-full hover:shadow-xl transition-shadow">
-                <CardContent className="p-8 text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-pink-100 flex items-center justify-center shadow-inner">
-                    <value.icon className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="text-xl font-semibold mb-3 text-gray-900">
-                    {value.title}
-                  </h4>
-                  <p className="text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
+            <Card
+              key={index}
+              className="border-none bg-white shadow-lg h-full hover:shadow-xl transition-shadow group relative overflow-hidden"
+            >
+              {/* Initial badge in corner */}
+              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-pink-500 flex items-center justify-center shadow-md">
+                <span className="text-white font-bold text-sm">
+                  {value.initial}
+                </span>
+              </div>
 
-                </CardContent>
-              </Card>
-            </FadeIn>
+              <CardContent className="p-8 text-center">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-pink-100 flex items-center justify-center shadow-inner group-hover:from-blue-200 group-hover:to-pink-200 transition-colors">
+                  <value.icon className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-gray-900">
+                  {value.title}
+                </h4>
+                <p className="text-gray-600 leading-relaxed">
+                  {value.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

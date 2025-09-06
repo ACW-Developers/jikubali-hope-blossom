@@ -69,7 +69,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/testimonials/", {
+      const response = await fetch("https://backend.jikubaliafrica.org/api/testimonials/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

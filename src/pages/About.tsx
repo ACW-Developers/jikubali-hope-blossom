@@ -1,6 +1,7 @@
 import { Heart, Users, Target, Award, ChevronRight, Play, Star, Quote, Mail, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import { Link } from "react-router-dom"
+import { Users2, Sparkles } from "lucide-react";
 import Footer from "@/components/sections/Footer";
 import { useEffect, useRef, useState } from "react";
 import localImage from "@/assets/general/v21.png"; 
@@ -30,30 +31,55 @@ const About = () => {
   const [isStatsVisible, setIsStatsVisible] = useState(false);
 
   const values = [
+  {
+    icon: Heart,
+    title: "Joyful Living",
+    description:
+      "We believe in spreading positivity and creating spaces where happiness thrives daily.",
+  },
+  {
+    icon: Users2,
+    title: "Inclusivity",
+    description:
+      "We welcome and embrace all people, ensuring everyone feels valued and has a place to belong.",
+  },
+  {
+    icon: Target,
+    title: "Kindness",
+    description:
+      "We act with compassion, showing genuine care in every interaction and initiative.",
+  },
     {
-      icon: Heart,
-      title: "Joyful Living & Inclusivity",
-      description: "We celebrate diversity and foster a sense of belonging, ensuring everyone experiences joy and acceptance."
-    },
+    icon: Sparkles,
+    title: "Uniqueness",
+    description:
+      "We celebrate each person’s distinct identity and strengths as essential to our shared journey.",
+  },
     {
-      icon: Users,
-      title: "Kindness & Love",
-      description:
-      "We spread compassion and care, creating a safe space where love drives healing and transformation.",
-    },
+    icon: Sparkles,
+    title: "Boldness",
+    description:
+      "We challenge stigma and fearlessly advocate for mental health and community well-being.",
+  },
     {
-      icon: Target,
-      title: "Authenticity & Boldness",
-      description:
-      "We encourage individuals to embrace their true selves and boldly share their stories without fear or shame.",
-    },
-    {
-      icon: Award,
-      title: "Uniqueness & Integrity",
-      description:
-      "We honor each person’s uniqueness while staying true to our values of honesty, trust, and transparency.",
-    }
-  ];
+    icon: Users2,
+    title: "Authenticity",
+    description:
+      "We encourage individuals to embrace their true selves and live with honesty and courage.",
+  },
+  {
+    icon: Heart,
+    title: "Love",
+    description:
+      "We center love in our work, inspiring healing, hope, and deeper human connection.",
+  },
+  {
+    icon: Target,
+    title: "Integrity",
+    description:
+      "We stay true to our values, building trust through transparency, accountability, and respect.",
+  },
+];
 
   const leadershipTeam = [
     {
@@ -395,7 +421,7 @@ const About = () => {
                   The Beginning
                 </h3>
                 <p className="text-foreground/80 leading-relaxed mb-6">
-                  In 2020, our founders recognized a critical gap in mental health services across Kenya. 
+                  In 2022, our founders recognized a critical gap in mental health services across Kenya. 
                   Traditional barriers—stigma, cost, and accessibility—were preventing millions from 
                   receiving the support they needed.
                 </p>
@@ -448,206 +474,214 @@ const About = () => {
             </div>
             
             {/* Timeline */}
-            <div className="relative mt-24">
-              {/* Lifeline - Centered on large screens, left-aligned on small screens */}
-              <div className="absolute left-1/2 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-blue to-brand-pink
-                              sm:left-6 sm:transform-none"></div>
-              
-              {[
-                { year: "2022", title: "Foundation", desc: "Jikubali Africa founded in response to mental health gap" },
-                { year: "2022", title: "Expansion", desc: "Programs expanded to 3 additional counties" },
-                { year: "2023", title: "Recognition", desc: "Received national award for community mental health work" },
-                { year: "2024", title: "Growth", desc: "Reached 5,000+ individuals with mental health support" },
-                { year: "2025", title: "Innovation", desc: "Launched digital platform for wider accessibility" },
-              ].map((item, index) => (
-                <div 
-                  key={index} 
-                  className={`mb-12 flex flex-col md:flex-row items-start ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+          <div className="relative mt-24">
+            {/* Lifeline - far left on mobile, centered on larger screens */}
+            <div
+              className="
+                absolute h-full w-1 bg-gradient-to-b from-sky-blue to-brand-pink
+                left-0 sm:left-1/2 sm:-translate-x-1/2
+              "
+            ></div>
+
+            {[
+              { year: "2022", title: "Foundation", desc: "Jikubali Africa founded in response to mental health gap" },
+              { year: "2022", title: "Expansion", desc: "Programs expanded to 3 additional counties" },
+              { year: "2023", title: "Recognition", desc: "Received national award for community mental health work" },
+              { year: "2024", title: "Growth", desc: "Reached 5,000+ individuals with mental health support" },
+              { year: "2025", title: "Innovation", desc: "Launched digital platform for wider accessibility" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`
+                  mb-12 flex flex-col sm:flex-row items-start
+                  ${index % 2 === 0 ? "sm:flex-row-reverse" : ""}
+                `}
+              >
+                {/* Content Card */}
+                <div
+                  className="
+                    w-[85%] ml-4 sm:w-1/2 flex justify-end sm:justify-center 
+                    mb-4 sm:mb-0 sm:px-8 order-2 sm:order-none
+                  "
                 >
-                  {/* Content Card - Full width on mobile, half on desktop */}
-                  <div className="w-full md:w-1/2 flex justify-center md:justify-end mb-4 md:mb-0
-                                  md:pl-8 md:pr-8 order-2 md:order-none">
-                    <div className={`w-full max-w-md p-6 rounded-2xl shadow-lg bg-white border-l-4 ${
-                      index % 4 === 0 ? 'border-sky-blue' : 
-                      index % 4 === 1 ? 'border-brand-pink' : 
-                      index % 4 === 2 ? 'border-sunshine-yellow' : 'border-dark-navy'
-                    }`}>
-                      <h4 className="font-bold text-lg mb-2">{item.title}</h4>
-                      <p className="text-foreground/70 text-sm">{item.desc}</p>
-                    </div>
+                  <div
+                    className={`
+                      w-full max-w-md p-6 rounded-2xl shadow-lg bg-white border-l-4
+                      ${index % 4 === 0 ? "border-sky-blue" : 
+                        index % 4 === 1 ? "border-brand-pink" : 
+                        index % 4 === 2 ? "border-sunshine-yellow" : "border-dark-navy"}
+                    `}
+                  >
+                    <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                    <p className="text-foreground/70 text-sm">{item.desc}</p>
                   </div>
-                  
-                  {/* Timeline dot and year */}
-                  <div className="flex justify-start md:justify-center w-full md:w-1/2 relative order-1 md:order-none
-                                  pl-8 md:pl-0">
-                    <div className="flex items-center">
-                      <div className="w-6 h-6 rounded-full bg-white border-4 border-brand-pink z-10 mr-4 md:mr-0"></div>
-                      <div className="text-lg font-bold text-foreground/80 md:absolute md:top-8 md:left-1/2 md:transform md:-translate-x-1/2
-                                      block md:hidden">
-                        {item.year}
-                      </div>
-                    </div>
-                    {/* Year for desktop */}
-                    <div className="absolute text-lg font-bold text-foreground/80 top-8 left-1/2 transform -translate-x-1/2
-                                    hidden md:block">
+                </div>
+
+                {/* Timeline dot and year */}
+                <div className="flex justify-start sm:justify-center w-full sm:w-1/2 relative order-1 sm:order-none pl-8 sm:pl-0">
+                  <div className="flex items-center">
+                    <div className="w-6 h-6 rounded-full bg-white border-4 border-brand-pink z-10 mr-4 sm:mr-0"></div>
+                    {/* Year (mobile) */}
+                    <div className="text-lg font-bold text-foreground/80 block sm:hidden">
                       {item.year}
                     </div>
                   </div>
+                  {/* Year (desktop) */}
+                  <div className="absolute text-lg font-bold text-foreground/80 top-8 left-1/2 transform -translate-x-1/2 hidden sm:block">
+                    {item.year}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          </div>
+        </section>
+
+        {/* Leadership Team Section - MOVED ABOVE VALUES */}
+        <section className="py-20 bg-dark-navy text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${patternBg})` }}
+            ></div>
+          </div>
+          
+          <div className="container-padding max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
+                👥 Leadership Team
+              </div>
+              <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
+                Meet Our <span className="text-sky-blue">Leaders</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
+              <p className="text-lg text-white/80 max-w-3xl mx-auto">
+                Our dedicated leadership team brings decades of experience in mental health advocacy, 
+                community development, and program management.
+              </p>
+            </div>
+
+            {/* Founder Section - Special Layout */}
+            {leadershipTeam.slice(0, 1).map((leader, index) => (
+              <div 
+                key={index}
+                className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col md:flex-row mb-12"
+              >
+                {/* Image container - Left side */}
+                <div className="relative overflow-hidden rounded-lg mb-4 md:mb-0 md:mr-6 md:w-1/3 aspect-[4/5] bg-white/5">
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name}
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                
+                {/* Content - Right side */}
+                <div className="flex flex-col flex-grow md:w-2/3">
+                  <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-3 py-1 rounded-full text-xs font-medium mb-4">
+                    Founder & Director - Jikubali Africa
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white mb-2">{leader.name}</h3>
+                  <p className="text-brand-pink-light text-lg font-medium mb-4">{leader.position}</p>
+                  <p className="text-white/80 text-base leading-relaxed mb-6">{leader.bio}</p>
                   
-                  {/* Spacer for desktop layout */}
-                  <div className="md:w-1/2 hidden md:block"></div>
+                  {/* Social Media Icons - Below Bio */}
+                  <div className="flex space-x-3">
+                    <a 
+                      href={leader.social.linkedin}
+                      className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={leader.social.facebook || "#"}
+                      className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
+                      aria-label="Facebook"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                      </svg>
+                    </a>
+                    <a 
+                      href={`mailto:${leader.social.email}`}
+                      className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
+                      aria-label="Email"
+                    >
+                      <Mail className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={leader.social.instagram || "#"}
+                      className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
+                      aria-label="Instagram"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Rest of the Team - Standard 4-column grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {leadershipTeam.slice(1).map((leader, index) => (
+                <div 
+                  key={index + 1}
+                  className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
+                >
+                  {/* Image container with fixed aspect ratio */}
+                  <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div className="flex space-x-2 justify-center">
+                          <a 
+                            href={`mailto:${leader.social.email}`}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.1s' }}
+                            aria-label="Email"
+                          >
+                            <Mail className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.linkedin}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.2s' }}
+                            aria-label="LinkedIn"
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                          <a 
+                            href={leader.social.twitter}
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                            style={{ transitionDelay: '0.3s' }}
+                            aria-label="Twitter"
+                          >
+                            <Twitter className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
+                    <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
-        {/* Leadership Team Section - MOVED ABOVE VALUES */}
-<section className="py-20 bg-dark-navy text-white relative overflow-hidden">
-  <div className="absolute inset-0 opacity-5">
-    <div
-      className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-      style={{ backgroundImage: `url(${patternBg})` }}
-    ></div>
-  </div>
-  
-  <div className="container-padding max-w-7xl mx-auto relative z-10">
-    <div className="text-center mb-16">
-      <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-4 py-2 rounded-full text-sm font-medium mb-6">
-        👥 Leadership Team
-      </div>
-      <h2 className="font-heading text-3xl lg:text-5xl font-bold mb-6">
-        Meet Our <span className="text-sky-blue">Leaders</span>
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-brand-pink to-sky-blue mx-auto mb-8 rounded-full"></div>
-      <p className="text-lg text-white/80 max-w-3xl mx-auto">
-        Our dedicated leadership team brings decades of experience in mental health advocacy, 
-        community development, and program management.
-      </p>
-    </div>
-
-    {/* Founder Section - Special Layout */}
-    {leadershipTeam.slice(0, 1).map((leader, index) => (
-      <div 
-        key={index}
-        className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col md:flex-row mb-12"
-      >
-        {/* Image container - Left side */}
-        <div className="relative overflow-hidden rounded-lg mb-4 md:mb-0 md:mr-6 md:w-1/3 aspect-[4/5] bg-white/5">
-          <img 
-            src={leader.image} 
-            alt={leader.name}
-            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-
-        
-        {/* Content - Right side */}
-        <div className="flex flex-col flex-grow md:w-2/3">
-          <div className="inline-flex items-center bg-brand-pink/20 text-brand-pink-light px-3 py-1 rounded-full text-xs font-medium mb-4">
-            Founder & Director - Jikubali Africa
-          </div>
-          <h3 className="font-heading text-2xl font-bold text-white mb-2">{leader.name}</h3>
-          <p className="text-brand-pink-light text-lg font-medium mb-4">{leader.position}</p>
-          <p className="text-white/80 text-base leading-relaxed mb-6">{leader.bio}</p>
-          
-          {/* Social Media Icons - Below Bio */}
-          <div className="flex space-x-3">
-            <a 
-              href={leader.social.linkedin}
-              className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a 
-              href={leader.social.facebook || "#"}
-              className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
-              aria-label="Facebook"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-              </svg>
-            </a>
-            <a 
-              href={`mailto:${leader.social.email}`}
-              className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
-              aria-label="Email"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
-            <a 
-              href={leader.social.instagram || "#"}
-              className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all"
-              aria-label="Instagram"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    ))}
-
-    {/* Rest of the Team - Standard 4-column grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {leadershipTeam.slice(1).map((leader, index) => (
-        <div 
-          key={index + 1}
-          className="leader-card group bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col h-full"
-        >
-          {/* Image container with fixed aspect ratio */}
-          <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/5]">
-            <img 
-              src={leader.image} 
-              alt={leader.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-navy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-              <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="flex space-x-2 justify-center">
-                  <a 
-                    href={`mailto:${leader.social.email}`}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.1s' }}
-                    aria-label="Email"
-                  >
-                    <Mail className="w-4 h-4" />
-                  </a>
-                  <a 
-                    href={leader.social.linkedin}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.2s' }}
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                  <a 
-                    href={leader.social.twitter}
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-brand-pink transition-all transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
-                    style={{ transitionDelay: '0.3s' }}
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Content */}
-          <div className="flex flex-col flex-grow">
-            <h3 className="font-heading text-lg font-bold text-white mb-1">{leader.name}</h3>
-            <p className="text-brand-pink-light text-sm font-medium mb-3">{leader.position}</p>
-            <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{leader.bio}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
         {/* Our Values - MOVED BELOW LEADERSHIP */}
         <section className="py-20 bg-gradient-to-br from-sky-blue-light/20 to-brand-pink-light/10 relative overflow-hidden">
           <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>

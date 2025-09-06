@@ -81,7 +81,7 @@ const Contact = () => {
     
     try {
       // Send to your backend
-      const response = await fetch('http://localhost:8000/api/contact/', {
+      const response = await fetch('https://backend.jikubaliafrica.org/api/contact/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ Phone: ${formData.phone}
 Subject: ${formData.subject}
 Message: ${formData.message}`;
 
-      const whatsappUrl = `https://wa.me/254114290760?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/254742749461?text=${encodeURIComponent(whatsappMessage)}`;
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');

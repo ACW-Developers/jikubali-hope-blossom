@@ -84,7 +84,7 @@ const ContactPopup = ({
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('http://localhost:8000/api/contact/', {
+      const response = await fetch('https://backend.jikubaliafrica.org/api/contact/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -409,7 +409,7 @@ const Gallery = () => {
     const fetchGalleryItems = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('http://localhost:8000/api/gallery/');
+        const response = await fetch('https://backend.jikubaliafrica.org/api/gallery/');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
