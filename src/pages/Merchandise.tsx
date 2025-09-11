@@ -8,6 +8,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import Footer from "@/components/sections/Footer";
+
+// Import merchandise images
+import tshirtImage from "@/assets/merchandise/mental-health-tshirt.jpg";
+import hoodieImage from "@/assets/merchandise/empowerment-hoodie.jpg";
+import mugImage from "@/assets/merchandise/coffee-mug.jpg";
+import toteImage from "@/assets/merchandise/tote-bag.jpg";
+import braceletImage from "@/assets/merchandise/bracelet.jpg";
+import journalImage from "@/assets/merchandise/journal.jpg";
+import capImage from "@/assets/merchandise/cap.jpg";
+import wallArtImage from "@/assets/merchandise/wall-art.jpg";
 
 // Mock merchandise data - replace with actual data source
 const merchandiseItems = [
@@ -15,7 +26,7 @@ const merchandiseItems = [
     id: 1,
     name: "Jikubali Mental Health Awareness T-Shirt",
     price: "KSh 1,500",
-    image: "/api/placeholder/300/300",
+    image: tshirtImage,
     description: "Premium cotton t-shirt spreading mental health awareness with our inspiring design.",
     category: "Apparel",
     featured: true
@@ -24,7 +35,7 @@ const merchandiseItems = [
     id: 2,
     name: "Empowerment Hoodie",
     price: "KSh 2,800",
-    image: "/api/placeholder/300/300",
+    image: hoodieImage,
     description: "Cozy hoodie with empowering messages to remind you of your strength every day.",
     category: "Apparel",
     featured: false
@@ -33,7 +44,7 @@ const merchandiseItems = [
     id: 3,
     name: "Hope & Healing Coffee Mug",
     price: "KSh 800",
-    image: "/api/placeholder/300/300",
+    image: mugImage,
     description: "Start your morning with positivity. Ceramic mug with inspirational quotes.",
     category: "Home",
     featured: true
@@ -42,7 +53,7 @@ const merchandiseItems = [
     id: 4,
     name: "Jikubali Africa Tote Bag",
     price: "KSh 1,200",
-    image: "/api/placeholder/300/300",
+    image: toteImage,
     description: "Eco-friendly canvas tote bag perfect for spreading awareness wherever you go.",
     category: "Accessories",
     featured: false
@@ -51,7 +62,7 @@ const merchandiseItems = [
     id: 5,
     name: "Mental Health Awareness Bracelet",
     price: "KSh 600",
-    image: "/api/placeholder/300/300",
+    image: braceletImage,
     description: "Handcrafted bracelet as a daily reminder of self-care and mental wellness.",
     category: "Accessories",
     featured: true
@@ -60,7 +71,7 @@ const merchandiseItems = [
     id: 6,
     name: "Mindfulness Journal",
     price: "KSh 1,800",
-    image: "/api/placeholder/300/300",
+    image: journalImage,
     description: "Beautiful journal with guided prompts for daily reflection and mental wellness.",
     category: "Stationery",
     featured: false
@@ -69,7 +80,7 @@ const merchandiseItems = [
     id: 7,
     name: "Healing Together Cap",
     price: "KSh 1,000",
-    image: "/api/placeholder/300/300",
+    image: capImage,
     description: "Comfortable cap with embroidered logo representing community and healing.",
     category: "Apparel",
     featured: false
@@ -78,7 +89,7 @@ const merchandiseItems = [
     id: 8,
     name: "Inspiration Wall Art Print",
     price: "KSh 2,200",
-    image: "/api/placeholder/300/300",
+    image: wallArtImage,
     description: "High-quality print featuring uplifting quotes and beautiful artwork for your space.",
     category: "Home",
     featured: true
@@ -425,6 +436,9 @@ const Merchandise = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
