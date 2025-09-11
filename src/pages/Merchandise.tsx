@@ -162,8 +162,32 @@ const Merchandise = () => {
 
   const handleOrderSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the order to your backend
-    toast.success("Order submitted successfully! We'll contact you within 24 hours.");
+    
+    if (!selectedItem) return;
+    
+    // Create WhatsApp message with order details
+    const whatsappNumber = "254742749461";
+    const message = `*New Order - Jikubali Africa Merchandise*
+
+*Product:* ${selectedItem.name}
+*Price:* ${selectedItem.price}
+*Quantity:* ${orderForm.quantity}
+
+*Customer Details:*
+*Name:* ${orderForm.name}
+*Phone:* ${orderForm.phone}
+*Email:* ${orderForm.email || "Not provided"}
+*Delivery Address:* ${orderForm.address}
+
+*Special Instructions:* ${orderForm.notes || "None"}
+
+Thank you for supporting Jikubali Africa!`;
+
+    // Open WhatsApp with pre-filled message
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    toast.success("Order details sent to WhatsApp! Please complete your order there.");
     setOrderForm({
       name: "",
       phone: "",
