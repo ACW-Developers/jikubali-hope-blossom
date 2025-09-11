@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Home, Info, BookOpen, Image, Phone, Users } from "lucide-react";
+import { Menu, X, Home, Info, BookOpen, Image, Phone, Users, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/enhanced-button";
 import ContactPopup from "@/components/ui/contact-popup";
 import LogoImage1 from "@/assets/logos/jikubali.png";
@@ -124,9 +124,10 @@ const Navbar = () => {
               variant="warm"
               size="sm"
               className="hidden lg:flex"
-              onClick={() => setShowContactPopup(true)}
+              onClick={() => window.location.href = '/merchandise'}
             >
-              Get Involved
+              <ShoppingBag size={16} className="mr-2" />
+              Merchandise
             </Button>
 
             {/* Mobile Menu Button */}
@@ -184,11 +185,12 @@ const Navbar = () => {
                   size="sm"
                   className="w-full text-sm font-semibold shadow-md hover:shadow-lg transition-shadow"
                   onClick={() => {
-                    setShowContactPopup(true);
+                    window.location.href = '/merchandise';
                     setIsOpen(false);
                   }}
                 >
-                  Get Involved
+                  <ShoppingBag size={16} className="mr-2" />
+                  Merchandise
                 </Button>
               </div>
             </div>
