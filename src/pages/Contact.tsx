@@ -10,7 +10,7 @@ import bgImage from "@/assets/general/v26.jpg";
 import nairobiOffice from "@/assets/general/Nairobi.jpeg";
 import mombasaOffice from "@/assets/general/Nairobi.jpeg";
 
-import supportLeadImg from "@/assets/team/Irihose.jpg";
+import supportLeadImg from "@/assets/team/Clinton1.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
