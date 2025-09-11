@@ -215,7 +215,7 @@ Thank you for supporting Jikubali Africa!`;
         <div className="absolute inset-0 bg-gradient-to-r from-sky-blue/20 via-brand-pink/20 to-sunshine-yellow/20 z-0"></div>
         <div className="container mx-auto container-padding text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 px-6 py-2 text-sm font-semibold bg-white/80 backdrop-blur-sm">
+            <Badge variant="secondary" className="mb-6 px-6 py-2 text-sm font-semibold  backdrop-blur-sm">
               <ShoppingBag className="w-4 h-4 mr-2" />
               Support Our Mission
             </Badge>
